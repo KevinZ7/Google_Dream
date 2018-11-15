@@ -6,6 +6,7 @@ import {
   View,
   Button
 } from 'react-native';
+import DefaultMap from '../components/DefaultMap.js'
 
 
 export default class HomeScreen extends React.Component {
@@ -15,8 +16,10 @@ export default class HomeScreen extends React.Component {
 
   render() {
     return (
-      <View>
+      <View style={{flex:1}}>
         <Text>This is the home screen</Text>
+        <DefaultMap />
+
       </View>
     )
   }
