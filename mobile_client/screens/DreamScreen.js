@@ -4,11 +4,9 @@ import {
   Text,
   TouchableOpacity,
   View,
-  Button
 } from 'react-native';
 
-
-export default class HomeScreen extends React.Component {
+export default class DreamScreen extends React.Component {
   static navigationOptions = {
     header: null,
   };
@@ -16,7 +14,7 @@ export default class HomeScreen extends React.Component {
   render() {
     return (
       <View>
-        <Text>This is the home screen</Text>
+        <Text>This is the dream screen</Text>
       </View>
     )
   }
