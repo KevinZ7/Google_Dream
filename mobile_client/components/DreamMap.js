@@ -5,54 +5,21 @@ import { MapView, Location, Permissions } from 'expo';
 
 
 
-export default class DefaultMap extends React.Component {
+export default class DreamMap extends React.Component {
 
   constructor(props) {
     super(props);
-
     this.state = {
       region: {
-        latitude: 31.354302,
-        longitude:  121.227119,
-        latitudeDelta: 0.0322,
+        latitude: 49.281311,
+        longitude: -123.114606,
+        latitudeDelta: 0.0922,
         longitudeDelta: 0.0421,
       },
-      userLocation: {
-        latlng:{
-          latitude: 31.354302,
-          longitude:  121.227119
-        },
-        title: "My Location",
-        description: "Me"
-      },
-      markers: [],
-      initialRender: true
+      markers: []
     }
     this.locationSearch = this.locationSearch.bind(this)
     this.calculateDistance = this.calculateDistance.bind(this)
-  }
-
-  _getLocationAsync = async () => {
-
-      let location = await Location.getCurrentPositionAsync({});
-      this.setState({
-        region: {
-          latitude: location.coords.latitude,
-          longitude: location.coords.longitude,
-          latitudeDelta: 0.0122,
-          longitudeDelta: 0.0121,
-        },
-        userLocation: {
-          latlng: {
-            latitude: location.coords.latitude,
-            longitude: location.coords.longitude
-          },
-          title: "My Location",
-          description: "Me"
-        }
-
-      });
-
   }
 
   locationSearch(text){
@@ -119,16 +86,14 @@ export default class DefaultMap extends React.Component {
   // onRegionChange(region) {
   //   this.setState({ region });
   // }
-  componentDidMount(){
-    this._getLocationAsync()
-  }
 
   render() {
     return (
+
     <View style={{flex:1}}>
 
       <MapView style={{ flex:1}}
-        region={
+        initialRegion={
           this.state.region
         }
         provider="google"
@@ -142,13 +107,6 @@ export default class DefaultMap extends React.Component {
             key={marker.id}
           />
         ))}
-
-        <MapView.Marker
-          coordinate={this.state.userLocation.latlng}
-          image={require('../assets/images/userLocation.png')}
-          title={this.state.userLocation.title}
-          description={this.state.userLocation.description}
-        />
 
       </MapView>
 
@@ -164,8 +122,6 @@ export default class DefaultMap extends React.Component {
     </View>
     );
   }
-
-
 }
 
 
