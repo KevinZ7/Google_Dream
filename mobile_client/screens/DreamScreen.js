@@ -6,7 +6,8 @@ import {
   View,
 } from 'react-native';
 import Loading from '../components/LoadingScreen.js'
-import PinsListSlider from '../components/PinsListSlider.js'
+import DefaultMap from '../components/DefaultMap.js'
+import DreamScreenButton from '../components/DreamScreenButton.js'
 
 export default class DreamScreen extends React.Component {
   static navigationOptions = {
@@ -35,15 +36,9 @@ export default class DreamScreen extends React.Component {
   render() {
     const loading = (<View style={styles.loading}><Loading/></View>)
     const DreamScreenContent = (
-      <View>
-        <Text>Dream Content</Text>
-          <TouchableOpacity
-            activeOpacity={0.8}
-            onPress={() => this.setModalVisible(true)}
-            >
-            <Text>Press Me</Text>
-          </TouchableOpacity>
-          <PinsListSlider visible={this.state.modalVisible} toggle={this.setModalVisible.bind(this)}/>
+      <View style={{flex: 1}}>
+        <DefaultMap />
+        <DreamScreenButton navigation={this.props.navigation} visible={this.state.modalVisible}/>
       </View>
       )
 

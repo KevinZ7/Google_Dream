@@ -8,12 +8,12 @@ export default class PinDropNotification extends React.Component {
     return (
       <View style={styles.mainContainer}>
         <Modal
-
+          style={styles.modalContainer}
           backdropOpacity={0.50}
           onBackdropPress={() => this.props.toggle(!this.props.visible)}
           isVisible={this.props.visible}>
           <View style={styles.modal}>
-            <Text>Hello World! Notification for after the Pin Drop</Text>
+            <Text>Notification for after the Pin Drop</Text>
           </View>
         </Modal>
       </View>
@@ -25,15 +25,18 @@ export default class PinDropNotification extends React.Component {
 const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center"
+  },
+  modalContainer: {
+    flex: 1,
+    alignItems: 'center'
   },
   modal: {
+    height: 300,
+    width: 300,
+    padding: 10,
     backgroundColor: "white",
-    paddingTop: 100,
-    paddingBottom: 100,
-    justifyContent: "center",
     alignItems: "center",
+    justifyContent: 'center',
     borderRadius: 10,
     shadowColor: '#000',
     shadowOffset: { width: 6, height: 6 },

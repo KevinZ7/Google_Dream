@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Text, TouchableHighlight, View, Alert, StyleSheet, Button} from 'react-native';
+import {Text, TouchableHighlight, View, Alert, StyleSheet, Button, Dimensions} from 'react-native';
 import Modal from "react-native-modal";
 
 export default class PinsListSlider extends React.Component {
@@ -7,11 +7,12 @@ export default class PinsListSlider extends React.Component {
     return (
       <View style={styles.mainContainer}>
         <Modal
+          style={styles.modal}
           backdropOpacity={0}
           onBackdropPress={() => this.props.toggle(!this.props.visible)}
           isVisible={this.props.visible}>
-          <View style={styles.modal}>
-            <Button onPress={() => Alert.alert('Hi')} title="Press me"/>
+          <View style={styles.innerContainer}>
+              <Text>My Dreams</Text>
           </View>
         </Modal>
       </View>
@@ -22,13 +23,17 @@ export default class PinsListSlider extends React.Component {
 const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center"
   },
   modal: {
-    backgroundColor: 'red',
+    flex: 1,
     justifyContent: "flex-end",
-    margin: 0
-  }
-
+    alignItems: 'center',
+  },
+  innerContainer: {
+    backgroundColor: 'white',
+    margin: 0,
+    alignItems: 'center',
+    width: Dimensions.get('window').width,
+    height: Dimensions.get('window').height * 0.3
+  },
 });
