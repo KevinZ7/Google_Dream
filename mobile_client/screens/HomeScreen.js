@@ -22,6 +22,7 @@ export default class HomeScreen extends React.Component {
         <DefaultMap />
         <DreamModeButton navigation={this.props.navigation} />
         <HomeScreenFooter />
+
       </View>
     )
   }
