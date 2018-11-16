@@ -16,7 +16,37 @@ export default class DreamMap extends React.Component {
         latitudeDelta: 0.0922,
         longitudeDelta: 0.0421,
       },
-      markers: []
+      markers: [
+        {
+          id: 1,
+          latlng: {
+            latitude:
+            longitude:
+          },
+          name:,
+          category:
+          color:
+        },
+        {
+          id: 2,
+          latlng: {
+            latitude:
+            longitude:
+          },
+          name:,
+          category:,
+          color:
+        },
+        {
+          id: 2,
+          latlng: {
+            latitude:
+            longitude:
+          },
+          name:,
+          category:,
+        }
+      ]
     }
     this.locationSearch = this.locationSearch.bind(this)
     this.calculateDistance = this.calculateDistance.bind(this)

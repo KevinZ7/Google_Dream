@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { StyleSheet, Text, View, TextInput, } from 'react-native';
 import { MapView, Location, Permissions } from 'expo';
+import GOOGLE_API from '../secret.js'
 
 
 
@@ -33,7 +34,7 @@ export default class DefaultMap extends React.Component {
   }
 
   _getLocationAsync = async () => {
-      Permissions.askAsync(Permissions.LOCATION);
+      await Permissions.askAsync(Permissions.LOCATION);
       let location = await Location.getCurrentPositionAsync({});
       this.setState({
         region: {
@@ -57,7 +58,7 @@ export default class DefaultMap extends React.Component {
 
   locationSearch(text){
     let encodedText = encodeURIComponent(text)
-    let apiRequest = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=49.281318,-123.114574&rankby=distance&keyword=${encodedText}&key=AIzaSyB6P4NpwuilrFszLH-kQ8vBk9nTO_aOW6E`
+    let apiRequest = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=49.281318,-123.114574&rankby=distance&keyword=${encodedText}&key=${GOOGLE_API}`
 
     fetch(apiRequest)
     .then((response) => response.json())
