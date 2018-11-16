@@ -33,7 +33,7 @@ export default class DefaultMap extends React.Component {
   }
 
   _getLocationAsync = async () => {
-
+      Permissions.askAsync(Permissions.LOCATION);
       let location = await Location.getCurrentPositionAsync({});
       this.setState({
         region: {
