@@ -38,6 +38,7 @@ export default class DreamScreen extends React.Component {
     const DreamScreenContent = (
       <View style={{flex: 1}}>
         <DreamMap />
+        <DreamScreenButton navigation={this.props.navigation} visible={this.state.modalVisible}/>
       </View>
       )
 
