@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, Button, StyleSheet, TouchableOpacity, Alert, Image } from 'react-native';
 import PinsListSlider from './PinsListSlider.js'
+import ListSlider from './ListSlider.js'
 
 export default class DreamScreenButton extends React.Component {
 
@@ -29,7 +30,7 @@ export default class DreamScreenButton extends React.Component {
             <Text>Go back</Text>
           </TouchableOpacity>
         </View>
-        <PinsListSlider visible={this.state.modalVisible} toggle={this.setModalVisible.bind(this)}/>
+        <ListSlider />
       </View>
     )
   }

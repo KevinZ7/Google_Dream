@@ -28,6 +28,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "flex-end",
     alignItems: 'center',
+    marginBottom: 50
   },
   innerContainer: {
     backgroundColor: 'white',
