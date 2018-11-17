@@ -22,6 +22,7 @@ export default class ListSlider extends React.Component {
           onRequestClose={() => this.props.toggle(false)}>
           <View style={styles.slideContainer}>
               <ScrollView
+                style={styles.scrollContainer}
                 onTouchEnd={() => this.setState({allowDragging: true})}
                 onTouchCancel={() => this.setState({allowDragging: true})}
                 onTouchStart={() => this.setState({allowDragging: false})}>
@@ -52,7 +53,6 @@ export default class ListSlider extends React.Component {
                 <Text>Here is the content inside panel</Text>
                 <Text>Here is the content inside panel</Text>
               </ScrollView>
-            <Button title='Hide' onPress={() => this.props.toggle(false)} />
           </View>
         </SlidingUpPanel>
       </View>
@@ -74,5 +74,8 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  scrollContainer: {
+    margin: 20
   }
 })
