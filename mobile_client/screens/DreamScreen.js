@@ -6,7 +6,7 @@ import {
   View,
 } from 'react-native';
 import Loading from '../components/LoadingScreen.js'
-import DreamMap from '../components/DefaultMap.js'
+import DreamMap from '../components/DreamMap.js'
 import DreamScreenButton from '../components/DreamScreenButton.js'
 import ListSlider from '../components/ListSlider.js'
 

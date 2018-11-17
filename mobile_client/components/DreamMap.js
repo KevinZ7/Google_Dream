@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { StyleSheet, Text, View, TextInput, } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Image } from 'react-native';
 import { MapView, Location, Permissions } from 'expo';
 
 
@@ -11,111 +11,87 @@ export default class DreamMap extends React.Component {
     super(props);
     this.state = {
       region: {
-        latitude: 49.281311,
-        longitude: -123.114606,
-        latitudeDelta: 0.0922,
+        latitude: 31.354302,
+        longitude:  121.227119,
+        latitudeDelta: 0.0322,
         longitudeDelta: 0.0421,
       },
       markers: [
         {
           id: 1,
           latlng: {
-            latitude:
-            longitude:
+            latitude:49.283439,
+            longitude:-123.115393
           },
-          name:,
-          category:
-          color:
+          name: "A&W",
+          type: "restaurant",
+          color: "red"
         },
         {
           id: 2,
           latlng: {
-            latitude:
-            longitude:
+            latitude:49.283327,
+            longitude:-123.117689
           },
-          name:,
-          category:,
-          color:
+          name: "Dog Park",
+          type: "park",
+          color: "green"
         },
         {
-          id: 2,
+          id: 3,
           latlng: {
-            latitude:
-            longitude:
+            latitude:49.281843,
+            longitude:-123.120843
           },
-          name:,
-          category:,
+          name: "Walk in clinic",
+          type: "health",
+          color: "blue"
         }
-      ]
-    }
-    this.locationSearch = this.locationSearch.bind(this)
-    this.calculateDistance = this.calculateDistance.bind(this)
-  }
-
-  locationSearch(text){
-    let encodedText = encodeURIComponent(text)
-    let apiRequest = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=49.281318,-123.114574&rankby=distance&keyword=${encodedText}&key=AIzaSyB6P4NpwuilrFszLH-kQ8vBk9nTO_aOW6E`
-
-    fetch(apiRequest)
-    .then((response) => response.json())
-    .then((responseJson) => {
-      if(this.calculateDistance(responseJson.results[0]) >= 400){
-        this.setState({markers:[]})
-        console.log("THERE IS NOTHING FOUND WITHIN 400")
-      } else {
-        this.setState({markers: []})
-        responseJson.results.forEach((result) => {
-          if(this.calculateDistance(result) < 400){
-            let currentMarkers = this.state.markers;
-            let id = this.state.markers.length + 1;
-            let newMarker = [{
-              id: id,
-              latlng: {
-                latitude: result.geometry.location.lat,
-                longitude: result.geometry.location.lng
-              },
-              title: result.name,
-              description: result.vicinity
-            }]
-            let newMarkers = currentMarkers.concat(newMarker)
-            this.setState({markers: newMarkers});
-          }
-        })
+      ],
+      userLocation: {
+        latlng:{
+          latitude: 31.354302,
+          longitude:  121.227119
+        },
+        title: "My Location",
+        description: "Me"
       }
-    })
-  }
-
-  calculateDistance(result){
-    let lat1 = result.geometry.location.lat;
-      let lon1 = result.geometry.location.lng;
-      let lat2 = this.state.region.latitude;
-      let lon2 = this.state.region.longitude;
-      let radius = 6371;
-      let dLat = this.deg2rad(lat2-lat1);
-      let dLon = this.deg2rad(lon2-lon1);
-      let a =
-        Math.sin(dLat/2) * Math.sin(dLat/2) +
-        Math.cos(this.deg2rad(lat1)) * Math.cos(this.deg2rad(lat2)) *
-        Math.sin(dLon/2) * Math.sin(dLon/2)
-        ;
-      var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-      var d = radius * c; // Distance in km
-
-      return d * 1000;
+    }
 
   }
 
-  deg2rad(deg){
-    return deg * (Math.PI/180)
+  _getLocationAsync = async () => {
+
+      let location = await Location.getCurrentPositionAsync({});
+      this.setState({
+        region: {
+          latitude: location.coords.latitude,
+          longitude: location.coords.longitude,
+          latitudeDelta: 0.0122,
+          longitudeDelta: 0.0121,
+        },
+        userLocation: {
+          latlng: {
+            latitude: location.coords.latitude,
+            longitude: location.coords.longitude
+          },
+          title: "My Location",
+          description: "Me"
+        }
+      });
+
+              console.log(this.state.region);
+        console.log(this.state.userLocation)
   }
 
 
 
 
 
-  // onRegionChange(region) {
-  //   this.setState({ region });
-  // }
+ componentDidMount(){
+    this._getLocationAsync()
+  }
+
 
   render() {
     return (
@@ -123,41 +99,37 @@ export default class DreamMap extends React.Component {
     <View style={{flex:1}}>
 
       <MapView style={{ flex:1}}
-        initialRegion={
+        region={
           this.state.region
         }
         provider="google"
       >
         {this.state.markers.map(marker => (
-          <MapView.Marker draggable
+          <MapView.Marker
             coordinate={marker.latlng}
             title={marker.title}
             description={marker.description}
-            onDragEnd={(e) => this.setState({ x: e.nativeEvent.coordinate })}
             key={marker.id}
+            pinColor={marker.color}
           />
         ))}
 
-      </MapView>
-
-      <MapView.Callout>
-        <View style={styles.calloutView}>
-          <TextInput style={styles.calloutSearch}
-            placeholder={"Search"}
-            onSubmitEditing={(event) => this.locationSearch(event.nativeEvent.text)}
+        <MapView.Marker
+          coordinate={this.state.userLocation.latlng}
+          title={this.state.userLocation.title}
+          description={this.state.userLocation.description}
+        >
+          <Image
+            source={require('../assets/images/userLocation.png')}
+            style={{ width: 30, height: 30 }}
           />
-        </View>
-      </MapView.Callout>
+        </MapView.Marker>
 
+      </MapView>
     </View>
     );
   }
 }
-
-
-// https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=49.281318,-123.114574&rankby=distance&keyword=rbc&key=AIzaSyB6P4NpwuilrFszLH-kQ8vBk9nTO_aOW6E
-
-
 
 const styles = StyleSheet.create({
   container: {
