@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { StyleSheet, Text, View, TextInput, } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Image } from 'react-native';
 import { MapView, Location, Permissions } from 'expo';
 
 
@@ -11,9 +11,9 @@ export default class DreamMap extends React.Component {
     super(props);
     this.state = {
       region: {
-        latitude: 49.281311,
-        longitude: -123.114606,
-        latitudeDelta: 0.0922,
+        latitude: 31.354302,
+        longitude:  121.227119,
+        latitudeDelta: 0.0322,
         longitudeDelta: 0.0421,
       },
       markers: [
@@ -47,13 +47,21 @@ export default class DreamMap extends React.Component {
           type: "health",
           color: "blue"
         }
-      ]
+      ],
+      userLocation: {
+        latlng:{
+          latitude: 31.354302,
+          longitude:  121.227119
+        },
+        title: "My Location",
+        description: "Me"
+      }
     }
 
   }
 
   _getLocationAsync = async () => {
-      await Permissions.askAsync(Permissions.LOCATION);
+
       let location = await Location.getCurrentPositionAsync({});
       this.setState({
         region: {
@@ -70,17 +78,20 @@ export default class DreamMap extends React.Component {
           title: "My Location",
           description: "Me"
         }
-
       });
+
+              console.log(this.state.region);
+        console.log(this.state.userLocation)
   }
 
 
 
 
 
-  // onRegionChange(region) {
-  //   this.setState({ region });
-  // }
+ componentDidMount(){
+    this._getLocationAsync()
+  }
+
 
   render() {
     return (
@@ -88,21 +99,31 @@ export default class DreamMap extends React.Component {
     <View style={{flex:1}}>
 
       <MapView style={{ flex:1}}
-        initialRegion={
+        region={
           this.state.region
         }
         provider="google"
       >
         {this.state.markers.map(marker => (
-          <MapView.Marker draggable
+          <MapView.Marker
             coordinate={marker.latlng}
             title={marker.title}
             description={marker.description}
-            onDragEnd={(e) => this.setState({ x: e.nativeEvent.coordinate })}
             key={marker.id}
             pinColor={marker.color}
           />
         ))}
+
+        <MapView.Marker
+          coordinate={this.state.userLocation.latlng}
+          title={this.state.userLocation.title}
+          description={this.state.userLocation.description}
+        >
+          <Image
+            source={require('../assets/images/userLocation.png')}
+            style={{ width: 30, height: 30 }}
+          />
+        </MapView.Marker>
 
       </MapView>
     </View>

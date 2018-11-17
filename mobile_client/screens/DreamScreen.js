@@ -6,7 +6,7 @@ import {
   View,
 } from 'react-native';
 import Loading from '../components/LoadingScreen.js'
-import DefaultMap from '../components/DefaultMap.js'
+import DreamMap from '../components/DreamMap.js'
 import DreamScreenButton from '../components/DreamScreenButton.js'
 
 export default class DreamScreen extends React.Component {
@@ -37,8 +37,7 @@ export default class DreamScreen extends React.Component {
     const loading = (<View style={styles.loading}><Loading/></View>)
     const DreamScreenContent = (
       <View style={{flex: 1}}>
-        <DefaultMap />
-        <DreamScreenButton navigation={this.props.navigation} visible={this.state.modalVisible}/>
+        <DreamMap />
       </View>
       )
 

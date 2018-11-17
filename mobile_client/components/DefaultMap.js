@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { StyleSheet, Text, View, TextInput, } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Image } from 'react-native';
 import { MapView, Location, Permissions } from 'expo';
 import GOOGLE_API from '../secret.js'
 
@@ -26,8 +26,8 @@ export default class DefaultMap extends React.Component {
         title: "My Location",
         description: "Me"
       },
-      markers: [],
-      initialRender: true
+      markers: []
+
     }
     this.locationSearch = this.locationSearch.bind(this)
     this.calculateDistance = this.calculateDistance.bind(this)
@@ -146,10 +146,14 @@ export default class DefaultMap extends React.Component {
 
         <MapView.Marker
           coordinate={this.state.userLocation.latlng}
-          image={require('../assets/images/userLocation.png')}
           title={this.state.userLocation.title}
           description={this.state.userLocation.description}
-        />
+        >
+          <Image
+            source={require('../assets/images/userLocation.png')}
+            style={{ width: 30, height: 30 }}
+          />
+        </MapView.Marker>
 
       </MapView>
 
