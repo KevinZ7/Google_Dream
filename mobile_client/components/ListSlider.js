@@ -1,82 +1,81 @@
-import React, {Component} from 'react';
-import {Text, TouchableHighlight, View, Alert, StyleSheet, Button, Dimensions, Animated} from 'react-native';
+import React from 'react';
+import {View, Button, Text, StyleSheet, Dimensions, ScrollView} from 'react-native';
 
-var isHidden = true;
-
-export default class ListSlider extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      bounceValue: new Animated.Value(100),  //This is the initial position of the subview
-      buttonText: "Show Subview"
-    };
-  }
+import SlidingUpPanel from 'rn-sliding-up-panel';
 
 
-  _toggleSubview() {
-    this.setState({
-      buttonText: !isHidden ? "Show Subview" : "Hide Subview"
-    });
 
-    var toValue = 100;
+export default class ListSlider extends React.Component {
 
-    if(isHidden) {
-      toValue = 0;
-    }
-
-    //This will animate the transalteY of the subview between 0 & 100 depending on its current state
-    //100 comes from the style below, which is the height of the subview.
-    Animated.spring(
-      this.state.bounceValue,
-      {
-        toValue: toValue,
-        velocity: 3,
-        tension: 2,
-        friction: 8,
-      }
-    ).start();
-
-    isHidden = !isHidden;
+  state = {
+    allowDragging: true
   }
 
   render() {
     return (
       <View style={styles.container}>
-          <TouchableHighlight style={styles.button} onPress={()=> {this._toggleSubview()}}>
-            <Text style={styles.buttonText}>{this.state.buttonText}</Text>
-          </TouchableHighlight>
-          <Animated.View
-            style={[styles.subView,
-              {transform: [{translateY: this.state.bounceValue}]}]}
-          >
-            <Text>This is a sub view</Text>
-          </Animated.View>
+        <SlidingUpPanel
+          allowDragging={this.state.allowDragging}
+          showBackdrop={true}
+          height={300}
+          visible={this.props.visible}
+          onRequestClose={() => this.props.toggle(false)}>
+          <View style={styles.slideContainer}>
+              <ScrollView
+                style={styles.scrollContainer}
+                onTouchEnd={() => this.setState({allowDragging: true})}
+                onTouchCancel={() => this.setState({allowDragging: true})}
+                onTouchStart={() => this.setState({allowDragging: false})}>
+                <Text>Here is the content inside panel</Text>
+                <Text>Here is the content inside panel</Text>
+                <Text>Here is the content inside panel</Text>
+                <Text>Here is the content inside panel</Text>
+                <Text>Here is the content inside panel</Text>
+                <Text>Here is the content inside panel</Text>
+                <Text>Here is the content inside panel</Text>
+                <Text>Here is the content inside panel</Text>
+                <Text>Here is the content inside panel</Text>
+                <Text>Here is the content inside panel</Text>
+                <Text>Here is the content inside panel</Text>
+                <Text>Here is the content inside panel</Text>
+                <Text>Here is the content inside panel</Text>
+                <Text>Here is the content inside panel</Text>
+                <Text>Here is the content inside panel</Text>
+                <Text>Here is the content inside panel</Text>
+                <Text>Here is the content inside panel</Text>
+                <Text>Here is the content inside panel</Text>
+                <Text>Here is the content inside panel</Text>
+                <Text>Here is the content inside panel</Text>
+                <Text>Here is the content inside panel</Text>
+                <Text>Here is the content inside panel</Text>
+                <Text>Here is the content inside panel</Text>
+                <Text>Here is the content inside panel</Text>
+                <Text>Here is the content inside panel</Text>
+                <Text>Here is the content inside panel</Text>
+              </ScrollView>
+          </View>
+        </SlidingUpPanel>
       </View>
-    );
+    )
   }
 }
 
-var styles = StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
+    backgroundColor: 'white',
     flex: 1,
-    justifyContent: 'center',
+    position: 'absolute',
+    width: '100%',
+    bottom: 350,
+    zIndex: -1
+  },
+  slideContainer: {
+    flex: 1,
+    backgroundColor: 'white',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-    marginTop: 66
+    justifyContent: 'center',
   },
-  button: {
-    padding: 8,
-  },
-  buttonText: {
-    fontSize: 17,
-    color: "#007AFF"
-  },
-  subView: {
-    position: "absolute",
-    bottom: 0,
-    left: 0,
-    right: 0,
-    backgroundColor: "#FFFFFF",
-    height: 100,
+  scrollContainer: {
+    margin: 20
   }
-});
+})

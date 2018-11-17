@@ -19,7 +19,7 @@ export default class DreamScreenButton extends React.Component {
         <View style={styles.container}>
           <TouchableOpacity
             activeOpacity={0.8}
-            onPress={() => this.setModalVisible(true)}
+            onPress={() => this.setModalVisible(!this.state.modalVisible)}
             >
             <Text>Press Me</Text>
           </TouchableOpacity>
@@ -30,7 +30,7 @@ export default class DreamScreenButton extends React.Component {
             <Text>Go back</Text>
           </TouchableOpacity>
         </View>
-        <PinsListSlider visible={this.state.modalVisible} toggle={this.setModalVisible.bind(this)}/>
+        <ListSlider visible={this.state.modalVisible} toggle={this.setModalVisible.bind(this)}/>
       </View>
     )
   }

@@ -8,6 +8,7 @@ import {
 import Loading from '../components/LoadingScreen.js'
 import DreamMap from '../components/DreamMap.js'
 import DreamScreenButton from '../components/DreamScreenButton.js'
+import ListSlider from '../components/ListSlider.js'
 
 export default class DreamScreen extends React.Component {
   static navigationOptions = {
@@ -53,5 +54,5 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center'
-  }
+  },
 })
