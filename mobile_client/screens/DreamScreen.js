@@ -11,27 +11,36 @@ import DreamScreenButton from '../components/DreamScreenButton.js'
 import ListSlider from '../components/ListSlider.js'
 
 export default class DreamScreen extends React.Component {
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      loading: true,
+      modalVisible: false
+    }
+  }
+
   static navigationOptions = {
     header: null,
   };
-
-  state = {
-    loading: true,
-    modalVisible: false
-  }
-
   setModalVisible(visible) {
     this.setState({modalVisible: visible});
   }
 
+  markerToMap() {
+
+  }
+
   componentDidMount() {
+
+
     setTimeout(() => {
       this.setState({
         loading: false
       })
     }, 2000)
-
     this.setModalVisible(true)
+
   }
 
   render() {

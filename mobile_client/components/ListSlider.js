@@ -12,6 +12,15 @@ export default class ListSlider extends React.Component {
   }
 
   render() {
+
+    // const myDreams = this.props.myDreams.mp((dream) => {
+    //   <Button
+    //     title={dream.name}
+    //     key={dream.id}
+    //     identifier={dream.id}
+    //     content={dream}
+    //   />
+    // })
     return (
       <View style={styles.container}>
         <SlidingUpPanel
@@ -21,38 +30,7 @@ export default class ListSlider extends React.Component {
           visible={this.props.visible}
           onRequestClose={() => this.props.toggle(false)}>
           <View style={styles.slideContainer}>
-              <ScrollView
-                style={styles.scrollContainer}
-                onTouchEnd={() => this.setState({allowDragging: true})}
-                onTouchCancel={() => this.setState({allowDragging: true})}
-                onTouchStart={() => this.setState({allowDragging: false})}>
-                <Text>Here is the content inside panel</Text>
-                <Text>Here is the content inside panel</Text>
-                <Text>Here is the content inside panel</Text>
-                <Text>Here is the content inside panel</Text>
-                <Text>Here is the content inside panel</Text>
-                <Text>Here is the content inside panel</Text>
-                <Text>Here is the content inside panel</Text>
-                <Text>Here is the content inside panel</Text>
-                <Text>Here is the content inside panel</Text>
-                <Text>Here is the content inside panel</Text>
-                <Text>Here is the content inside panel</Text>
-                <Text>Here is the content inside panel</Text>
-                <Text>Here is the content inside panel</Text>
-                <Text>Here is the content inside panel</Text>
-                <Text>Here is the content inside panel</Text>
-                <Text>Here is the content inside panel</Text>
-                <Text>Here is the content inside panel</Text>
-                <Text>Here is the content inside panel</Text>
-                <Text>Here is the content inside panel</Text>
-                <Text>Here is the content inside panel</Text>
-                <Text>Here is the content inside panel</Text>
-                <Text>Here is the content inside panel</Text>
-                <Text>Here is the content inside panel</Text>
-                <Text>Here is the content inside panel</Text>
-                <Text>Here is the content inside panel</Text>
-                <Text>Here is the content inside panel</Text>
-              </ScrollView>
+
           </View>
         </SlidingUpPanel>
       </View>
