@@ -24,6 +24,7 @@ export default class DreamModeButton extends React.Component {
           <Image source={require('../assets/images/logo.png')} style={styles.image} resizeMode="contain"/>
         </TouchableOpacity>
 
+        {/* Might want to break the below button into another component */}
         <TouchableOpacity
           activeOpacity={0.8}
           onPress={() => Alert.alert('Hi')}
@@ -40,8 +41,6 @@ const styles = StyleSheet.create({
   button: {
     borderWidth:1,
     borderColor:'#fff',
-    alignSelf:'flex-end',
-    justifyContent:'center',
     width:60,
     height:60,
     backgroundColor:'#fff',
@@ -58,8 +57,6 @@ const styles = StyleSheet.create({
   buttonSecond: {
     borderWidth:1,
     borderColor:'#fff',
-    alignSelf:'flex-end',
-    justifyContent:'center',
     width:60,
     height:60,
     backgroundColor:'#fff',
