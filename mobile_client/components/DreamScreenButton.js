@@ -30,7 +30,7 @@ export default class DreamScreenButton extends React.Component {
             <Text>Go back</Text>
           </TouchableOpacity>
         </View>
-        <ListSlider />
+        <PinsListSlider visible={this.state.modalVisible} toggle={this.setModalVisible.bind(this)}/>
       </View>
     )
   }
