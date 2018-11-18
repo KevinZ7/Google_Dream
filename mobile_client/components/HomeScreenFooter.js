@@ -5,9 +5,8 @@ export default class HomeScreenFooter extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Image source={require('../assets/images/robot-dev.png')} style={styles.image} resizeMode="contain"/>
-        <Image source={require('../assets/images/robot-dev.png')} style={styles.image} resizeMode="contain"/>
-        <Image source={require('../assets/images/robot-dev.png')} style={styles.image} resizeMode="contain"/>
+        <Text style={{marginLeft: 10, color: 'grey'}}>SHOW LIST</Text>
+        <Text style={{marginRight: 10, color: 'grey'}}>FILTER</Text>
       </View>
     )
   }
@@ -24,6 +23,8 @@ const styles = {
     borderStyle: 'solid',
     borderColor: "#d2d2d2",
     flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
   image: {
     flex: 1,

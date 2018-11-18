@@ -54,6 +54,42 @@ export default class DreamScreen extends React.Component {
          color: "blue",
          date: "11/16/2018",
          address: "2822 medical street, Vancouver, BC V8I SA7, Canada"
+       },
+        {
+         id: 1,
+         latlng: {
+           latitude:49.283439,
+           longitude:-123.115393
+         },
+         name: "A&W",
+         type: "restaurant",
+         color: "red",
+         date: "11/12/2018",
+         address: "622 burger place, Vancouver, BC V8I 5AL, Canada"
+       },
+       {
+         id: 2,
+         latlng: {
+           latitude:49.283327,
+           longitude:-123.117689
+         },
+         name: "Dog Park",
+         type: "park",
+         color: "green",
+         date: "11/14/2018",
+         address: "10-202 Parkboy Avenue, Vancouver, BC V8D 52L, Canada"
+       },
+       {
+         id: 3,
+         latlng: {
+           latitude:49.281843,
+           longitude:-123.120843
+         },
+         name: "Walk in clinic",
+         type: "health",
+         color: "blue",
+         date: "11/16/2018",
+         address: "2822 medical street, Vancouver, BC V8I SA7, Canada"
        }
       ],
       mapMarker: {}
