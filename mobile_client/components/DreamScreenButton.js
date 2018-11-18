@@ -30,13 +30,7 @@ export default class DreamScreenButton extends React.Component {
             {arrowStatus}
           </TouchableOpacity>
         </View>
-          <TouchableOpacity
-            activeOpacity={0.8}
-            onPress={() => this.props.navigation.goBack()}
-            style={styles.buttonSecond}>
-            <Image source={require('../assets/images/logo.png')} style={styles.image} resizeMode="contain"/>
-          </TouchableOpacity>
-        <ListSlider visible={this.state.modalVisible} toggle={this.setModalVisible.bind(this)} myDreams={this.props.myDreams} markerToMap={this.props.markerToMap}/>
+        <ListSlider navigation={this.props.navigation} visible={this.state.modalVisible} toggle={this.setModalVisible.bind(this)} myDreams={this.props.myDreams} markerToMap={this.props.markerToMap}/>
       </View>
     )
   }

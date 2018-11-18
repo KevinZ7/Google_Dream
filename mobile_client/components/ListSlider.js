@@ -1,111 +1,8 @@
 import React from 'react';
-import {View, Button, Text, StyleSheet, Dimensions, ScrollView, Alert, FlatList} from 'react-native';
+import {View, Button, Text, StyleSheet, Dimensions, ScrollView, Alert, FlatList, Image, TouchableOpacity} from 'react-native';
 
 import SlidingUpPanel from 'rn-sliding-up-panel';
 import ListCard from './ListCard.js';
-
-const arr = [
-       {
-         id: 1,
-         latlng: {
-           latitude:49.283439,
-           longitude:-123.115393
-         },
-         name: "A&W",
-         type: "restaurant",
-         color: "red",
-         date: "11/12/2018"
-       },
-       {
-         id: 2,
-         latlng: {
-           latitude:49.283327,
-           longitude:-123.117689
-         },
-         name: "Dog Park",
-         type: "park",
-         color: "green",
-         date: "11/14/2018"
-       },
-       {
-         id: 3,
-         latlng: {
-           latitude:49.281843,
-           longitude:-123.120843
-         },
-         name: "Walk in clinic",
-         type: "health",
-         color: "blue",
-         date: "11/16/2018"
-       },
-        {
-         id: 1,
-         latlng: {
-           latitude:49.283439,
-           longitude:-123.115393
-         },
-         name: "A&W",
-         type: "restaurant",
-         color: "red",
-         date: "11/12/2018"
-       },
-       {
-         id: 2,
-         latlng: {
-           latitude:49.283327,
-           longitude:-123.117689
-         },
-         name: "Dog Park",
-         type: "park",
-         color: "green",
-         date: "11/14/2018"
-       },
-       {
-         id: 3,
-         latlng: {
-           latitude:49.281843,
-           longitude:-123.120843
-         },
-         name: "Walk in clinic",
-         type: "health",
-         color: "blue",
-         date: "11/16/2018"
-       },
-       {
-         id: 1,
-         latlng: {
-           latitude:49.283439,
-           longitude:-123.115393
-         },
-         name: "A&W",
-         type: "restaurant",
-         color: "red",
-         date: "11/12/2018"
-       },
-       {
-         id: 2,
-         latlng: {
-           latitude:49.283327,
-           longitude:-123.117689
-         },
-         name: "Dog Park",
-         type: "park",
-         color: "green",
-         date: "11/14/2018"
-       },
-       {
-         id: 3,
-         latlng: {
-           latitude:49.281843,
-           longitude:-123.120843
-         },
-         name: "Walk in clinic",
-         type: "health",
-         color: "blue",
-         date: "11/16/2018"
-       },
-     ]
-
 
 export default class ListSlider extends React.Component {
 
@@ -135,7 +32,13 @@ export default class ListSlider extends React.Component {
                 keyExtractor={(item, index) => index.toString()}
                 renderItem={({item}) => <ListCard key={item.id} data={item} markerToMap={this.props.markerToMap}/>}
               />
-
+              <Image source={require('../assets/images/dream_bg.png')} style={styles.image}/>
+              <TouchableOpacity
+                activeOpacity={0.8}
+                onPress={() => this.props.navigation.goBack()}
+                style={styles.buttonSecond}>
+                <Image source={require('../assets/images/logo.png')} style={styles.imageButton} resizeMode="contain"/>
+              </TouchableOpacity>
           </View>
         </SlidingUpPanel>
       </View>
@@ -163,11 +66,35 @@ const styles = StyleSheet.create({
   },
   scrollContainer: {
     flex: 1,
-    margin: 20,
     width: '100%',
+    margin: 10
   },
   insideContent: {
-    alignItems: 'center',
+    margin: 10,
+  },
+  image: {
+    maxWidth: '100%',
+    maxHeight: '50%'
+  },
+  imageButton: {
+    flex: 1,
+    maxWidth: '100%',
+    alignSelf: 'center'
+  },
+  buttonSecond: {
+    borderWidth:1,
+    borderColor:'#fff',
+    width:60,
+    height:60,
+    backgroundColor:'#fff',
+    position: 'absolute',
+    bottom: 10,
+    right: 0,
+    borderRadius:100,
     margin: 20,
-  }
+    shadowColor: '#000',
+    shadowOffset: { width: 3, height: 3 },
+    shadowOpacity: 0.5,
+    shadowRadius: 5,
+   }
 })
