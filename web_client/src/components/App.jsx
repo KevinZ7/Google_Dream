@@ -1,18 +1,9 @@
 
 import React, {Component} from 'react';
-import Maps from './maps.jsx'
 import SideBar from './sideBar.jsx'
-import SlideBar from './slideMenu.jsx'
+import GoogleApiWrapper from './map.jsx';
+import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink, Button} from 'reactstrap';
 
-import { Collapse,
-    Navbar,
-    NavbarToggler,
-    NavbarBrand,
-    Nav,
-    NavItem,
-    NavLink,
-    Button
-} from 'reactstrap';
 // import ThemeSwitcher from './themeswitcher.jsx'
 
 
@@ -44,20 +35,16 @@ class App extends Component {
   render() {
     return (
       <div className="container-fluid">
-
+       <div className="row">
         <nav className="navbar">
           <span id="navBarIcon"className="glyphicon glyphicon-menu-hamburger" aria-hidden="true" onClick={this.handleMouseDown}></span>
           <img id="googleImage" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/2000px-Google_2015_logo.svg.png" width="100" height="35" />
           <span id="dreamWord" className="align-middle"> DREAM</span>
         </nav>
-
-        <div className="col col-lg-3">
         <SideBar className="bottom" menuVisibility={this.state.menuVisible} onClick={this.handleMouseDown}/>
-        </div>
 
-        <SlideBar />
-
-
+        <GoogleApiWrapper />
+       </div>
       </div>
     );
   }
