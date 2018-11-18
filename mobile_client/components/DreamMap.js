@@ -1,159 +1,158 @@
 import React, {Component} from 'react';
 import { StyleSheet, Text, View, TextInput, Image } from 'react-native';
 import { MapView, Location, Permissions } from 'expo';
+import GOOGLE_API from '../secret.js';
+
 
 
 
 
 export default class DreamMap extends React.Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      region: {
-        latitude: 31.354302,
-        longitude:  121.227119,
-        latitudeDelta: 0.0322,
-        longitudeDelta: 0.0421,
-      },
-      markers: [
-        {
-          id: 1,
-          latlng: {
-            latitude:49.283439,
-            longitude:-123.115393
-          },
-          name: "A&W",
-          type: "restaurant",
-          color: "red"
-        },
-        {
-          id: 2,
-          latlng: {
-            latitude:49.283327,
-            longitude:-123.117689
-          },
-          name: "Dog Park",
-          type: "park",
-          color: "green"
-        },
-        {
-          id: 3,
-          latlng: {
-            latitude:49.281843,
-            longitude:-123.120843
-          },
-          name: "Walk in clinic",
-          type: "health",
-          color: "blue"
-        }
-      ],
-      userLocation: {
-        latlng:{
-          latitude: 31.354302,
-          longitude:  121.227119
-        },
-        title: "My Location",
-        description: "Me"
-      }
-    }
 
-  }
-
-  _getLocationAsync = async () => {
-
-      let location = await Location.getCurrentPositionAsync({});
-      this.setState({
-        region: {
-          latitude: location.coords.latitude,
-          longitude: location.coords.longitude,
-          latitudeDelta: 0.0122,
-          longitudeDelta: 0.0121,
-        },
-        userLocation: {
-          latlng: {
-            latitude: location.coords.latitude,
-            longitude: location.coords.longitude
-          },
-          title: "My Location",
-          description: "Me"
-        }
-      });
-
-              console.log(this.state.region);
-        console.log(this.state.userLocation)
-  }
-
-
-
-
-
- componentDidMount(){
-    this._getLocationAsync()
-  }
 
 
   render() {
+
+    var markerImage
+    if(Object.keys(this.props.mapMarker).length > 0){
+      if(this.props.mapMarker.color === 'red' ){
+        markerImage = require('../assets/images/red_marker.png')
+      } else if(this.props.mapMarker.color === 'green'){
+        markerImage = require('../assets/images/green_marker.png')
+      } else if(this.props.mapMarker.color === 'blue'){
+        markerImage = require('../assets/images/blue_marker.png')
+      } else if(this.props.mapMarker.color === 'yellow'){
+        markerImage = require('../assets/images/yellow_marker.png')
+      }
+    }
+
+    const myDream = Object.keys(this.props.mapMarker).length === 0 ? null :
+        (
+          <MapView.Marker
+            coordinate={this.props.mapMarker.latlng}
+            key={this.props.mapMarker.id}
+            style={styles.markerContainer}
+          >
+            <View style={styles.bubbleContainer}>
+              <View style={styles.bubble}>
+              <View style={styles.addressContainer}>
+                <Text style={styles.address}> {this.props.mapMarker.address} </Text>
+              </View>
+              <Text style={styles.date}> {this.props.mapMarker.date} </Text>
+              </View>
+              <View style={styles.arrowBorder} />
+              <View style={styles.arrow} />
+            </View>
+            <Image
+              source={markerImage}
+              style={{ width: 40, height: 40}}
+            />
+          </MapView.Marker>
+        )
+
+
+
+
     return (
 
-    <View style={{flex:1}}>
-
-      <MapView style={{ flex:1}}
+      <MapView.Animated style={{ flex:1}}
         region={
-          this.state.region
-        }
+
+          new MapView.AnimatedRegion({
+            latitude: this.props.region.latitude,
+            longitude: this.props.region.longitude,
+            latitudeDelta: this.props.region.latitudeDelta,
+            longitudeDelta: this.props.region.longitudeDelta
+          })
+     }
+
         provider="google"
       >
-        {this.state.markers.map(marker => (
-          <MapView.Marker
-            coordinate={marker.latlng}
-            title={marker.title}
-            description={marker.description}
-            key={marker.id}
-            pinColor={marker.color}
-          />
-        ))}
+
+        {myDream}
 
         <MapView.Marker
-          coordinate={this.state.userLocation.latlng}
-          title={this.state.userLocation.title}
-          description={this.state.userLocation.description}
+          coordinate={this.props.userLocation.latlng}
+          title={this.props.userLocation.title}
+          description={this.props.userLocation.description}
+          style={{flexDirection: "column",alignItems: "center"}}
+
         >
+
           <Image
             source={require('../assets/images/userLocation.png')}
             style={{ width: 30, height: 30 }}
           />
+
         </MapView.Marker>
 
-      </MapView>
-    </View>
+      </MapView.Animated>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+  markerContainer: {
+    flexDirection: "column",
+    alignItems: "flex-start"
   },
-  calloutView: {
-  flexDirection: "row",
-  backgroundColor: "white",
-  borderRadius: 5,
-  width: "90%",
-  marginLeft: "5%",
-  marginRight: "5%",
-  marginTop: 30
-},
-calloutSearch: {
-  borderColor: "transparent",
-  marginLeft: "10%",
-  width: "90%",
-  // marginRight: 10,
-  height: 40,
-  borderWidth: 0.0
-}
+  bubbleContainer: {
+    flexDirection: 'column',
+    alignSelf: 'flex-start',
+    shadowColor: '#000',
+    shadowOffset: { width: 5, height: 5 },
+    shadowOpacity: 0.5,
+    shadowRadius: 6,
+  },
+  bubble: {
+    flex: 0,
+    flexDirection: 'column',
+    alignSelf: 'center',
+    alignItems: 'center',
+    backgroundColor: 'white',
+    padding: 2,
+    borderRadius: 6,
+    borderColor: 'grey',
+    borderWidth: 0.2,
+    height:90,
+    width:180
+  },
+  arrow: {
+    backgroundColor: 'transparent',
+    borderWidth: 10,
+    borderColor: 'transparent',
+    borderTopColor: 'white',
+    alignSelf: 'flex-start',
+    marginTop: -21,
+    marginLeft: 10
+  },
+  arrowBorder: {
+    backgroundColor: 'transparent',
+    borderWidth: 10,
+    borderColor: 'transparent',
+    borderTopColor: 'transparent',
+    alignSelf: 'flex-start',
+    marginTop: -0.5,
+    marginLeft: 10
+  },
+  addressContainer: {
+    marginLeft:5,
+    marginRight:5,
+    borderBottomWidth: 0.2 ,
+    borderStyle:"solid",
+    borderColor: "grey"
+  },
+  address: {
+    margin: 10,
+    fontSize: 13,
+    color: "grey",
+  },
+  date: {
+    alignSelf: 'flex-end',
+    fontSize: 10,
+    color: "grey",
+    marginTop: 3
+  }
 });
 
