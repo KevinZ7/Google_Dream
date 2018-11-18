@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Button, Text, StyleSheet, Dimensions, ScrollView, Alert, FlatList, Animated} from 'react-native';
+import {View, Button, Text, StyleSheet, Dimensions, ScrollView, Alert, FlatList} from 'react-native';
 
 import SlidingUpPanel from 'rn-sliding-up-panel';
 import ListCard from './ListCard.js';
@@ -120,7 +120,7 @@ export default class ListSlider extends React.Component {
         <SlidingUpPanel
           allowDragging={this.state.allowDragging}
           showBackdrop={true}
-          height={300}
+          height={400}
           visible={this.props.visible}
           onRequestClose={() => this.props.toggle(false)}>
           <View style={styles.slideContainer}>
@@ -149,7 +149,7 @@ const styles = StyleSheet.create({
     flex: 1,
     position: 'absolute',
     width: '100%',
-    bottom: 350,
+    bottom: 450,
     zIndex: -1,
   },
   slideContainer: {
@@ -164,10 +164,10 @@ const styles = StyleSheet.create({
   scrollContainer: {
     flex: 1,
     margin: 20,
-    width: '100%'
+    width: '100%',
   },
   insideContent: {
     alignItems: 'center',
-    margin: 20
+    margin: 20,
   }
 })
