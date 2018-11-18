@@ -12,7 +12,9 @@ export default class DreamMap extends React.Component {
 
 
 
+
   render() {
+
 
     var markerImage
     if(Object.keys(this.props.mapMarker).length > 0){
@@ -56,17 +58,8 @@ export default class DreamMap extends React.Component {
 
     return (
 
-      <MapView.Animated style={{ flex:1}}
-        region={
-
-          new MapView.AnimatedRegion({
-            latitude: this.props.region.latitude,
-            longitude: this.props.region.longitude,
-            latitudeDelta: this.props.region.latitudeDelta,
-            longitudeDelta: this.props.region.longitudeDelta
-          })
-     }
-
+      <MapView style={{ flex:1}}
+        Region={this.props.region}
         provider="google"
       >
 
@@ -87,7 +80,7 @@ export default class DreamMap extends React.Component {
 
         </MapView.Marker>
 
-      </MapView.Animated>
+      </MapView>
     );
   }
 }
