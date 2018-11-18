@@ -2,14 +2,19 @@ import React from 'react';
 import {View, Button, Text, StyleSheet, Alert} from 'react-native';
 
 export default class ListCard extends React.Component {
+
+  onPressHandler(){
+    this.props.markerToMap(marker)
+  }
+
   render() {
 
-    const { id, latlng: {latitude, longitude}, name, type, color, date } = this.props.data
+    const marker = this.props.data
 
     return (
       <View>
-        <Text>{name} - {type} - {date} - {latitude} - {longitude}</Text>
-        <Button onPress={() => Alert.alert('!!!')} title="Show"/>
+        <Text>{marker.name} - {marker.type} - {marker.date} - {marker.latlng.latitude} - {marker.latlng.longitude}</Text>
+        <Button onPress={() => this.props.markerToMap(marker)} title="Show"/>
       </View>
     )
   }

@@ -36,7 +36,7 @@ export default class DreamScreenButton extends React.Component {
             style={styles.buttonSecond}>
             <Image source={require('../assets/images/logo.png')} style={styles.image} resizeMode="contain"/>
           </TouchableOpacity>
-        <ListSlider visible={this.state.modalVisible} toggle={this.setModalVisible.bind(this)}/>
+        <ListSlider visible={this.state.modalVisible} toggle={this.setModalVisible.bind(this)} myDreams={this.props.myDreams} markerToMap={this.props.markerToMap}/>
       </View>
     )
   }

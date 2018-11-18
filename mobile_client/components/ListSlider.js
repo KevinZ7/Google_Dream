@@ -115,10 +115,6 @@ export default class ListSlider extends React.Component {
 
   render() {
 
-    const scrollContent = arr.map((item) => {
-      return <ListCard key={item.id} data={item} />
-    })
-
     return (
       <View style={styles.container}>
         <SlidingUpPanel
@@ -128,16 +124,18 @@ export default class ListSlider extends React.Component {
           visible={this.props.visible}
           onRequestClose={() => this.props.toggle(false)}>
           <View style={styles.slideContainer}>
+
               <FlatList
                 contentContainerStyle={styles.insideContent}
                 style={styles.scrollContainer}
                 onTouchEnd={() => this.setState({allowDragging: true})}
                 onTouchCancel={() => this.setState({allowDragging: true})}
                 onTouchStart={() => this.setState({allowDragging: false})}
-                data={arr}
+                data={this.props.myDreams}
                 keyExtractor={(item, index) => index.toString()}
-                renderItem={({item}) => <ListCard key={item.id} data={item} />}
+                renderItem={({item}) => <ListCard key={item.id} data={item} markerToMap={this.props.markerToMap}/>}
               />
+
           </View>
         </SlidingUpPanel>
       </View>
