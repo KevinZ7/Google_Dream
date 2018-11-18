@@ -5,7 +5,7 @@ export class MapContainer extends Component {
   render() {
 
     return (
-      <div id="map"className="col col-lg-10">
+      <div id="map"className="col col-lg-9">
        <Map
           google={this.props.google}
 

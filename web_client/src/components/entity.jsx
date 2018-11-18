@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import SpecificEntity from './entitySpecific.jsx'
 import {Button} from  'reactstrap';
+import data from './entityData.json'
 
 
 class Entity extends Component{
@@ -26,6 +27,9 @@ class Entity extends Component{
 
   }
   render(){
+     const Data = data.map((catagorey) =>
+     <li onClick={this.handleEntityChange}><img id="icon" src={catagorey.img}/>{catagorey.catagorey}</li>
+    )
     return(
         <div>
          {this.state.entitySpecific?
@@ -34,10 +38,7 @@ class Entity extends Component{
           <aside  className="main_sidebar justify-content-center">
           <button type="button" className="btn btn-success" onClick={this.props.back}>CATAGORIES</button>
           <ul>
-            <li onClick={this.handleEntityChange}><span className="glyphicon glyphicon-search" aria-hidden="true"></span>Pizza</li>
-            <li><span className="glyphicon glyphicon-search" aria-hidden="true"></span>Mcdonalds</li>
-            <li><span className="glyphicon glyphicon-search" aria-hidden="true"></span>Subway</li>
-            <li><span className="glyphicon glyphicon-search" aria-hidden="true"></span>Wendys</li>
+            {Data}
           </ul>
            </aside>
           }

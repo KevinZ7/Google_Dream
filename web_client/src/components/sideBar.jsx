@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Entity from './entity.jsx'
+import data from './data.json'
 
 
 
@@ -17,7 +18,6 @@ class SideBar extends Component {
   handleEntityChange(e){
     this.showEntity();
      e.stopPropagation();
-     console.log("clicked");
   }
 
    showEntity(){
@@ -27,43 +27,30 @@ class SideBar extends Component {
   }
 
 
-
   render(){
+    const Data = data.map((catagorey) =>
+     <li onClick={this.handleEntityChange}><img id="icon" src={catagorey.img}/>{catagorey.catagorey} <span className="glyphicon glyphicon-triangle-right" aria-hidden="true"></span></li>
+    )
+
     var visibility = "hide";
     if(this.props.menuVisibility){
       visibility = "show";
     }
     return(
-            <div id="menuBox"className="col col-lg-2">
+          <div id="menuBox"className="col col-lg-3">
             <div id="sideBar" className={visibility} onClick={this.props.handleMouseDown}>
-            {this.state.entity?
+              {this.state.entity?
               <Entity  back={this.handleEntityChange}/>
-                :
-                <aside  className="main_sidebar">
-                 <ul>
-                  <li onClick={this.handleEntityChange}><span className="glyphicon glyphicon-search" aria-hidden="true"></span>Catagorey Topic</li>
-                  <li><span className="glyphicon glyphicon-search" aria-hidden="true"></span>Catagorey Topic</li>
-                  <li><span className="glyphicon glyphicon-search" aria-hidden="true"></span>Catagorey Topic</li>
-                  <li><span className="glyphicon glyphicon-search" aria-hidden="true"></span>Catagorey Topic</li>
-                  <li><span className="glyphicon glyphicon-search" aria-hidden="true"></span>Catagorey Topic</li>
-                  <li><span className="glyphicon glyphicon-search" aria-hidden="true"></span>Catagorey Topic</li>
-                  <li><span className="glyphicon glyphicon-search" aria-hidden="true"></span>Catagorey Topic</li>
-                </ul>
-                <div id="border"></div>
-                  <ul>
-                  <li><span className="glyphicon glyphicon-search" aria-hidden="true"></span>Catagorey Topic</li>
-                  <li><span className="glyphicon glyphicon-search" aria-hidden="true"></span>Catagorey Topic</li>
-                  <li><span className="glyphicon glyphicon-search" aria-hidden="true"></span>Catagorey Topic</li>
-                  <li><span className="glyphicon glyphicon-search" aria-hidden="true"></span>Catagorey Topic</li>
-                  <li><span className="glyphicon glyphicon-search" aria-hidden="true"></span>Catagorey Topic</li>
-                  <li><span className="glyphicon glyphicon-search" aria-hidden="true"></span>Catagorey Topic</li>
-                  <li><span className="glyphicon glyphicon-search" aria-hidden="true"></span>Catagorey Topic</li>
+              :
+              <aside  className="main_sidebar">
+                <ul>
+                {Data}
                 </ul>
               </aside>
-            }
-      </div>
-      </div>
-      )
+              }
+            </div>
+          </div>
+          )
   }
 }
 export default SideBar;
