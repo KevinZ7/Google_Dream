@@ -7,8 +7,7 @@ export default class DreamModeButton extends React.Component {
     super()
     this.state = {
       modalVisible: false,
-      stopAnimation: false,
-
+      stopAnimation: false
     }
     this.springValue = new Animated.Value(0.3)
   }
@@ -26,7 +25,7 @@ export default class DreamModeButton extends React.Component {
         friction: 1
       }
     ).start(() => {
-      if (this.state.stopAnimation === false) {
+      if (!this.state.stopAnimation) {
         this.spring()
       }
     })
@@ -38,9 +37,10 @@ export default class DreamModeButton extends React.Component {
     })
   }
 
+
   render() {
 
-  if (this.props.withinRadius === false) {
+  if (!this.props.withinRadius) {
     styles.button = {
       borderWidth:1,
       borderColor:'#fff',
@@ -58,8 +58,28 @@ export default class DreamModeButton extends React.Component {
       shadowRadius: 10,
     }
     this.spring()
+  } else {
+    styles.button = {
+      borderWidth:1,
+      borderColor:'#fff',
+      width:60,
+      height:60,
+      backgroundColor:'#fff',
+      position: 'absolute',
+      bottom: 45,
+      right: 70,
+      borderRadius:100,
+      margin: 20,
+      shadowColor: '#000',
+      shadowOffset: { width: 3, height: 3 },
+      shadowOpacity: 0.5,
+      shadowRadius: 5,
+   }
   }
 
+  if (this.state.modalVisible) {
+
+  }
 
     const dreamButton = !this.props.withinRadius ?
       <Animated.Image
@@ -91,29 +111,13 @@ export default class DreamModeButton extends React.Component {
           style={styles.buttonSecond}>
           <Image source={require('../assets/images/logo.png')} style={styles.image} resizeMode="contain"/>
         </TouchableOpacity>
-        <PinDropNotification visible={this.state.modalVisible} toggle={this.setModalVisible.bind(this)} stopSpring={this.stopSpring.bind(this)}/>
+        <PinDropNotification visible={this.state.modalVisible} toggle={this.setModalVisible.bind(this)} setWithinRadius={this.props.setWithinRadius} stopSpring={this.stopSpring.bind(this)}/>
       </View>
     )
   }
 }
 
 const styles = StyleSheet.create({
-  button: {
-    borderWidth:1,
-    borderColor:'#fff',
-    width:60,
-    height:60,
-    backgroundColor:'#fff',
-    position: 'absolute',
-    bottom: 45,
-    right: 70,
-    borderRadius:100,
-    margin: 20,
-    shadowColor: '#000',
-    shadowOffset: { width: 3, height: 3 },
-    shadowOpacity: 0.5,
-    shadowRadius: 5,
-   },
   buttonSecond: {
     borderWidth:1,
     borderColor:'#fff',

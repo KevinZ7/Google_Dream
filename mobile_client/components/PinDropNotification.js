@@ -7,6 +7,7 @@ export default class PinDropNotification extends React.Component {
   handleOnClose () {
     this.props.toggle(!this.props.visible)
     this.props.stopSpring()
+    this.props.setWithinRadius(true)
   }
 
   render() {

@@ -36,10 +36,10 @@ export default class DefaultMap extends React.Component {
     this.setWithinRadius = this.setWithinRadius.bind(this)
   }
 
-  setWithinRadius() {
+  setWithinRadius(value) {
     this.setState((prevState) => {
       return {
-        withinRadius: !prevState.withinRadius
+        withinRadius: value
       }
     })
   }
@@ -77,7 +77,7 @@ export default class DefaultMap extends React.Component {
       if(this.calculateDistance(responseJson.results[0]) >= 400){
         this.setState({markers:[]})
         console.log("THERE IS NOTHING FOUND WITHIN 400")
-        this.setWithinRadius()
+        this.setWithinRadius(false)
       } else {
         this.setState({markers: []})
         responseJson.results.forEach((result) => {
@@ -97,6 +97,7 @@ export default class DefaultMap extends React.Component {
             this.setState({markers: newMarkers});
           }
         })
+        this.setWithinRadius(true)
       }
     })
   }
