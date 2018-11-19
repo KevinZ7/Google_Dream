@@ -5,8 +5,8 @@ export default class HomeScreenFooter extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={{marginLeft: 10, color: 'grey'}}>SHOW LIST</Text>
-        <Text style={{marginRight: 10, color: 'grey'}}>FILTER</Text>
+        <Text style={styles.leftText}>SHOW LIST</Text>
+        <Text style={styles.rightText}>FILTER</Text>
       </View>
     )
   }
@@ -29,5 +29,15 @@ const styles = {
   image: {
     flex: 1,
     maxHeight: '100%'
+  },
+  leftText: {
+    marginLeft: 10,
+    color: 'grey',
+    fontWeight: 'bold'
+  },
+  rightText: {
+    marginRight: 10,
+    color: 'grey',
+    fontWeight: 'bold'
   }
 }

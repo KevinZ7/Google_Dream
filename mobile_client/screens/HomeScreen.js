@@ -16,11 +16,23 @@ export default class HomeScreen extends React.Component {
     header: null,
   };
 
+  state = {
+    withinRadius: true
+  }
+
+  setWithinRadius() {
+    this.setState((prevState) => {
+      return {
+        withinRadius: !prevState.withinRadius
+      }
+    })
+  }
+
   render() {
     return (
       <View style={{flex:1}}>
-        <DefaultMap />
-        <DreamModeButton navigation={this.props.navigation} />
+        <DefaultMap setWithinRadius={this.setWithinRadius.bind(this)}/>
+        <DreamModeButton navigation={this.props.navigation} withinRadius={this.state.withinRadius} setWithinRadius={this.setWithinRadius.bind(this)}/>
         <HomeScreenFooter />
 
       </View>

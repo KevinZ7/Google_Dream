@@ -66,6 +66,7 @@ export default class DefaultMap extends React.Component {
       if(this.calculateDistance(responseJson.results[0]) >= 400){
         this.setState({markers:[]})
         console.log("THERE IS NOTHING FOUND WITHIN 400")
+        this.props.setWithinRadius()
       } else {
         this.setState({markers: []})
         responseJson.results.forEach((result) => {
