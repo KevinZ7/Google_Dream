@@ -5,8 +5,9 @@ export class MapContainer extends Component {
   render() {
 
     return (
-      <div id="map"className="col col-lg-9">
+      <div id="map"className="col col-lg-9 cold-md-9">
        <Map
+
           google={this.props.google}
 
           initialCenter={{

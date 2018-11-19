@@ -5,8 +5,8 @@ class SpecificEntity extends Component{
 
     return(
       <aside  className="main_sidebar justify-content-center">
-      <button onClick={this.props.back} className="btn btn-success" > Back</button>
         <ul>
+          <li className="backButton" onClick={this.props.back}>X</li>
           <li className="entityInfo"><h4>Bubble Tea</h4></li>
           <li className="entityInfo">1684 Markers</li>
           <li className="entityInfo">401 W Georgia ST Vancouver, Bc V6B 5A1</li>

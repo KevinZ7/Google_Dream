@@ -29,15 +29,15 @@ class SideBar extends Component {
 
   render(){
     const Data = data.map((catagorey) =>
-     <li onClick={this.handleEntityChange}><img id="icon" src={catagorey.img}/>{catagorey.catagorey} <span className="glyphicon glyphicon-triangle-right" aria-hidden="true"></span></li>
+     <li onClick={this.handleEntityChange}><img id="icon" src={catagorey.img}/>{catagorey.catagorey} <span id="arrow" className="glyphicon glyphicon-triangle-right"></span></li>
     )
 
-    var visibility = "hide";
+    var visibility = "show";
     if(this.props.menuVisibility){
-      visibility = "show";
+      visibility = "hide";
     }
     return(
-          <div id="menuBox"className="col col-lg-3">
+          <div id="menuBox"className="col col-lg-3 col-md-3 ">
             <div id="sideBar" className={visibility} onClick={this.props.handleMouseDown}>
               {this.state.entity?
               <Entity  back={this.handleEntityChange}/>

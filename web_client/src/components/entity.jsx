@@ -25,10 +25,14 @@ class Entity extends Component{
       entitySpecific: (!this.state.entitySpecific)
     })
 
+    //  let highlight = "hide";
+    // if(this.state.entitySpecific)
+    // highlight = "show";
+
   }
   render(){
      const Data = data.map((catagorey) =>
-     <li onClick={this.handleEntityChange}><img id="icon" src={catagorey.img}/>{catagorey.catagorey}</li>
+     <li onClick={this.handleEntityChange}><img id="icon" src={catagorey.img}/>{catagorey.catagorey}<span id="arrow" className="glyphicon glyphicon-triangle-right"></span></li>
     )
     return(
         <div>
@@ -36,8 +40,9 @@ class Entity extends Component{
           <SpecificEntity back={this.handleEntityChange} />
           :
           <aside  className="main_sidebar justify-content-center">
-          <button type="button" className="btn btn-success" onClick={this.props.back}>CATAGORIES</button>
+
           <ul>
+          <li className="backButton" onClick={this.props.back}>X</li>
             {Data}
           </ul>
            </aside>

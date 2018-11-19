@@ -39,9 +39,10 @@ class App extends Component {
         <nav className="navbar">
           <span id="navBarIcon"className="glyphicon glyphicon-menu-hamburger" aria-hidden="true" onClick={this.handleMouseDown}></span>
           <img id="googleImage" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/2000px-Google_2015_logo.svg.png" width="100" height="35" />
-          <span id="dreamWord" className="align-middle"> DREAM</span>
+          <span id="dreamWord" className="align-middle">DREAM</span>
         </nav>
-        <SideBar className="bottom" menuVisibility={this.state.menuVisible} onClick={this.handleMouseDown}/>
+        <SideBar className="bottom " menuVisibility={this.state.menuVisible} onClick={this.handleMouseDown}/>
+
 
         <GoogleApiWrapper />
        </div>
