@@ -3,16 +3,30 @@ import {View, Button, Text, StyleSheet, Alert, TouchableOpacity, Image} from 're
 
 export default class ListCard extends React.Component {
 
-  onPressHandler(){
-    this.props.markerToMap(marker)
+  constructor(props){
+    super(props);
+    this.onPressHandler = this.onPressHandler.bind(this)
   }
+
+  onPressHandler(){
+    const marker = this.props.data
+    const animateData = {
+      latitude: marker.latlng.latitude - 0.0030,
+      longitude: marker.latlng.longitude - 0.0020,
+      latitudeDelta: 0.0122,
+      longitudeDelta: 0.0121
+    }
+    this.props.markerToMap(marker);
+    this.props.animation(animateData);
+  }
+
 
   render() {
 
     const marker = this.props.data
 
     return (
-      <TouchableOpacity style={styles.container} onPress={() => this.props.markerToMap(marker)}>
+      <TouchableOpacity style={styles.container} onPress={() => this.onPressHandler()}>
           <Image source={require('../assets/images/green_marker.png')} style={styles.image} resizeMode={'contain'}/>
           <View style={styles.textContainer}>
             <Text style={styles.text}>{marker.name}</Text>
