@@ -30,7 +30,7 @@ export default class ListSlider extends React.Component {
                 onTouchStart={() => this.setState({allowDragging: false})}
                 data={this.props.myDreams}
                 keyExtractor={(item, index) => index.toString()}
-                renderItem={({item}) => <ListCard key={item.id} data={item} markerToMap={this.props.markerToMap}/>}
+                renderItem={({item}) => <ListCard key={item.id} data={item} markerToMap={this.props.markerToMap} animation={this.props.animation}/>}
               />
               <Image source={require('../assets/images/dream_bg.png')} style={styles.image}/>
               <TouchableOpacity

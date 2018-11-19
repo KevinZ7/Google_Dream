@@ -30,7 +30,7 @@ export default class DreamScreenButton extends React.Component {
             {arrowStatus}
           </TouchableOpacity>
         </View>
-        <ListSlider navigation={this.props.navigation} visible={this.state.modalVisible} toggle={this.setModalVisible.bind(this)} myDreams={this.props.myDreams} markerToMap={this.props.markerToMap}/>
+        <ListSlider navigation={this.props.navigation} visible={this.state.modalVisible} toggle={this.setModalVisible.bind(this)} myDreams={this.props.myDreams} markerToMap={this.props.markerToMap} animation={this.props.animation}/>
       </View>
     )
   }
