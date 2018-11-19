@@ -103,7 +103,6 @@ export default class DreamMap extends React.Component {
   }
 
   animation(targetRegion){
-    console.log(targetRegion)
     this.map.animateToRegion(targetRegion,1000)
   }
 
@@ -111,7 +110,7 @@ export default class DreamMap extends React.Component {
   render() {
 
 
-    var markerImage
+    var markerImage;
     if(Object.keys(this.state.mapMarker).length > 0){
       if(this.state.mapMarker.color === 'red' ){
         markerImage = require('../assets/images/red_marker.png')
