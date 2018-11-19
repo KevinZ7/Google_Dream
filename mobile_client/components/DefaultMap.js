@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { StyleSheet, Text, View, TextInput, Image } from 'react-native';
 import { MapView, Location, Permissions } from 'expo';
 import GOOGLE_API from '../secret.js'
+import DreamModeButton from './DreamModeButton.js'
 
 
 
@@ -26,11 +27,21 @@ export default class DefaultMap extends React.Component {
         title: "My Location",
         description: "Me"
       },
-      markers: []
+      markers: [],
+      withinRadius: true
 
     }
     this.locationSearch = this.locationSearch.bind(this)
     this.calculateDistance = this.calculateDistance.bind(this)
+    this.setWithinRadius = this.setWithinRadius.bind(this)
+  }
+
+  setWithinRadius() {
+    this.setState((prevState) => {
+      return {
+        withinRadius: !prevState.withinRadius
+      }
+    })
   }
 
   _getLocationAsync = async () => {
@@ -66,7 +77,7 @@ export default class DefaultMap extends React.Component {
       if(this.calculateDistance(responseJson.results[0]) >= 400){
         this.setState({markers:[]})
         console.log("THERE IS NOTHING FOUND WITHIN 400")
-        this.props.setWithinRadius()
+        this.setWithinRadius()
       } else {
         this.setState({markers: []})
         responseJson.results.forEach((result) => {
@@ -166,6 +177,8 @@ export default class DefaultMap extends React.Component {
           />
         </View>
       </MapView.Callout>
+
+      <DreamModeButton navigation={this.props.navigation} withinRadius={this.state.withinRadius} setWithinRadius={this.setWithinRadius}/>
 
     </View>
     );

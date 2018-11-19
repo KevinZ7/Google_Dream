@@ -7,7 +7,8 @@ export default class DreamModeButton extends React.Component {
     super()
     this.state = {
       modalVisible: false,
-      stopAnimation: false
+      stopAnimation: false,
+
     }
     this.springValue = new Animated.Value(0.3)
   }
@@ -39,7 +40,7 @@ export default class DreamModeButton extends React.Component {
 
   render() {
 
-  if (!this.props.withinRadius) {
+  if (this.props.withinRadius === false) {
     styles.button = {
       borderWidth:1,
       borderColor:'#fff',
@@ -59,9 +60,6 @@ export default class DreamModeButton extends React.Component {
     this.spring()
   }
 
-  if (this.state.modalVisible) {
-
-  }
 
     const dreamButton = !this.props.withinRadius ?
       <Animated.Image
