@@ -38,6 +38,7 @@ const MapWithAMarkerClusterer = compose(
     >
       {props.markers.map(marker => (
         <Marker
+          onClick={props.test}
           key={marker.photo_id}
           position={{ lat: marker.latitude, lng: marker.longitude }}
         />
@@ -68,7 +69,7 @@ export default class MapCluster extends React.PureComponent {
 
   render() {
     return (
-      <MapWithAMarkerClusterer markers={this.state.markers} />
+      <MapWithAMarkerClusterer markers={this.state.markers} test={this.props.specificEntity} />
     )
   }
 }

@@ -6,8 +6,8 @@ export class MapContainer extends Component {
   render() {
 
     return (
-      <div id="map" className="col col-lg-10" onClick={this.props.showEntity}>
-        <MapCluster />
+      <div id="map" className="col col-lg-10">
+        <MapCluster specificEntity={this.props.entity}/>
       </div>
     );
   }

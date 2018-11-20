@@ -28,9 +28,7 @@
 color:black;
 }
 
-#arrow{
-  floast:right;
-}
+
 
 #icon:hover{
   background-color:none;
@@ -129,11 +127,8 @@ word-wrap: break-word;
   -webkit-box-shadow: 0 4px 5px 0 rgba(0,0,0,0.14), 0 1px 10px 0 rgba(0,0,0,0.12), 0 2px 4px -1px rgba(0,0,0,0.2);
 
 }
-#arrow{
-  opacity: 0.6;
-  float: right;
-  margin-top: 15px;
-}
+
+
 
 
 .backButton{
@@ -145,4 +140,21 @@ word-wrap: break-word;
 
 #chartData{
   font-size: 2rem;
+}
+
+#arrow{
+  margin: -25px;
+}
+
+#bell{
+  color: grey;
+}
+
+#entitySpecific .MuiTypography-subheading-55{
+  font-size: 1.5rem;
+}
+#entitySpecific .MuiListItem-root-113.MuiListItem-selected-123, .MuiListItem-root-113.MuiListItem-selected-123:hover{
+
+  background-color: #4285F4;
+  opacity: 0.7;
 }
