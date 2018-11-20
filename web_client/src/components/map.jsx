@@ -5,9 +5,8 @@ export class MapContainer extends Component {
   render() {
 
     return (
-      <div id="map"className="col col-lg-9 cold-md-9">
+      <div id="map" className="col col-lg-10" onClick={this.props.showEntity}>
        <Map
-
           google={this.props.google}
 
           initialCenter={{

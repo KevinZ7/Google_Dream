@@ -1,56 +1,71 @@
-import React, {Component} from 'react';
-import Entity from './entity.jsx'
-import data from './data.json'
+import React from 'react';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+import Drawer from '@material-ui/core/Drawer';
+import Button from '@material-ui/core/Button';
+import List from '@material-ui/core/List';
+import Divider from '@material-ui/core/Divider';
+import ListItem from '@material-ui/core/ListItem';
+import Demo from './demos.jsx';
 
 
+const styles = {
+  list: {
+    width: 300,
+  },
+  fullList: {
+  },
+};
 
-class SideBar extends Component {
-  constructor(props){
-    super(props)
-    this.state = {
-      entity: false
-    }
-    this.showEntity = this.showEntity.bind(this)
-    this.handleEntityChange = this.handleEntityChange.bind(this)
-  }
+class TemporaryDrawer extends React.Component {
+  state = {
+    top: false,
+    left: false,
+    bottom: false,
+    right: false,
+  };
 
-
-  handleEntityChange(e){
-    this.showEntity();
-     e.stopPropagation();
-  }
-
-   showEntity(){
+  toggleDrawer = (side, open) => () => {
     this.setState({
-      entity: (!this.state.entity)
-    })
-  }
+      [side]: open,
+    });
+  };
 
+  render() {
+    const { classes } = this.props;
 
-  render(){
-    const Data = data.map((catagorey) =>
-     <li onClick={this.handleEntityChange}><img id="icon" src={catagorey.img}/>{catagorey.catagorey} <span id="arrow" className="glyphicon glyphicon-triangle-right"></span></li>
-    )
+    const sideList = (
+      <div id="bar" className={classes.list}>
+        <Demo />
+      </div>
+    );
 
-    var visibility = "show";
-    if(this.props.menuVisibility){
-      visibility = "hide";
-    }
-    return(
-          <div id="menuBox"className="col col-lg-3 col-md-3 ">
-            <div id="sideBar" className={visibility} onClick={this.props.handleMouseDown}>
-              {this.state.entity?
-              <Entity  back={this.handleEntityChange}/>
-              :
-              <aside  className="main_sidebar">
-                <ul>
-                {Data}
-                </ul>
-              </aside>
-              }
-            </div>
+    const fullList = (
+      <div id="bar" className={classes.fullList}>
+        <Demo />
+      </div>
+    );
+
+    return (
+      <div id="bar">
+        <Button onClick={this.toggleDrawer('left', true)}>Open Left</Button>
+        <Drawer open={this.state.left} onClose={this.toggleDrawer('left', false)}>
+          <div
+            tabIndex={0}
+            role="button"
+            onClick={this.toggleDrawer('left', true)}
+            onKeyDown={this.toggleDrawer('left', true)}
+          >
+            {sideList}
           </div>
-          )
+        </Drawer>
+      </div>
+    );
   }
 }
-export default SideBar;
+
+TemporaryDrawer.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
+
+export default withStyles(styles)(TemporaryDrawer);

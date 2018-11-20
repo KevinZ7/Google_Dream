@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import SpecificEntity from './entitySpecific.jsx'
 import {Button} from  'reactstrap';
 import data from './entityData.json'
+import GoogleApiWrapper from './map.jsx';
 
 
 class Entity extends Component{
@@ -35,6 +36,7 @@ class Entity extends Component{
      <li onClick={this.handleEntityChange}><img id="icon" src={catagorey.img}/>{catagorey.catagorey}<span id="arrow" className="glyphicon glyphicon-triangle-right"></span></li>
     )
     return(
+
         <div>
          {this.state.entitySpecific?
           <SpecificEntity back={this.handleEntityChange} />
@@ -48,6 +50,7 @@ class Entity extends Component{
            </aside>
           }
       </div>
+
       )
   }
 }
