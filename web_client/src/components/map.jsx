@@ -5,10 +5,10 @@ import MapCluster from './MapCluster.jsx'
 export class MapContainer extends Component {
   render() {
 
-  return (
-    <div id="map" className="col col-lg-10" >
-      <MapCluster specificEntity={this.props.entity} />
-    </div>
+    return (
+      <div id="map" className="col col-lg-10">
+        <MapCluster specificEntity={this.props.entity}/>
+      </div>
     );
   }
 }
