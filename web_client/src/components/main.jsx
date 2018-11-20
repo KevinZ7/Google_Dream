@@ -16,6 +16,7 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
+import Apps from '@material-ui/icons/Apps';
 
 const styles = theme => ({
   root: {
@@ -85,11 +86,7 @@ class PrimarySearchAppBar extends React.Component {
 
     const renderMenu = (
       <Menu
-        anchorEl={anchorEl}
-        anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-        transformOrigin={{ vertical: 'top', horizontal: 'right' }}
-        open={isMenuOpen}
-        onClose={this.handleMenuClose}
+
       >
         <MenuItem onClick={this.handleMenuClose}>Profile</MenuItem>
         <MenuItem onClick={this.handleMenuClose}>My account</MenuItem>
@@ -98,29 +95,25 @@ class PrimarySearchAppBar extends React.Component {
 
     const renderMobileMenu = (
       <Menu
-        anchorEl={mobileMoreAnchorEl}
-        anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-        transformOrigin={{ vertical: 'top', horizontal: 'right' }}
-        open={isMobileMenuOpen}
-        onClose={this.handleMobileMenuClose}
+
       >
         <MenuItem>
           <IconButton color="inherit">
-            <Badge badgeContent={4} color="secondary">
+
               <MailIcon />
-            </Badge>
+
           </IconButton>
           <p>Messages</p>
         </MenuItem>
         <MenuItem>
           <IconButton color="inherit">
-            <Badge badgeContent={11} color="secondary">
+
               <NotificationsIcon />
-            </Badge>
+
           </IconButton>
           <p>Notifications</p>
         </MenuItem>
-        <MenuItem onClick={this.handleProfileMenuOpen}>
+        <MenuItem >
           <IconButton color="inherit">
             <AccountCircle />
           </IconButton>
@@ -142,22 +135,13 @@ class PrimarySearchAppBar extends React.Component {
             <div className={classes.grow} />
             <div className={classes.sectionDesktop}>
               <IconButton id="icon" >
-                <Badge badgeContent={4} color="secondary">
-                  <MailIcon />
-                </Badge>
+                <Apps />
               </IconButton>
               <IconButton id="icon" color="inherit">
-                <Badge badgeContent={17} color="secondary">
-                  <NotificationsIcon />
-                </Badge>
+                <NotificationsIcon />
               </IconButton>
-              <IconButton id="icon"
-                aria-owns={isMenuOpen ? 'material-appbar' : undefined}
-                aria-haspopup="true"
-                onClick={this.handleProfileMenuOpen}
-                color="inherit"
-              >
-                <AccountCircle />
+              <IconButton>
+                <img  src="https://raw.githubusercontent.com/eladnava/material-letter-icons/master/dist/png/M.png" width="45" height="45" />
               </IconButton>
             </div>
             <div className={classes.sectionMobile}>
