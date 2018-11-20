@@ -1,22 +1,14 @@
 import React, {Component} from 'react';
 import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
+import MapCluster from './MapCluster.jsx'
 
 export class MapContainer extends Component {
   render() {
 
     return (
-      <div id="map" className="col col-lg-10" onClick={this.props.entity}>
-       <Map
-          google={this.props.google}
-
-          initialCenter={{
-            lat: 49.2827,
-            lng: -123.11934
-          }}
-          zoom={12}
-          onClick={this.onMapClicked}
-        />
-        </div>
+      <div id="map" className="col col-lg-10" onClick={this.props.showEntity}>
+        <MapCluster />
+      </div>
     );
   }
 }
