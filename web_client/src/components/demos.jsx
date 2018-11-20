@@ -37,15 +37,14 @@ class NestedList extends React.Component {
 }
   handleEntityChange(e){
     this.showEntity();
-     e.stopPropagation();
-     console.log("clicked");
   }
 
-   showEntity(){
+  showEntity(){
     this.setState({
       entitySpecific: (!this.state.entitySpecific)
     })
   }
+
   handleClick = () => {
     this.setState(state => ({ open: !state.open }));
   };
@@ -53,34 +52,31 @@ class NestedList extends React.Component {
   render() {
     const { classes } = this.props;
     const Data = data.map((catagorey) =>
-    <Chartadata image={catagorey.img} key={catagorey.catagorey} name={catagorey.catagorey} />
+      <Chartadata image={catagorey.img} key={catagorey.catagorey} name={catagorey.catagorey} />
     )
 
-    return (
-        <div>
-        {this.state.entitySpecific?
-        <div>
+  return (
+    <div>
+      {this.state.entitySpecific?
+      <div>
         <div className="col col-lg-2">
           <div id="chartData" className={classes.root}>
-          <EntitySpecific goBack={this.handleEntityChange}/>
+            <EntitySpecific goBack={this.handleEntityChange}/>
+          </div>
         </div>
-        </div>
-
-
         <GoogleApiWrapper />
-        </div>
-        :
-        <div>
+      </div>
+      :
+      <div>
         <div className="col col-lg-2">
-        <div id="chartData" className={classes.root}>
-          {Data}
+          <div id="chartData" className={classes.root}>
+            {Data}
+          </div>
         </div>
-        </div>
-         <GoogleApiWrapper entity={this.handleEntityChange}/>
-         </div>
-        }
-        </div>
-
+        <GoogleApiWrapper entity={this.handleEntityChange}/>
+     </div>
+    }
+    </div>
     );
   }
 }

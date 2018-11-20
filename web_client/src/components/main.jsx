@@ -85,23 +85,17 @@ class PrimarySearchAppBar extends React.Component {
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
     const renderMenu = (
-      <Menu
-
-      >
+      <Menu>
         <MenuItem onClick={this.handleMenuClose}>Profile</MenuItem>
         <MenuItem onClick={this.handleMenuClose}>My account</MenuItem>
       </Menu>
     );
 
     const renderMobileMenu = (
-      <Menu
-
-      >
+      <Menu>
         <MenuItem>
           <IconButton color="inherit">
-
-              <MailIcon />
-
+            <MailIcon />
           </IconButton>
           <p>Messages</p>
         </MenuItem>
@@ -134,10 +128,10 @@ class PrimarySearchAppBar extends React.Component {
 
             <div className={classes.grow} />
             <div className={classes.sectionDesktop}>
-              <IconButton id="icon" >
+              <IconButton >
                 <Apps />
               </IconButton>
-              <IconButton id="icon" color="inherit">
+              <IconButton id="bell" color="inherit">
                 <NotificationsIcon />
               </IconButton>
               <IconButton>

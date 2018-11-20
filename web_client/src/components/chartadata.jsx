@@ -35,6 +35,9 @@ class NestedList extends React.Component {
   handleClick = (event, index) => {
     this.setState(state => ({ open: !state.open }));
   };
+  backToNoting =(event) =>{
+    this.setState({selectedIndex: ''})
+  }
 
   render() {
     const { classes } = this.props;
@@ -45,15 +48,15 @@ class NestedList extends React.Component {
           <ListItem id="chartData"  button onClick={this.handleClick}>
             <img id="icon" src={this.props.image}/>
             <ListItemText  id="title" inset primary={this.props.name} />
-            {this.state.open ? <ExpandLess /> : <ExpandMore />}
+            {this.state.open ? <ExpandLess id="arrow"/> : <ExpandMore id="arrow" />}
           </ListItem>
           <Collapse in={this.state.open} timeout="auto" unmountOnExit>
-            <List component="div" disablePadding>
-             <ListItem button className={classes.nested} selected={this.state.selectedIndex === 0} onClick={event => this.handleListItemClick(event, 0)}>
-                <ListItemText inset id="title" primary="Starred" />
+            <List id="entitySpecific" component="div" disablePadding>
+             <ListItem button id="entitySpecific" className={classes.nested} selected={this.state.selectedIndex === 0} onDoubleClick={event => this.backToNoting()} onClick={event => this.handleListItemClick(event, 0)}>
+                <ListItemText inset id="entitySpecific" primary="Starred" />
              </ListItem>
-             <ListItem button className={classes.nested}  selected={this.state.selectedIndex === 1} onClick={event => this.handleListItemClick(event, 1)}>
-                <ListItemText inset id="title" primary="Starred" />
+             <ListItem button id="entitySpecific" className={classes.nested}  selected={this.state.selectedIndex === 1} onDoubleClick={event => this.backToNoting()} onClick={event => this.handleListItemClick(event, 1)}>
+                <ListItemText inset id="entitySpecific" primary="Starred" />
              </ListItem>
             </List>
           </Collapse>
