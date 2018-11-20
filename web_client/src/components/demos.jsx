@@ -9,7 +9,8 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Collapse from '@material-ui/core/Collapse';
 import Chartadata from './chartadata.jsx';
 import GoogleApiWrapper from './map.jsx';
-import data from './data.json'
+import data from './data.json';
+import EntitySpecific from './entitySpecific.jsx'
 
 const styles = theme => ({
   root: {
@@ -25,10 +26,26 @@ const styles = theme => ({
 });
 
 class NestedList extends React.Component {
-  state = {
+  constructor(props){
+    super(props)
+  this.state = {
     open: true,
+    entitySpecific:  false,
   };
+  this.showEntity = this.showEntity.bind(this)
+  this.handleEntityChange = this.handleEntityChange.bind(this)
+}
+  handleEntityChange(e){
+    this.showEntity();
+     e.stopPropagation();
+     console.log("clicked");
+  }
 
+   showEntity(){
+    this.setState({
+      entitySpecific: (!this.state.entitySpecific)
+    })
+  }
   handleClick = () => {
     this.setState(state => ({ open: !state.open }));
   };
@@ -41,12 +58,27 @@ class NestedList extends React.Component {
 
     return (
         <div>
+        {this.state.entitySpecific?
+        <div>
+        <div className="col col-lg-2">
+          <div id="chartData" className={classes.root}>
+          <EntitySpecific goBack={this.handleEntityChange}/>
+        </div>
+        </div>
+
+
+        <GoogleApiWrapper />
+        </div>
+        :
+        <div>
         <div className="col col-lg-2">
         <div id="chartData" className={classes.root}>
           {Data}
         </div>
         </div>
-         <GoogleApiWrapper />
+         <GoogleApiWrapper entity={this.handleEntityChange}/>
+         </div>
+        }
         </div>
 
     );

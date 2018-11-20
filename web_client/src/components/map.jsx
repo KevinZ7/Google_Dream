@@ -5,7 +5,7 @@ export class MapContainer extends Component {
   render() {
 
     return (
-      <div id="map" className="col col-lg-10" onClick={this.props.showEntity}>
+      <div id="map" className="col col-lg-10" onClick={this.props.entity}>
        <Map
           google={this.props.google}
 

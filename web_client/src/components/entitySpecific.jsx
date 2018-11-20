@@ -1,22 +1,62 @@
-import React, {Component} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+import Divider from '@material-ui/core/Divider';
+import InboxIcon from '@material-ui/icons/Inbox';
+import DraftsIcon from '@material-ui/icons/Drafts';
 
-class SpecificEntity extends Component{
-  render(){
+const styles = theme => ({
+  root: {
+    width: '100%',
+    maxWidth: 360,
+    backgroundColor: theme.palette.background.paper,
+  },
+});
 
-    return(
-      <aside  className="main_sidebar justify-content-center">
-        <ul>
-          <li className="backButton" onClick={this.props.back}>X</li>
-          <li className="entityInfo"><h4>Bubble Tea</h4></li>
-          <li className="entityInfo">1684 Markers</li>
-          <li className="entityInfo">401 W Georgia ST Vancouver, Bc V6B 5A1</li>
-          <li className="entityInfo">Date Marked: Oct 18, 2018</li>
-          <li className="entityInfo"><a>Email list of people interested ></a> </li>
-        </ul>
-      </aside>
-
-
-      )
-  }
+function ListItemLink(props) {
+  return <ListItem button component="a" {...props} />;
 }
-export default SpecificEntity;
+
+function SimpleList(props) {
+  const { classes } = props;
+  return (
+    <div className={classes.root}>
+      <List component="nav">
+      <ListItem button onClick={props.goBack}>
+          <ListItemText  primary="Back" />
+        </ListItem>
+        <ListItem button>
+          <ListItemIcon>
+            <InboxIcon />
+          </ListItemIcon>
+          <ListItemText primary="Inbox" />
+        </ListItem>
+        <ListItem button>
+          <ListItemIcon>
+            <DraftsIcon />
+          </ListItemIcon>
+          <ListItemText primary="Drafts" />
+        </ListItem>
+      </List>
+      <Divider />
+      <List component="nav">
+        <ListItem button>
+          <ListItemText primary="Trash" />
+        </ListItem>
+        <ListItemLink href="#simple-list">
+          <ListItemText primary="Spam" />
+        </ListItemLink>
+      </List>
+    </div>
+  );
+}
+
+SimpleList.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
+
+export default withStyles(styles)(SimpleList);
