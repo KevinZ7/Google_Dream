@@ -1,9 +1,13 @@
 import React, {Component} from 'react';
+import Map from './Map.jsx'
+
 
 class App extends Component {
   render() {
     return (
-      <h1>Hello React :)</h1>
+      <div>
+        <Map/>
+      </div>
     );
   }
 }
