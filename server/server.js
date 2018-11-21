@@ -3,10 +3,8 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const app = express()
 const settings = require('./settings.json')
-const knex = require('knex')({
-  client: 'pg',
-  connection: settings
-});
+const knexConfig = require('./knexfile.js').development
+const knex = require('knex')(knexConfig);
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
