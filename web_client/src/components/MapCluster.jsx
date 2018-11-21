@@ -39,8 +39,8 @@ const MapWithAMarkerClusterer = compose(
       {props.markers.map(marker => (
         <Marker
           onClick={props.test}
-          key={marker.photo_id}
-          position={{ lat: marker.latitude, lng: marker.longitude }}
+          key={marker.id}
+          position={{ lat: marker.lat, lng: marker.lng }}
         />
       ))}
     </MarkerClusterer>
@@ -53,18 +53,13 @@ export default class MapCluster extends React.PureComponent {
   }
 
   componentDidMount() {
-    const url = [
-      // Length issue
-      `https://gist.githubusercontent.com`,
-      `/farrrr/dfda7dd7fccfec5474d3`,
-      `/raw/758852bbc1979f6c4522ab4e92d1c92cba8fb0dc/data.json`
-    ].join("")
+    const url = 'http://localhost:8080'
 
     fetch(url)
       .then(res => res.json())
       .then(data => {
-        this.setState({ markers: data.photos });
-      });
+        this.setState({ markers: data });
+      }).catch((error) => console.log(error));
   }
 
   render() {
