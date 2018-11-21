@@ -50,12 +50,47 @@ const MapWithAMarkerClusterer = compose(
 );
 
 export default class MapCluster extends React.PureComponent {
+  state = {
+    cachedMarkers : this.props.mapMarkers.map(marker => (
+        <Marker
+          onClick={props.test}
+          key={marker.id}
+          position={{ lat: marker.lat, lng: marker.lng }}
+        />
+      ))
+  }
+
+  componentDidMount(){
+    this.setState({
+      cachedMarkers : this.props.mapMarkers.map(marker => (
+        <Marker
+          onClick={props.test}
+          key={marker.id}
+          position={{ lat: marker.lat, lng: marker.lng }}
+        />
+      ))
+    })
+  }
 
 
 
   render() {
     return (
-      <MapWithAMarkerClusterer markers={this.props.mapMarkers} test={this.props.specificEntity} testing={this.props.testing} />
+    <withGoogleMap>
+      <GoogleMap
+      defaultZoom = {3}
+      defaultCenter={{ lat: 49.2827, lng: -123.11934 }}
+      >
+      <MarkerClusterer
+
+      averageCenter
+      enableRetinaIcons
+      gridSize={60}
+    >
+      {this.cachedMarkers}
+      </MarkerClusterer>
+    </GoogleMap>
+    </withGoogleMap>
     )
   }
 }
