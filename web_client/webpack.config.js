@@ -20,12 +20,17 @@ module.exports = {
         include: path.join(__dirname, 'src')
       },
       {
-        test: /\.scss$/,
+        test: /\.s?css$/,
         use: [
           'style-loader',
           'css-loader',
           'sass-loader'
+
         ]
+      },
+      {
+        test: /\.(woff|woff2|ttf|svg|eot)$/,
+        loader: 'url-loader?limit=100000'
       }
     ]
   }

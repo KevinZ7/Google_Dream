@@ -1,3 +1,160 @@
-h1 {
-  color: tomato;
+
+
+#dreamWord{
+   font-family: 'Roboto', sans-serif;
+  display: inline;
+  font-size: 2.375rem;
+  color: #5f6368;
+  font-family:sans-serif;
+  margin-left: 10px;
+}
+
+#navBar{
+  background-color: #fff;
+
+}
+
+#map{
+  margin-top:5px;
+}
+#chartData{
+  overflow-y: auto;
+  font-size: 54px;
+}
+#title .MuiTypography-subheading-55{
+ font-size: 1.5rem;
+}
+#icon{
+color:black;
+}
+
+
+
+#icon:hover{
+  background-color:none;
+}
+
+ul {
+  padding-inline-start: 0px;
+}
+
+
+ul li{
+  list-style-type: none;
+  font-family:sans-serif;
+  padding: 10px;
+}
+
+li:hover{
+  background-color: #e8e8e8;
+}
+
+
+#sideMenuBox{
+  padding-left: 0px;
+  margin-left: -30px;
+}
+
+
+#sideBar{
+  font-size: 18px;
+  flex-direction: column;
+  background-color: #f5f5f5;
+  color: black;
+  width: auto;
+  height: 800px;
+  display: flex;
+  flex-flow: row wrap;
+  overflow-y: auto;
+
+}
+
+@media all and (max-width: 500px) {
+  #sideBar {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+#sideBar.hide{
+  transform: translate3d(-100vw, 0, 0);
+}
+#sideBar.show{
+  transform: translate3d(0vw, 0, 0);
+}
+
+
+#border{
+    border-bottom: 1px solid #e0e0e0;
+    width: 23.2rem;
+    margin: 1.2rem 0;
+    margin-left: 1.6rem;
+}
+
+.bar{
+  margin-top:90px;
+}
+
+span {
+  margin-right: 20px;
+}
+
+.btn-success{
+
+  margin-bottom: 4rem;
+}
+
+#map{
+  height: 800px;
+  padding-left:0px;
+}
+#menuBox{
+ padding-right: 0px;
+ padding-inline-start: 0px;
+}
+#icon{
+  margin-right: 20px;
+  width:3vw;
+  height:auto;
+}
+
+.entityInfo {
+background-color: white;
+font-family: 'Roboto', sans-serif;
+margin-bottom: 3px;
+white-space: initial;
+word-wrap: break-word;
+  -webkit-box-shadow: 0 4px 5px 0 rgba(0,0,0,0.14), 0 1px 10px 0 rgba(0,0,0,0.12), 0 2px 4px -1px rgba(0,0,0,0.2);
+
+}
+
+
+
+
+.backButton{
+  text-align: right;
+  padding-right: 5%;
+  width:100%;
+  height:auto;
+}
+
+#chartData{
+  font-size: 2rem;
+}
+
+#arrow{
+  margin: -25px;
+}
+
+#bell{
+  color: grey;
+}
+
+#entitySpecific .MuiTypography-subheading-55{
+  font-size: 1.5rem;
+}
+#entitySpecific .MuiListItem-root-113.MuiListItem-selected-123, .MuiListItem-root-113.MuiListItem-selected-123:hover{
+
+  background-color: #4285F4;
+  opacity: 0.7;
 }

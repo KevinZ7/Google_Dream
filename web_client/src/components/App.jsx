@@ -1,9 +1,23 @@
 import React, {Component} from 'react';
+import Main from './main.jsx';
+import Demo from './demos.jsx';
+import SideBar from './sideBar.jsx';
+import ReactDOM from 'react-dom';
+import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink, Button} from 'reactstrap';
+import GoogleApiWrapper from './map.jsx';
+
+
+// import ThemeSwitcher from './themeswitcher.jsx'
+
 
 class App extends Component {
   render() {
     return (
-      <h1>Hello React :)</h1>
+        <div>
+        <Main />
+        <Demo />
+
+      </div>
     );
   }
 }
