@@ -36,9 +36,17 @@ class NestedList extends React.Component {
   };
   this.showEntity = this.showEntity.bind(this)
   this.handleEntityChange = this.handleEntityChange.bind(this)
+  this.testing = this.testing.bind(this)
 }
   handleEntityChange(e){
     this.showEntity();
+  }
+
+  testing(e){
+    const clickedMarkers = e.getMarkers()
+    console.log(`Current clicked markers length: ${clickedMarkers.length}`)
+    console.log(clickedMarkers)
+    this.showEntity()
   }
 
   showEntity(){
@@ -46,10 +54,6 @@ class NestedList extends React.Component {
       entitySpecific: (!this.state.entitySpecific)
     })
   }
-
-  handleClick = () => {
-    this.setState(state => ({ open: !state.open }));
-  };
 
   componentDidMount() {
     this.setState({
@@ -84,7 +88,7 @@ class NestedList extends React.Component {
             {menuCategories}
           </div>
         </div>
-        <GoogleApiWrapper mapData={this.state.mapData} entity={this.handleEntityChange}/>
+        <GoogleApiWrapper mapData={this.state.mapData} entity={this.handleEntityChange} testing={this.testing}/>
      </div>
     }
     </div>
