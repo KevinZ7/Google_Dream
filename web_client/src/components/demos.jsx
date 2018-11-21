@@ -12,19 +12,6 @@ import GoogleApiWrapper from './map.jsx';
 import data from './data.json';
 import EntitySpecific from './entitySpecific.jsx'
 
-const styles = theme => ({
-  root: {
-    width: '100%',
-    maxWidth: 360,
-    maxHeight: 800,
-    backgroundColor: theme.palette.background.paper,
-   marginTop: 20,
-  },
-  nested: {
-    paddingLeft: theme.spacing.unit * 4,
-  },
-});
-
 class NestedList extends React.Component {
   constructor(props){
     super(props)
@@ -118,6 +105,19 @@ class NestedList extends React.Component {
     );
   }
 }
+
+const styles = theme => ({
+  root: {
+    width: '100%',
+    maxWidth: 360,
+    maxHeight: 800,
+    backgroundColor: theme.palette.background.paper,
+   marginTop: 20,
+  },
+  nested: {
+    paddingLeft: theme.spacing.unit * 4,
+  },
+});
 
 NestedList.propTypes = {
   classes: PropTypes.object.isRequired,

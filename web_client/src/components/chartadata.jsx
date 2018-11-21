@@ -13,16 +13,6 @@ import MenuSingleEntity from './MenuSingleEntity.jsx'
 
 import data from './data.json'
 
-const styles = theme => ({
-  root: {
-    width: '100%',
-    maxWidth: 360,
-    backgroundColor: theme.palette.background.paper,
-  },
-  nested: {
-    paddingLeft: theme.spacing.unit * 4,
-  },
-});
 
 class NestedList extends React.Component {
   state = {
@@ -81,6 +71,18 @@ class NestedList extends React.Component {
     );
   }
 }
+
+const styles = theme => ({
+  root: {
+    width: '100%',
+    maxWidth: 360,
+    backgroundColor: theme.palette.background.paper,
+    paddingRight: 30
+  },
+  nested: {
+    paddingLeft: theme.spacing.unit * 4,
+  },
+});
 
 NestedList.propTypes = {
   classes: PropTypes.object.isRequired,
