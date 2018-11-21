@@ -61,11 +61,10 @@ class NestedList extends React.Component {
   };
 
   showMarkersOfEntity(entity) {
-    console.log(entity)
+
     fetch(`http://0.0.0.0:8080/entities/${entity}`)
     .then(res => res.json(res))
     .then(data => {
-      console.log(data)
       this.setState({
         mapData: data
       })
@@ -111,7 +110,7 @@ class NestedList extends React.Component {
             {menuCategories}
           </div>
         </div>
-        <GoogleApiWrapper mapData={this.state.mapData} entity={this.handleEntityChange} testing={this.testing}/>
+        <GoogleApiWrapper mapData={this.state.mapData} entity={this.handleEntityChange} testing={this.testing} mapMarkers={this.state.mapData}/>
      </div>
     }
     </div>
