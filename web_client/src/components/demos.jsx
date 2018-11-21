@@ -62,7 +62,7 @@ class NestedList extends React.Component {
 
   showMarkersOfEntity(entity) {
     console.log(entity)
-    fetch(`http://0.0.0.0:8080/categories/${entity}`)
+    fetch(`http://0.0.0.0:8080/entities/${entity}`)
     .then(res => res.json(res))
     .then(data => {
       console.log(data)
