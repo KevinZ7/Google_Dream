@@ -145,8 +145,7 @@ class PrimarySearchAppBar extends React.Component {
             </div>
           </Toolbar>
         </AppBar>
-        {renderMenu}
-        {renderMobileMenu}
+
       </div>
     );
   }

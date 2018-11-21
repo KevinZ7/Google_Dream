@@ -13,7 +13,7 @@ import GoogleApiWrapper from './map.jsx';
 class App extends Component {
   render() {
     return (
-        <div>
+      <div>
         <Main />
         <Demo />
 
