@@ -50,23 +50,12 @@ const MapWithAMarkerClusterer = compose(
 );
 
 export default class MapCluster extends React.PureComponent {
-  componentWillMount() {
-    this.setState({ markers: [] })
-  }
 
-  componentDidMount() {
-    const url = 'http://localhost:8080'
 
-    fetch(url)
-      .then(res => res.json())
-      .then(data => {
-        this.setState({ markers: data });
-      }).catch((error) => console.log(error));
-  }
 
   render() {
     return (
-      <MapWithAMarkerClusterer markers={this.state.markers} test={this.props.specificEntity} testing={this.props.testing} />
+      <MapWithAMarkerClusterer markers={this.props.mapMarkers} test={this.props.specificEntity} testing={this.props.testing} />
     )
   }
 }
