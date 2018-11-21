@@ -7,7 +7,9 @@ const {
   GoogleMap,
   Marker,
 } = require("react-google-maps");
+
 const { MarkerClusterer } = require("react-google-maps/lib/components/addons/MarkerClusterer");
+
 
 const MapWithAMarkerClusterer = compose(
   withProps({

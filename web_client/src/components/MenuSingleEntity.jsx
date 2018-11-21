@@ -23,7 +23,7 @@ class MenuSingleEntity extends React.Component {
     const { classes } = this.props;
 
     return (
-       <ListItem button id="entitySpecific" className={classes.nested} onClick={() => alert('hi')}>
+       <ListItem button id="entitySpecific" className={classes.nested} onClick={() => this.props.showMarkersOfEntity(this.props.entityName)}>
           <ListItemText inset id="entitySpecific" primary={this.props.entityName} />
        </ListItem>
     )
