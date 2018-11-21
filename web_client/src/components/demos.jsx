@@ -37,6 +37,7 @@ class NestedList extends React.Component {
   this.showEntity = this.showEntity.bind(this)
   this.handleEntityChange = this.handleEntityChange.bind(this)
   this.testing = this.testing.bind(this)
+  this.showMarkersOfEntity = this.showMarkersOfEntity.bind(this)
 }
   handleEntityChange(e){
     this.showEntity();
@@ -55,19 +56,41 @@ class NestedList extends React.Component {
     })
   }
 
+  handleClick = () => {
+    this.setState(state => ({ open: !state.open }));
+  };
+
+  showMarkersOfEntity(entity) {
+    console.log(entity)
+    fetch(`http://0.0.0.0:8080/categories/${entity}`)
+    .then(res => res.json(res))
+    .then(data => {
+      console.log(data)
+      this.setState({
+        mapData: data
+      })
+    })
+  }
+
   componentDidMount() {
-    this.setState({
-      menuData: data
+    fetch('http://0.0.0.0:8080/categories')
+    .then(res => res.json(res))
+    .then(data => {
+      this.setState({
+        menuData: data
+      })
     })
   }
 
   render() {
     const { classes } = this.props;
 
-    const categories = [...new Set(this.state.menuData.map(category => category.catagorey))]
+    const categories = [...new Set(this.state.menuData.map(category => category.name))]
 
-    const menuCategories = categories.map((category) =>
-      <Chartadata key={category} name={category} />
+    const menuCategories = categories.map((category) => {
+        let image = `../../styles/Images/${category}_icon_grey.png`
+        return <Chartadata key={category} category={category} image={image} showMarkersOfEntity={this.showMarkersOfEntity}/>
+      }
     )
 
   return (

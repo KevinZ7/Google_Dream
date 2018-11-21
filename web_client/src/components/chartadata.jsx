@@ -22,13 +22,13 @@ const styles = theme => ({
   nested: {
     paddingLeft: theme.spacing.unit * 4,
   },
-  entities: []
 });
 
 class NestedList extends React.Component {
   state = {
     open: false,
-    selectedIndex: ''
+    selectedIndex: '',
+    entitiesData: []
   };
   handleListItemClick = (event, index) => {
     this.setState({ selectedIndex: index });
@@ -42,52 +42,38 @@ class NestedList extends React.Component {
   }
 
   componentDidMount() {
-    if (this.props.name === 'Amusement') {
+    fetch(`http://0.0.0.0:8080/categories/${this.props.category}`)
+    .then(res => res.json(res))
+    .then(data => {
+
       this.setState({
-        entities: [
-        {
-          name: 'Bubble Tea'
-        },
-        {
-          name: 'Tim Hortons'
-        }]
+        entitiesData: data
       })
-    } else {
-      this.setState({
-        entities: [
-        {
-          name: 'McDonalds'
-        }, {
-          name: 'Staples'
-        }]
-      })
-    }
+    })
+
   }
 
   render() {
     const { classes } = this.props;
 
     let singleEntityItem;
+    const entities = [...new Set(this.state.entitiesData.map(entity => entity.name))]
+    const menuEntities = entities.map((entity) =>
+      <MenuSingleEntity entityName={entity} showMarkersOfEntity={this.props.showMarkersOfEntity}/>
+    )
 
-    if (this.state.entities !== undefined) {
-      singleEntityItem = this.state.entities.map((item) => {
-        return <MenuSingleEntity entityName={item.name} />
-      })
-     } else {
-      singleEntityItem = []
-     }
 
     return (
       <div className={classes.root}>
         <List  component="nav" >
           <ListItem id="chartData"  button onClick={this.handleClick}>
             <img id="icon" src={this.props.image}/>
-            <ListItemText  id="title" inset primary={this.props.name} />
+            <ListItemText  id="title" inset primary={this.props.category} />
             {this.state.open ? <ExpandLess id="arrow"/> : <ExpandMore id="arrow" />}
           </ListItem>
           <Collapse in={this.state.open} timeout="auto" unmountOnExit>
             <List id="entitySpecific" component="div" disablePadding>
-              {singleEntityItem}
+              {menuEntities}
             </List>
           </Collapse>
         </List>

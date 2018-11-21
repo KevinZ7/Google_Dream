@@ -29,6 +29,29 @@ app.get('/', (req, res) => {
   });
 })
 
+app.get('/categories', (req, res) => {
+  knex.
+  select('markers.name', 'types_id', 'types.name')
+  .from('markers')
+  .leftJoin('marker_types', 'markers.id', 'marker_types.markers_id')
+  .leftJoin('types', 'types.id', 'marker_types.types_id')
+  .then((results) => {
+    res.json(results)
+  })
+})
+
+app.get('/categories/:entity', (req, res) => {
+  knex.
+  select('markers.*', 'types_id')
+  .from('markers')
+  .leftJoin('marker_types', 'markers.id', 'marker_types.markers_id')
+  .leftJoin('types', 'types.id', 'marker_types.types_id')
+  .where({'types.name': req.params.entity})
+  .then((results) => {
+    res.json(results)
+  })
+})
+
 app.listen(PORT, () => {
   console.log(`Server has started on port ${PORT}!`)
 })
