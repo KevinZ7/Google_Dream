@@ -52,6 +52,16 @@ app.get('/categories/:entity', (req, res) => {
   })
 })
 
+app.get('/entities/:entity', (req, res) => {
+  knex
+  .select('*')
+  .from('markers')
+  .where('markers.name', req.params.entity)
+  .then((results) => {
+    res.json(results)
+  })
+})
+
 app.listen(PORT, () => {
   console.log(`Server has started on port ${PORT}!`)
 })
