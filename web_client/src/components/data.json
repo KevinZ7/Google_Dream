@@ -1,5 +1,6 @@
  [
 { "img":"../styles/images/amusement_icon_grey.png","catagorey" : "Amusement"},
+{ "img":"../styles/images/amusement_icon_grey.png","catagorey" : "Amusement"},
 { "img":"../styles/images/aquarium_icon_grey.png","catagorey" : "Aquarium"},
 { "img":"../styles/images/art_gallery_icon_grey.png","catagorey" : "Art Gallery"},
 { "img":"../styles/images/atm_icon_grey.png","catagorey" : "ATM"},

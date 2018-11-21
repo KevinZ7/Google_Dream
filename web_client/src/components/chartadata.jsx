@@ -9,6 +9,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Collapse from '@material-ui/core/Collapse';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
+import MenuSingleEntity from './MenuSingleEntity.jsx'
 
 import data from './data.json'
 
@@ -21,6 +22,7 @@ const styles = theme => ({
   nested: {
     paddingLeft: theme.spacing.unit * 4,
   },
+  entities: []
 });
 
 class NestedList extends React.Component {
@@ -39,8 +41,41 @@ class NestedList extends React.Component {
     this.setState({selectedIndex: ''})
   }
 
+  componentDidMount() {
+    if (this.props.name === 'Amusement') {
+      this.setState({
+        entities: [
+        {
+          name: 'Bubble Tea'
+        },
+        {
+          name: 'Tim Hortons'
+        }]
+      })
+    } else {
+      this.setState({
+        entities: [
+        {
+          name: 'McDonalds'
+        }, {
+          name: 'Staples'
+        }]
+      })
+    }
+  }
+
   render() {
     const { classes } = this.props;
+
+    let singleEntityItem;
+
+    if (this.state.entities !== undefined) {
+      singleEntityItem = this.state.entities.map((item) => {
+        return <MenuSingleEntity entityName={item.name} />
+      })
+     } else {
+      singleEntityItem = []
+     }
 
     return (
       <div className={classes.root}>
@@ -52,12 +87,7 @@ class NestedList extends React.Component {
           </ListItem>
           <Collapse in={this.state.open} timeout="auto" unmountOnExit>
             <List id="entitySpecific" component="div" disablePadding>
-             <ListItem button id="entitySpecific" className={classes.nested} selected={this.state.selectedIndex === 0} onDoubleClick={event => this.backToNoting()} onClick={event => this.handleListItemClick(event, 0)}>
-                <ListItemText inset id="entitySpecific" primary="Starred" />
-             </ListItem>
-             <ListItem button id="entitySpecific" className={classes.nested}  selected={this.state.selectedIndex === 1} onDoubleClick={event => this.backToNoting()} onClick={event => this.handleListItemClick(event, 1)}>
-                <ListItemText inset id="entitySpecific" primary="Starred" />
-             </ListItem>
+              {singleEntityItem}
             </List>
           </Collapse>
         </List>

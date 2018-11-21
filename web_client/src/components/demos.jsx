@@ -31,6 +31,8 @@ class NestedList extends React.Component {
   this.state = {
     open: true,
     entitySpecific:  false,
+    menuData: [],
+    mapData: []
   };
   this.showEntity = this.showEntity.bind(this)
   this.handleEntityChange = this.handleEntityChange.bind(this)
@@ -49,10 +51,19 @@ class NestedList extends React.Component {
     this.setState(state => ({ open: !state.open }));
   };
 
+  componentDidMount() {
+    this.setState({
+      menuData: data
+    })
+  }
+
   render() {
     const { classes } = this.props;
-    const Data = data.map((catagorey) =>
-      <Chartadata image={catagorey.img} key={catagorey.catagorey} name={catagorey.catagorey} />
+
+    const categories = [...new Set(this.state.menuData.map(category => category.catagorey))]
+
+    const menuCategories = categories.map((category) =>
+      <Chartadata key={category} name={category} />
     )
 
   return (
@@ -70,10 +81,10 @@ class NestedList extends React.Component {
       <div>
         <div className="col col-lg-2">
           <div id="chartData" className={classes.root}>
-            {Data}
+            {menuCategories}
           </div>
         </div>
-        <GoogleApiWrapper entity={this.handleEntityChange}/>
+        <GoogleApiWrapper mapData={this.state.mapData} entity={this.handleEntityChange}/>
      </div>
     }
     </div>
