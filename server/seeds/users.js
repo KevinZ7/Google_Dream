@@ -24,17 +24,58 @@ exports.seed = function(knex) {
   })
 
   const bubbleTeaType = createBubbleTea
-  .then((id) => {
-    return id.forEach((el) => {
-       knex('marker_types')
-      .insert([{
-        markers_id: id[0],
+  .then((ids) => {
+    const marker_types = ids.map((id) => {
+      return {
+        markers_id: id,
         types_id: 8
-      }])
-      .asCallback()
+      }
     })
+
+    return knex('marker_types')
+    .insert(marker_types)
+  })
+
+  const createTrain = bubbleTeaType
+  .then(() => {
+    return knex('markers')
+    .returning('id')
+    .insert(markerData.train)
+  })
+
+  const trainType = createTrain
+  .then((ids) => {
+    const marker_types = ids.map((id) => {
+      return {
+        markers_id: id,
+        types_id: 5
+      }
+    })
+
+    return knex('marker_types')
+    .insert(marker_types)
+  })
+
+  const createDogPark = trainType
+  .then(() => {
+    return knex('markers')
+    .returning('id')
+    .insert(markerData.dog)
+  })
+
+  const dogParkType = createDogPark
+  .then((ids) => {
+    const marker_types = ids.map((id) => {
+      return {
+        markers_id: id,
+        types_id: 42
+      }
+    })
+
+    return knex('marker_types')
+    .insert(marker_types)
   })
 
 
-  return bubbleTeaType;
+  return dogParkType;
 };
