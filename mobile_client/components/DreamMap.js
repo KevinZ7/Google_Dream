@@ -13,80 +13,7 @@ export default class DreamMap extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      myDreams: [
-       {
-         id: 1,
-         latlng: {
-           latitude:49.283439,
-           longitude:-123.115393
-         },
-         name: "A&W",
-         type: "restaurant",
-         color: "red",
-         date: "11/12/2018",
-         address: "622 burger place, Vancouver, BC V8I 5AL, Canada"
-       },
-       {
-         id: 2,
-         latlng: {
-           latitude:49.283327,
-           longitude:-123.117689
-         },
-         name: "Dog Park",
-         type: "park",
-         color: "green",
-         date: "11/14/2018",
-         address: "10-202 Parkboy Avenue, Vancouver, BC V8D 52L, Canada"
-       },
-       {
-         id: 3,
-         latlng: {
-           latitude:49.281843,
-           longitude:-123.120843
-         },
-         name: "Walk in clinic",
-         type: "health",
-         color: "blue",
-         date: "11/16/2018",
-         address: "2822 medical street, Vancouver, BC V8I SA7, Canada"
-       },
-        {
-         id: 4,
-         latlng: {
-           latitude:29.975217,
-           longitude:31.281101
-         },
-         name: "El Galla jewllery",
-         type: "shopping",
-         color: "yellow",
-         date: "11/07/2018",
-         address: "2 Al Lasilki st. New Maadi, Ezbet Fahmy, El-Basatin, Cairo Governorate, Egypt"
-       },
-       {
-         id: 5,
-         latlng: {
-           latitude:49.283327,
-           longitude:-123.117689
-         },
-         name: "Dog Park",
-         type: "park",
-         color: "green",
-         date: "11/14/2018",
-         address: "10-202 Parkboy Avenue, Vancouver, BC V8D 52L, Canada"
-       },
-       {
-         id: 6,
-         latlng: {
-           latitude:49.283934,
-           longitude: -123.118730
-         },
-         name: "Farimont",
-         type: "lodging",
-         color: "blue",
-         date: "11/16/2018",
-         address: "2822 medical street, Vancouver, BC V8I SA7, Canada"
-       }
-      ],
+      myDreams: [],
       mapMarker: {},
       region: this.props.region
     }
@@ -105,6 +32,18 @@ export default class DreamMap extends React.Component {
   animation(targetRegion){
     console.log(targetRegion)
     this.map.animateToRegion(targetRegion,1000)
+  }
+
+  componentDidMount() {
+    fetch('http://192.168.88.35:8080/markers/1')
+    .then((results) => {
+      return results.json()
+    })
+    .then((results) => {
+      this.setState({
+        myDreams: results
+      })
+    })
   }
 
 

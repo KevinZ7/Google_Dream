@@ -10,6 +10,10 @@ export default class ListCard extends React.Component {
 
   onPressHandler(){
     const marker = this.props.data
+    marker.latlng = {
+      latitude: marker.lat,
+      longitude: marker.lng
+    }
     const animateData = {
       latitude: marker.latlng.latitude - 0.0030,
       longitude: marker.latlng.longitude - 0.0020,
@@ -24,13 +28,14 @@ export default class ListCard extends React.Component {
   render() {
 
     const marker = this.props.data
+    const capitalMarkerName = marker.marker_name.split(' ').map((word) => word.charAt(0).toUpperCase() + word.substring(1)).join(' ')
 
     return (
       <TouchableOpacity style={styles.container} onPress={() => this.onPressHandler()}>
           <Image source={require('../assets/images/green_marker.png')} style={styles.image} resizeMode={'contain'}/>
           <View style={styles.textContainer}>
-            <Text style={styles.text}>{marker.name}</Text>
-            <Text>{marker.type}</Text>
+            <Text style={styles.text}>{capitalMarkerName}</Text>
+            <Text>{marker.type_name}</Text>
           </View>
           <Text style={styles.dots}>...</Text>
       </TouchableOpacity>
