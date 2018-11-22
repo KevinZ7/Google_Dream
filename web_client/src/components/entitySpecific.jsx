@@ -33,13 +33,13 @@ function SimpleList(props) {
             <ListItemIcon>
               <InboxIcon />
             </ListItemIcon>
-            <ListItemText primary="Inbox" />
+            <ListItemText primary={props.cardInfo.name} />
           </ListItem>
           <ListItem button>
             <ListItemIcon>
               <DraftsIcon />
             </ListItemIcon>
-            <ListItemText primary="Drafts" />
+            <ListItemText primary={props.cardInfo.emails.length} />
           </ListItem>
         </List>
         <Divider />
