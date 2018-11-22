@@ -62,6 +62,26 @@ app.get('/entities/:entity', (req, res) => {
   })
 })
 
+app.get('/markers/:user_id', (req, res) => {
+  knex('markers')
+  .select('markers.id', 'markers.name AS marker_name', 'lat', 'lng', 'types.name AS type_name', 'color', 'date', 'address')
+  .leftJoin('marker_types', 'markers.id', 'marker_types.markers_id')
+  .leftJoin('types', 'types.id', 'marker_types.types_id')
+  .where({'users_id': req.params.user_id})
+  .then((results) => {
+    res.json(results)
+  })
+})
+
+app.post('/markers', (req, res) => {
+  const { name, lat, lng, users_id, date } = req.body
+  knex('markers').returning('*')
+  .insert({name: name, lat: lat, lng: lng, users_id: users_id, date: date})
+  .then((result) => {
+    console.log(result)
+  })
+})
+
 app.post('/clusters/markers', (req,res) => {
   console.log("receiving message")
   var markerArray = req.body.array.split(',')

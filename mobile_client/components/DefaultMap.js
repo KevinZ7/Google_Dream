@@ -28,12 +28,14 @@ export default class DefaultMap extends React.Component {
         description: "Me"
       },
       markers: [],
-      withinRadius: true
+      withinRadius: true,
+      searchTerm: ''
 
     }
     this.locationSearch = this.locationSearch.bind(this)
     this.calculateDistance = this.calculateDistance.bind(this)
     this.setWithinRadius = this.setWithinRadius.bind(this)
+    this.setSearchTerm = this.setSearchTerm.bind(this)
   }
 
   setWithinRadius(value) {
@@ -99,6 +101,12 @@ export default class DefaultMap extends React.Component {
         })
         this.setWithinRadius(true)
       }
+    })
+  }
+
+  setSearchTerm(term) {
+    this.setState({
+      searchTerm: term
     })
   }
 
@@ -174,12 +182,15 @@ export default class DefaultMap extends React.Component {
         <View style={styles.calloutView}>
           <TextInput style={styles.calloutSearch}
             placeholder={"Search"}
-            onSubmitEditing={(event) => this.locationSearch(event.nativeEvent.text)}
+            onSubmitEditing={(event) => {
+              this.locationSearch(event.nativeEvent.text)
+              this.setSearchTerm(event.nativeEvent.text)}
+            }
           />
         </View>
       </MapView.Callout>
 
-      <DreamModeButton navigation={this.props.navigation} withinRadius={this.state.withinRadius} setWithinRadius={this.setWithinRadius}/>
+      <DreamModeButton navigation={this.props.navigation} withinRadius={this.state.withinRadius} setWithinRadius={this.setWithinRadius} currentLocation={this.state.userLocation.latlng} searchTerm={this.state.searchTerm}/>
 
     </View>
     );

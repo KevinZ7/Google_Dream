@@ -16,6 +16,8 @@ export default class DreamModeButton extends React.Component {
     this.setState({modalVisible: visible});
   }
 
+  // Animation stop and start below
+
   spring () {
   this.springValue.setValue(0.3)
     Animated.spring(
@@ -37,8 +39,22 @@ export default class DreamModeButton extends React.Component {
     })
   }
 
+  dropPin() {
+    let currentDate = new Date().toLocaleDateString();
+
+    fetch('http://192.168.88.35:8080/markers', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: `name=${this.props.searchTerm}&lng=${this.props.currentLocation.longitude}&lat=${this.props.currentLocation.latitude}&users_id=1&date=${currentDate}`,
+    });
+  }
+
 
   render() {
+
 
   if (!this.props.withinRadius) {
     styles.button = {
@@ -98,7 +114,10 @@ export default class DreamModeButton extends React.Component {
         <TouchableOpacity
           activeOpacity={0.8}
           style={styles.button}
-          onPress={() => this.setModalVisible(true)}
+          onPress={() => {
+            this.setModalVisible(true)
+            this.dropPin()}
+          }
           onLongPress={() => this.props.navigation.navigate('Dream')}
           >
           {dreamButton}
