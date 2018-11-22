@@ -62,6 +62,28 @@ app.get('/entities/:entity', (req, res) => {
   })
 })
 
+app.post('/clusters/markers', (req,res) => {
+  console.log("receiving message")
+  var markerArray = req.body.array.split(',')
+  var numberMarkerArray = markerArray.map((marker) => {
+    return (Number(marker))
+  })
+
+   knex('users')
+  .join('markers','users.id','users_id')
+  .join('marker_types','markers.id','markers_id')
+  .join('types','types.id','types_id')
+  .select('markers.name','users.email')
+  .whereIn('markers.id',numberMarkerArray)
+  .then((result) => {
+    console.log(result)
+    res.json(result)
+  })
+
+  console.log(numberMarkerArray)
+
+})
+
 app.listen(PORT, () => {
   console.log(`Server has started on port ${PORT}!`)
 })

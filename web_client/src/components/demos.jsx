@@ -19,27 +19,57 @@ class NestedList extends React.Component {
     open: true,
     entitySpecific:  false,
     menuData: [],
-    mapData: []
+    mapData: [],
+    cardInfo: []
   };
   this.showEntity = this.showEntity.bind(this)
   this.handleEntityChange = this.handleEntityChange.bind(this)
-  this.testing = this.testing.bind(this)
+  this.clusterClickHandler = this.clusterClickHandler.bind(this)
   this.showMarkersOfEntity = this.showMarkersOfEntity.bind(this)
 }
   handleEntityChange(e){
-    this.showEntity();
+    this.setState({
+      entitySpecific: false
+    })
   }
 
-  testing(e){
+  clusterClickHandler(e){
     const clickedMarkers = e.getMarkers()
-    console.log(`Current clicked markers length: ${clickedMarkers.length}`)
-    console.log(clickedMarkers)
-    this.showEntity()
+    var markerIds = [];
+    clickedMarkers.forEach((marker) => {
+      markerIds.push(Number(marker.title))
+    })
+    console.log(markerIds)
+    var data = {username: "rohit"};
+
+    fetch('http://0.0.0.0:8080/clusters/markers', {
+      method: 'POST',
+      body: "array="+markerIds,
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/x-www-form-urlencoded'
+      }
+    })
+    .then((res)=>{
+      return res.json(res)
+    })
+    .then((result) => {
+      console.log(result)
+      this.setState({
+        cardInfo: {
+          name: result[0].name,
+          emails: result
+        }
+      })
+    })
+    .then(() => {
+      this.showEntity()
+    })
   }
 
   showEntity(){
     this.setState({
-      entitySpecific: (!this.state.entitySpecific)
+      entitySpecific: true
     })
   }
 
@@ -87,10 +117,10 @@ class NestedList extends React.Component {
       <div>
         <div className="col col-lg-2">
           <div id="chartData" className={classes.root}>
-            <EntitySpecific goBack={this.handleEntityChange}/>
+            <EntitySpecific goBack={this.handleEntityChange} cardInfo={this.state.cardInfo}/>
           </div>
         </div>
-        <GoogleApiWrapper />
+        <GoogleApiWrapper mapMarkers={this.state.mapData} entity={this.handleEntityChange} clusterClickHandler={this.clusterClickHandler}/>
       </div>
       :
       <div>
@@ -99,7 +129,7 @@ class NestedList extends React.Component {
             {menuCategories}
           </div>
         </div>
-        <GoogleApiWrapper mapData={this.state.mapData} entity={this.handleEntityChange} testing={this.testing} mapMarkers={this.state.mapData}/>
+        <GoogleApiWrapper  clusterClickHandler={this.clusterClickHandler} mapMarkers={this.state.mapData}/>
      </div>
     }
     </div>

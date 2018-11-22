@@ -7,7 +7,7 @@ export class MapContainer extends Component {
 
     return (
       <div id="map" className="col col-lg-10">
-        <MapCluster specificEntity={this.props.entity} testing={this.props.testing} mapMarkers={this.props.mapMarkers}/>
+        <MapCluster  clusterClickHandler={this.props.clusterClickHandler} mapMarkers={this.props.mapMarkers}/>
       </div>
     );
   }
