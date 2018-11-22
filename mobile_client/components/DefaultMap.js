@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { StyleSheet, Text, View, TextInput, Image } from 'react-native';
 import { MapView, Location, Permissions } from 'expo';
-import GOOGLE_API from '../secret.js'
+import {GOOGLE_API,ip} from '../secret.js'
 import DreamModeButton from './DreamModeButton.js'
 
 

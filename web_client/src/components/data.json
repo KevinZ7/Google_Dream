@@ -11,7 +11,6 @@
 { "img":"../styles/images/book_store_icon_grey.png","catagorey" : "Book Store"},
 { "img":"../styles/images/bowling_alley_icon_grey.png","catagorey" : "Bowling Alley"},
 { "img":"../styles/images/bus_station_icon_grey.png","catagorey" : "Bus Station"},
-{ "img":"../styles/images/cafe_icon_grey.png","catagorey" : "Cafe"},
 { "img":"../styles/images/car_wash_icon_grey.png","catagorey" : "Car Wash"},
 { "img":"../styles/images/convenience_store_icon_grey.png","catagorey" : "Convenience Store"},
 { "img":"../styles/images/dentist_icon_grey.png","catagorey" : "Dentist"},

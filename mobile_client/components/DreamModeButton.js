@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, Button, StyleSheet, TouchableOpacity, Alert, Image, Animated, Easing } from 'react-native';
-import PinDropNotification from '../components/PinDropNotification.js'
+import PinDropNotification from '../components/PinDropNotification.js';
+import {ip} from '../secret.js'
 
 export default class DreamModeButton extends React.Component {
   constructor() {
@@ -42,7 +43,7 @@ export default class DreamModeButton extends React.Component {
   dropPin() {
     let currentDate = new Date().toLocaleDateString();
 
-    fetch('http://192.168.88.35:8080/markers', {
+    fetch(`http://${ip}:8080/markers`, {
       method: 'POST',
       headers: {
         Accept: 'application/json',

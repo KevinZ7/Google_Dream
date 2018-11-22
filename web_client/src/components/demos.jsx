@@ -127,6 +127,7 @@ class NestedList extends React.Component {
         <div className="col col-lg-2">
           <div id="chartData" className={classes.root}>
             {menuCategories}
+
           </div>
         </div>
         <GoogleApiWrapper  clusterClickHandler={this.clusterClickHandler} mapMarkers={this.state.mapData}/>

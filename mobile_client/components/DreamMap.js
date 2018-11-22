@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { StyleSheet, Text, View, TextInput, Image } from 'react-native';
 import { MapView, Location, Permissions } from 'expo';
-import GOOGLE_API from '../secret.js';
+import {GOOGLE_API,ip} from '../secret.js';
 import DreamScreenButton from './DreamScreenButton.js'
 
 
@@ -35,7 +35,7 @@ export default class DreamMap extends React.Component {
   }
 
   componentDidMount() {
-    fetch('http://192.168.88.35:8080/markers/1')
+    fetch(`http://${ip}/markers/1`)
     .then((results) => {
       return results.json()
     })
