@@ -22,9 +22,12 @@ class MenuSingleEntity extends React.Component {
 
     const { classes } = this.props;
 
+    let entityName = this.props.entityName
+    const capitalEntityName = entityName.split(' ').map((word) => word.charAt(0).toUpperCase() + word.substring(1)).join(' ')
+
     return (
        <ListItem button id="entitySpecific" className={classes.nested} onClick={() => this.props.showMarkersOfEntity(this.props.entityName)}>
-          <ListItemText inset id="entitySpecific" primary={this.props.entityName} />
+          <ListItemText inset id="entitySpecific" primary={capitalEntityName} />
        </ListItem>
     )
 

@@ -33,7 +33,6 @@ const MapWithAMarkerClusterer = compose(
     defaultCenter={{ lat: 49.2827, lng: -123.11934 }}
   >
     <MarkerClusterer
-      onClick={props.testing}
       averageCenter
       enableRetinaIcons
       gridSize={60}
@@ -55,7 +54,7 @@ export default class MapCluster extends React.PureComponent {
 
   render() {
     return (
-      <MapWithAMarkerClusterer markers={this.props.mapMarkers} test={this.props.specificEntity} testing={this.props.testing} />
+      <MapWithAMarkerClusterer markers={this.props.mapMarkers.slice(0, 1000)} test={this.props.specificEntity} testing={this.props.testing} />
     )
   }
 }

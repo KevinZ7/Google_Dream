@@ -62,13 +62,15 @@ class NestedList extends React.Component {
       <MenuSingleEntity entityName={entity} showMarkersOfEntity={this.props.showMarkersOfEntity}/>
     )
 
+    let category = this.props.category
+    const capitalCategory = category.split('_').map((word) => word.charAt(0).toUpperCase() + word.substring(1)).join(' ')
 
     return (
       <div className={classes.root}>
         <List  component="nav" >
           <ListItem id="chartData"  button onClick={this.handleClick}>
             <img id="icon" src={this.props.image}/>
-            <ListItemText  id="title" inset primary={this.props.category} />
+            <ListItemText  id="title" inset primary={capitalCategory} />
             {this.state.open ? <ExpandLess id="arrow"/> : <ExpandMore id="arrow" />}
           </ListItem>
           <Collapse in={this.state.open} timeout="auto" unmountOnExit>
