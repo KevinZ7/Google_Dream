@@ -18,12 +18,25 @@ const styles = theme => ({
 });
 
 class MenuSingleEntity extends React.Component {
+  state = {
+    selectedIndex: ''
+  }
+
+  handleListItemClick = (event, index) => {
+    this.setState({ selectedIndex: index });
+    this.props.showMarkersOfEntity(this.props.entityName)
+  };
+
+  backToNoting = (event) => {
+    this.setState({selectedIndex: ''})
+  }
+
   render() {
 
     const { classes } = this.props;
 
     return (
-       <ListItem button id="entitySpecific" className={classes.nested} onClick={() => this.props.showMarkersOfEntity(this.props.entityName)}>
+       <ListItem button id="entitySpecific" className={classes.nested} selected={this.state.selectedIndex === this.props.index} onDoubleClick={event => this.backToNoting()} onClick={() => this.handleListItemClick(event,this.props.index)}>
           <ListItemText inset id="entitySpecific" primary={this.props.entityName} />
        </ListItem>
     )
