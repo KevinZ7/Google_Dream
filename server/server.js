@@ -1,3 +1,7 @@
+var secret = require('./secret.js');
+var typeNames = require('./dataSamples/types.js')
+var fetch = require('fetch').fetchUrl;
+
 const PORT = process.env.PORT || 8080;
 const express = require('express')
 const bodyParser = require('body-parser')
@@ -5,6 +9,7 @@ const app = express()
 const settings = require('./settings.json')
 const knexConfig = require('./knexfile.js').development
 const knex = require('knex')(knexConfig);
+
 
 const allowCrossDomain = function(req, res, next) {
     res.header('Access-Control-Allow-Origin', '*');
@@ -74,11 +79,44 @@ app.get('/markers/:user_id', (req, res) => {
 })
 
 app.post('/markers', (req, res) => {
-  const { name, lat, lng, users_id, date } = req.body
-  knex('markers').returning('*')
-  .insert({name: name, lat: lat, lng: lng, users_id: users_id, date: date})
+  const { name,name2, lat, lng, users_id, date, address } = req.body
+  knex('markers')
+  .insert({name: name2, lat: lat, lng: lng, users_id: users_id, date: date, address: address})
+  .returning('*')
   .then((result) => {
-    console.log(result)
+    return JSON.stringify(result)
+  })
+  .then((result) => {
+
+    var result = JSON.parse(result)
+    var searchName = name
+    let apiRequest = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=49.281318,-123.114574&rankby=distance&keyword=${searchName}&key=${secret.GOOGLE_API}`
+    fetch(apiRequest, function(error,meta,body){
+      var object = JSON.parse(body);
+      var type = object.results[0].types[0];
+      var indexOfType = typeNames.types.indexOf(type)
+      if(indexOfType >= 0){
+        knex('marker_types')
+        .insert({
+          markers_id: result[0].id,
+          types_id: indexOfType + 1
+        })
+        .then(()=>{
+          res.status(201)
+        })
+      }
+      else{
+        knex('marker_types')
+        .insert({
+          markers_id: result[0].id,
+          types_id: 47
+        })
+        .then(()=>{
+          res.status(201)
+        })
+      }
+
+    })
   })
 })
 

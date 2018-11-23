@@ -7,8 +7,8 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import Collapse from '@material-ui/core/Collapse';
-import ExpandLess from '@material-ui/icons/ExpandLess';
-import ExpandMore from '@material-ui/icons/ExpandMore';
+import ArrowRight from '@material-ui/icons/ArrowRight';
+import ArrowDropDown from '@material-ui/icons/ArrowDropDown';
 import MenuSingleEntity from './MenuSingleEntity.jsx'
 
 import data from './data.json'
@@ -49,19 +49,18 @@ class NestedList extends React.Component {
     let singleEntityItem;
     const entities = [...new Set(this.state.entitiesData.map(entity => entity.name))]
     const menuEntities = entities.map((entity,i) =>
-      <MenuSingleEntity entityName={entity} showMarkersOfEntity={this.props.showMarkersOfEntity} index={i}/>
+      <MenuSingleEntity entityName={entity} showMarkersOfEntity={this.props.showMarkersOfEntity} index={i} onClick/>
     )
 
     let category = this.props.category
-    const capitalCategory = category.split('_').map((word) => word.charAt(0).toUpperCase() + word.substring(1)).join(' ')
 
     return (
       <div className={classes.root}>
         <List  component="nav" >
           <ListItem id="chartData"  button onClick={this.handleClick}>
             <img id="icon" src={this.props.image}/>
-            <ListItemText  id="title" inset primary={capitalCategory} />
-            {this.state.open ? <ExpandLess id="arrow"/> : <ExpandMore id="arrow" />}
+            <ListItemText  id="title" inset primary={category} />
+            {this.state.open ? <ArrowDropDown id="arrow"/> : <ArrowRight id="arrow" />}
           </ListItem>
           <Collapse in={this.state.open} timeout="auto" unmountOnExit>
             <List id="entitySpecific" component="div" disablePadding>

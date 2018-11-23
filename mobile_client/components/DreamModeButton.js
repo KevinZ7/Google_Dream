@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, Button, StyleSheet, TouchableOpacity, Alert, Image, Animated, Easing } from 'react-native';
 import PinDropNotification from '../components/PinDropNotification.js';
-import {ip} from '../secret.js'
+import {ip,GOOGLE_API} from '../secret.js'
 
 export default class DreamModeButton extends React.Component {
   constructor() {
@@ -42,15 +42,21 @@ export default class DreamModeButton extends React.Component {
 
   dropPin() {
     let currentDate = new Date().toLocaleDateString();
+    fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${this.props.currentLocation.latitude},${this.props.currentLocation.longitude}&key=${GOOGLE_API}`)
+    .then((result) => result.json())
+    .then((result) => {
+      let address = result.results[0].formatted_address
+      fetch(`http://${ip}:8080/markers`, {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: `name=${this.props.searchTerm2}&name2=${this.props.searchTerm}&lng=${this.props.currentLocation.longitude}&lat=${this.props.currentLocation.latitude}&users_id=2501&date=${currentDate}&address=${address}`,
+      });
+    })
 
-    fetch(`http://${ip}:8080/markers`, {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      body: `name=${this.props.searchTerm}&lng=${this.props.currentLocation.longitude}&lat=${this.props.currentLocation.latitude}&users_id=1&date=${currentDate}`,
-    });
+
   }
 
 
