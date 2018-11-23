@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, Button, StyleSheet, TouchableOpacity, Alert, Image, Animated, Easing } from 'react-native';
 import PinDropNotification from '../components/PinDropNotification.js';
 import {ip,GOOGLE_API} from '../secret.js'
+console.disableYellowBox = true;
 
 export default class DreamModeButton extends React.Component {
   constructor() {
