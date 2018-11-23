@@ -1,146 +1,146 @@
 function generateIconImage (type) {
   let iconLink 
   switch (type) {
-    case 'cafe':
+    case 'amusement_park':
       iconLink = require('../assets/type_icons/amusement_park_icon.png')
       break;
-    case 'transit_station':
+    case 'aquarium':
       iconLink = require('../assets/type_icons/aquarium_icon.png')
       break;
-    case 'cafe':
+    case 'art_gallery':
       iconLink = require('../assets/type_icons/art_gallery_icon.png')
       break;
-    case 'cafe':
+    case 'atm':
       iconLink = require('../assets/type_icons/atm_icon.png')
       break;
-    case 'cafe':
+    case 'bakery':
       iconLink = require('../assets/type_icons/bakery_icon.png')
       break;
-    case 'cafe':
+    case 'bank':
       iconLink = require('../assets/type_icons/bank_icon.png')
       break;   
-    case 'cafe':
+    case 'bar':
       iconLink = require('../assets/type_icons/bar_icon.png')
       break; 
-    case 'cafe':
+    case 'beauty':
       iconLink = require('../assets/type_icons/beauty_icon.png')
       break; 
-    case 'cafe':
+    case 'book_store':
       iconLink = require('../assets/type_icons/book_store_icon.png')
       break; 
-    case 'cafe':
+    case 'bowling_alley':
       iconLink = require('../assets/type_icons/bowling_alley_icon.png')
       break;
-    case 'transit_station':
+    case 'bus_station':
       iconLink = require('../assets/type_icons/bus_station_icon.png')
       break;
     case 'cafe':
       iconLink = require('../assets/type_icons/cafe_icon.png')
       break;
-    case 'cafe':
+    case 'car_wash':
       iconLink = require('../assets/type_icons/car_wash_icon.png')
       break;
-    case 'cafe':
-      iconLink = require('../assets/type_icons/convenience_store_icon.png')
+    case 'convenience_store':
+      iconLink = require('../assets/type_icons/convenience_store.png')
       break;
-    case 'cafe':
+    case 'dentist':
       iconLink = require('../assets/type_icons/dentist_icon.png')
       break;   
-    case 'cafe':
+    case 'department_store':
       iconLink = require('../assets/type_icons/department_store_icon.png')
       break; 
-    case 'cafe':
+    case 'doctor':
       iconLink = require('../assets/type_icons/doctor_icon.png')
       break; 
-    case 'cafe':
+    case 'electrician':
       iconLink = require('../assets/type_icons/electrician_icon.png')
       break;  
-    case 'cafe':
+    case 'florist':
       iconLink = require('../assets/type_icons/florist_icon.png')
       break;
-    case 'transit_station':
+    case 'gas_station':
       iconLink = require('../assets/type_icons/gas_station_icon.png')
       break;
-    case 'cafe':
+    case 'gym':
       iconLink = require('../assets/type_icons/gym_icon.png')
       break;
-    case 'cafe':
+    case 'hair_care':
       iconLink = require('../assets/type_icons/hair_care_icon.png')
       break;
-    case 'cafe':
+    case 'hardware_store':
       iconLink = require('../assets/type_icons/hardware_store.png')
       break;
-    case 'cafe':
+    case 'home_goods_store':
       iconLink = require('../assets/type_icons/home_goods_store.png')
       break;   
-    case 'cafe':
+    case 'hospital':
       iconLink = require('../assets/type_icons/hospital_icon.png')
       break; 
-    case 'cafe':
+    case 'library':
       iconLink = require('../assets/type_icons/library_icon.png')
       break; 
-    case 'cafe':
+    case 'liquor':
       iconLink = require('../assets/type_icons/liquor_store_icon.png')
       break;  
-    case 'cafe':
+    case 'meal_takeaway':
       iconLink = require('../assets/type_icons/meal_takeaway_icon.png')
       break;
-    case 'transit_station':
+    case 'movie_theater':
       iconLink = require('../assets/type_icons/movie_theater_icon.png')
       break;
-    case 'cafe':
+    case 'museum':
       iconLink = require('../assets/type_icons/museum_icon.png')
       break;
-    case 'cafe':
+    case 'painter':
       iconLink = require('../assets/type_icons/painter_icon.png')
       break;
-    case 'cafe':
+    case 'park':
       iconLink = require('../assets/type_icons/park_icon.png')
       break;
-    case 'cafe':
+    case 'parking':
       iconLink = require('../assets/type_icons/parking_icon.png')
       break;   
-    case 'cafe':
+    case 'pet_store':
       iconLink = require('../assets/type_icons/pet_store_icon.png')
       break; 
-    case 'cafe':
+    case 'pharmacy':
       iconLink = require('../assets/type_icons/pharmacy_icon.png')
       break; 
-    case 'cafe':
+    case 'plumber':
       iconLink = require('../assets/type_icons/plumber_icon.png')
       break; 
-      case 'cafe':
+      case 'post_office':
       iconLink = require('../assets/type_icons/post_office_icon.png')
       break;
-    case 'transit_station':
+    case 'restaurant':
       iconLink = require('../assets/type_icons/restaurant_icon.png')
       break;
-    case 'cafe':
+    case 'school':
       iconLink = require('../assets/type_icons/school_icon.png')
       break;
-    case 'cafe':
+    case 'shopping_mall':
       iconLink = require('../assets/type_icons/shopping_mall_icon.png')
       break;
-    case 'cafe':
+    case 'spa':
       iconLink = require('../assets/type_icons/spa_icon.png')
       break;
-    case 'cafe':
+    case 'subway_station':
       iconLink = require('../assets/type_icons/subway_station_icon.png')
       break;   
-    case 'cafe':
+    case 'supermarket':
       iconLink = require('../assets/type_icons/supermarket_icon.png')
       break; 
-    case 'cafe':
+    case 'transit_station':
       iconLink = require('../assets/type_icons/transit_station_icon.png')
       break; 
-    case 'cafe':
+    case 'veterinary_care':
       iconLink = require('../assets/type_icons/veterinary_care_icon.png')
       break;    
-    case 'cafe':
+    case 'zoo':
       iconLink = require('../assets/type_icons/zoo_icon.png')
       break; 
     default:
-      iconLink = require('../assets/images/florist_icon.png')
+      iconLink = require('../assets/type_icons/florist_icon.png')
   }
   return iconLink
 }
