@@ -5,6 +5,7 @@ const app = express()
 const settings = require('./settings.json')
 const knexConfig = require('./knexfile.js').development
 const knex = require('knex')(knexConfig);
+import {GOOGLE_API} from '../mobile_client/secret.js'
 
 const allowCrossDomain = function(req, res, next) {
     res.header('Access-Control-Allow-Origin', '*');
@@ -74,11 +75,18 @@ app.get('/markers/:user_id', (req, res) => {
 })
 
 app.post('/markers', (req, res) => {
-  const { name, lat, lng, users_id, date } = req.body
+  const { name, lat, lng, users_id, date, address } = req.body
   knex('markers').returning('*')
-  .insert({name: name, lat: lat, lng: lng, users_id: users_id, date: date})
+  .insert({name: name, lat: lat, lng: lng, users_id: users_id, date: date, address: address})
   .then((result) => {
-    console.log(result)
+    var searchName = result[0].name
+    let apiRequest = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=49.281318,-123.114574&rankby=distance&keyword=${searchName}&key=${GOOGLE_API}`
+    fetch(apiRequest)
+    .then((response) => response.json())
+    .then((responseJson) => {
+      let typeName = responseJson.results.types[0];
+
+    })
   })
 })
 

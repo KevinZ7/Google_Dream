@@ -76,6 +76,90 @@ exports.seed = function(knex) {
     .insert(marker_types)
   })
 
+  const createDemoUser = dogParkType
+  .then(() => {
+    return knex('users')
+    .insert({name: 'Google Dream',email: 'example@gg.com'})
+  })
 
-  return dogParkType;
+  const createDemoDreams = createDemoUser
+  .then(() => {
+    var demoMarkers = [
+      {
+        date: "2018/11/15",
+        name: "staples",
+        lat: 49.281441,
+        lng: -123.135435,
+        address: "503-, 1250 Burnaby St, Vancouver, BC V6E 1P6, Canada",
+        users_id: 2501
+      },
+      {
+        date: "2018/11/12",
+        name: "bus stop",
+        lat:  49.293195,
+        lng: -123.136916,
+        address: "1920 Alberni St, Vancouver, BC V6G 1B5, Canada",
+        users_id: 2501
+      },
+      {
+        date: "2018/11/16",
+        name: "td bank",
+        lat: 49.282614,
+        lng: -123.137451,
+        address: "1314 Broughton St, Vancouver, BC V6G 2B7, Canada",
+        users_id: 2501
+      },
+      {
+        date: "2018/11/12",
+        name: "post office",
+        lat: 49.274824,
+        lng: -123.093851,
+        address: "Unnamed Road, Vancouver, BC V6A, Canada",
+        users_id: 2501
+      },
+      {
+        date: "2018/11/19",
+        name: "movie theatre",
+        lat: 49.286808,
+        lng: -123.136849,
+        address: "1601 Comox St, Vancouver, BC V6G 1P4, Canada",
+        users_id: 2501
+      }
+    ]
+
+    return knex('markers')
+    .insert(demoMarkers)
+  })
+
+  const demoDreamTypes = createDemoDreams
+  .then(() => {
+    var demoMarkerTypes = [
+      {
+        markers_id: 2867 ,
+        types_id: 39
+      },
+      {
+        markers_id: 2868,
+        types_id:1
+      },
+       {
+        markers_id: 2869,
+        types_id:14
+      },
+       {
+        markers_id: 2870,
+        types_id: 27
+      },
+       {
+        markers_id: 2871,
+        types_id:40
+      }
+    ]
+
+    return knex('marker_types')
+    .insert(demoMarkerTypes)
+  })
+
+
+  return demoDreamTypes;
 };

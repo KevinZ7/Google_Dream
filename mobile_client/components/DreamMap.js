@@ -35,7 +35,7 @@ export default class DreamMap extends React.Component {
   }
 
   componentDidMount() {
-    fetch(`http://${ip}/markers/1`)
+    fetch(`http://${ip}:8080/markers/2501`)
     .then((results) => {
       return results.json()
     })

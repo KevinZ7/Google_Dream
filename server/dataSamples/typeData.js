@@ -136,6 +136,10 @@ const googleTypes = [
   },
   { name: "zoo",
     color: "yellow"
+  },
+  {
+    name: "other",
+    color: "yellow"
   }
 ]
 
