@@ -9,6 +9,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Collapse from '@material-ui/core/Collapse';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
+import ArrowRight from '@material-ui/icons/ArrowRight';
 
 
 const styles = theme => ({
@@ -42,7 +43,7 @@ class MenuSingleEntity extends React.Component {
 
        <ListItem button id="entitySpecific" className={classes.nested} selected={this.state.selectedIndex === this.props.index} onDoubleClick={event => this.backToNoting()} onClick={() => this.handleListItemClick(event,this.props.index)}>
           <ListItemText inset id="entitySpecific" primary={capitalEntityName} />
-
+          <ArrowRight id="entityarrow" />
        </ListItem>
     )
 
