@@ -28,14 +28,20 @@ export default class ListCard extends React.Component {
   render() {
 
     const marker = this.props.data
+    const imageLink = require(`../assets/type_icons/${marker.marker_name}_icon.png`)
     const capitalMarkerName = marker.marker_name.split(' ').map((word) => word.charAt(0).toUpperCase() + word.substring(1)).join(' ')
+    let capitalTypeName;
+
+    if (marker.type_name !== null) {
+      capitalTypeName = marker.type_name.split('_').map((word) => word.charAt(0).toUpperCase() + word.substring(1)).join(' ')
+    }
 
     return (
       <TouchableOpacity style={styles.container} onPress={() => this.onPressHandler()}>
-          <Image source={require('../assets/images/green_marker.png')} style={styles.image} resizeMode={'contain'}/>
+          <Image source={imageLink} style={styles.image} resizeMode={'contain'}/>
           <View style={styles.textContainer}>
             <Text style={styles.text}>{capitalMarkerName}</Text>
-            <Text>{marker.type_name}</Text>
+            <Text>{capitalTypeName}</Text>
           </View>
           <Text style={styles.dots}>...</Text>
       </TouchableOpacity>
