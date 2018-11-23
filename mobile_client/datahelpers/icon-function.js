@@ -1,11 +1,13 @@
 function generateIconImage (type) {
+  let iconLink 
   switch (type) {
     case 'cafe':
-      require('../assets/type_icons/cafe_icon.png')
+      iconLink = require('../assets/type_icons/cafe_icon.png')
       break;
     default:
-      require('../assets/images/green_marker.png')
+      iconLink = require('../assets/images/green_marker.png')
   }
+  return iconLink
 }
 
 export default generateIconImage
