@@ -29,7 +29,7 @@ export default class ListCard extends React.Component {
   render() {
 
     const marker = this.props.data
-    const imageLink = generateIconImage(marker.marker_name)
+    const imageLink = generateIconImage(marker.type_name)
     const capitalMarkerName = marker.marker_name.split(' ').map((word) => word.charAt(0).toUpperCase() + word.substring(1)).join(' ')
     let capitalTypeName;
 
