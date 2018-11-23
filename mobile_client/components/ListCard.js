@@ -60,7 +60,8 @@ const styles = StyleSheet.create({
     fontWeight: 'bold'
   },
   image: {
-    maxHeight: '100%',
+    maxWidth: '15%',
+    marginRight: 15,
     alignSelf: 'center'
   },
   textContainer: {
