@@ -124,7 +124,7 @@ class NestedList extends React.Component {
       </div>
       :
       <div>
-        <div className="col col-lg-2">
+        <div  className="col col-lg-2">
           <div id="chartData" className={classes.root}>
             {menuCategories}
           </div>

@@ -7,8 +7,8 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import Collapse from '@material-ui/core/Collapse';
-import ExpandLess from '@material-ui/icons/ExpandLess';
-import ExpandMore from '@material-ui/icons/ExpandMore';
+import ArrowRight from '@material-ui/icons/ArrowRight';
+import ArrowDropDown from '@material-ui/icons/ArrowDropDown';
 import MenuSingleEntity from './MenuSingleEntity.jsx'
 
 import data from './data.json'
@@ -61,7 +61,7 @@ class NestedList extends React.Component {
           <ListItem id="chartData"  button onClick={this.handleClick}>
             <img id="icon" src={this.props.image}/>
             <ListItemText  id="title" inset primary={capitalCategory} />
-            {this.state.open ? <ExpandLess id="arrow"/> : <ExpandMore id="arrow" />}
+            {this.state.open ? <ArrowDropDown id="arrow"/> : <ArrowRight id="arrow" />}
           </ListItem>
           <Collapse in={this.state.open} timeout="auto" unmountOnExit>
             <List id="entitySpecific" component="div" disablePadding>

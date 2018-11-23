@@ -8,6 +8,8 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Divider from '@material-ui/core/Divider';
 import InboxIcon from '@material-ui/icons/Inbox';
 import DraftsIcon from '@material-ui/icons/Drafts';
+import PinDrop from '@material-ui/icons/PinDrop';
+import ArrowBack from '@material-ui/icons/ArrowBack';
 
 const styles = theme => ({
   root: {
@@ -18,37 +20,42 @@ const styles = theme => ({
 });
 
 function ListItemLink(props) {
+
   return <ListItem button component="a" {...props} />;
 }
 
 function SimpleList(props) {
+
+
+   function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
   const { classes } = props;
   return (
     <div className={classes.root}>
       <List component="nav">
-        <ListItem button onClick={props.goBack}>
-            <ListItemText  primary="Back" />
+       <ListItemIcon onClick={props.goBack}>
+              <ArrowBack />
+            </ListItemIcon>
+
+          <ListItem button id="cardName" >
+            <ListItemText id="cardName" primary={capitalizeFirstLetter(props.cardInfo.name) } />
           </ListItem>
           <ListItem button>
-            <ListItemIcon>
-              <InboxIcon />
+            <ListItemIcon id="pin">
+              <PinDrop />
             </ListItemIcon>
-            <ListItemText primary={props.cardInfo.name} />
-          </ListItem>
-          <ListItem button>
-            <ListItemIcon>
-              <DraftsIcon />
-            </ListItemIcon>
-            <ListItemText primary={props.cardInfo.emails.length} />
+            <ListItemText id="pinDrop" primary={props.cardInfo.emails.length} secondary="Pins in this location" />
           </ListItem>
         </List>
         <Divider />
         <List component="nav">
           <ListItem button>
-            <ListItemText primary="Trash" />
+            <ListItemText id="postal"primary="V5V-2Y4" />
           </ListItem>
+          <Divider />
           <ListItemLink href="#simple-list">
-            <ListItemText primary="Spam" />
+            <ListItemText id="email" primary="Client List" />
           </ListItemLink>
         </List>
     </div>

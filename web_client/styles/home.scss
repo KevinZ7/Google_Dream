@@ -17,10 +17,18 @@
 #map{
   margin-top:5px;
 }
+
+
 #chartData{
   overflow-y: auto;
   font-size: 54px;
+  padding: 0px;
+  width: 240px;
+
+
 }
+
+
 #title .MuiTypography-subheading-55{
  font-size: 1.5rem;
 }
@@ -59,7 +67,7 @@ li:hover{
 #sideBar{
   font-size: 18px;
   flex-direction: column;
-  background-color: #f5f5f5;
+  background-color: blue;
   color: black;
   width: auto;
   height: 800px;
@@ -120,12 +128,11 @@ span {
 
 .entityInfo {
 background-color: white;
-font-family: 'Roboto', sans-serif;
+font-family: 'Roboto';
 margin-bottom: 3px;
 white-space: initial;
 word-wrap: break-word;
   -webkit-box-shadow: 0 4px 5px 0 rgba(0,0,0,0.14), 0 1px 10px 0 rgba(0,0,0,0.12), 0 2px 4px -1px rgba(0,0,0,0.2);
-
 }
 
 
@@ -138,14 +145,9 @@ word-wrap: break-word;
   height:auto;
 }
 
-#chartData{
-  font-size: 2rem;
-
-
-}
 
 #arrow{
-  margin: -25px;
+
 }
 
 #bell{
@@ -154,9 +156,59 @@ word-wrap: break-word;
 
 #entitySpecific .MuiTypography-subheading-55{
   font-size: 1.5rem;
+  padding-left: 15px;
+  font-family: 'Roboto';
+  width: 200px;
+  height: 20px;
+  border-radius: 20px;
 }
-#entitySpecific .MuiListItem-root-116.MuiListItem-selected-126, .MuiListItem-root-116.MuiListItem-selected-126:hover{
 
-  background-color: #4285F4;
-  opacity: 0.7;
+.MuiCollapse-entered-134{
+  width:250px;
+}
+
+
+
+#entitySpecific .MuiListItem-root-116.MuiListItem-selected-126{
+  font-size: 1.5rem;
+  padding-left: 25px;
+  font-family: 'Roboto';
+  background-color: #D2E3FC;
+  width: 230px;
+  height: 40px;
+  padding-top: 10px;
+
+  border-radius:20px;
+}
+
+
+#cardName .MuiTypography-subheading-55{
+  font-size: 2rem;
+  color: blue;
+}
+
+
+#pinDrop .MuiTypography-subheading-55 {
+  font-size: 1.9rem;
+  color: #5F6368;
+}
+
+#pinDrop .MuiTypography-body1-57{
+  font-size: 1rem;
+  color: #5F6368;
+}
+
+#pin .MuiSvgIcon-root-92{
+  font-size: 34px;
+}
+
+#postal .MuiTypography-subheading-55{
+  font-size: 1.5rem;
+  color: #5F6368;
+
+}
+
+#email .MuiTypography-subheading-55{
+  font-size: 2rem;
+  color: blue
 }
