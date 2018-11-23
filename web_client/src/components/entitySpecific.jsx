@@ -35,18 +35,17 @@ function SimpleList(props) {
     <div className={classes.root}>
       <List component="nav">
        <ListItemIcon onClick={props.goBack}>
-              <ArrowBack />
-            </ListItemIcon>
-
-          <ListItem button id="cardName" >
-            <ListItemText id="cardName" primary={capitalizeFirstLetter(props.cardInfo.name) } />
-          </ListItem>
-          <ListItem button>
-            <ListItemIcon id="pin">
-              <PinDrop />
-            </ListItemIcon>
-            <ListItemText id="pinDrop" primary={props.cardInfo.emails.length} secondary="Pins in this location" />
-          </ListItem>
+          <ArrowBack />
+        </ListItemIcon>
+        <ListItem button id="cardName" >
+          <ListItemText id="cardName" primary={capitalizeFirstLetter(props.cardInfo.name) } />
+        </ListItem>
+        <ListItem button>
+          <ListItemIcon id="pin">
+            <PinDrop />
+          </ListItemIcon>
+          <ListItemText id="pinDrop" primary={props.cardInfo.emails.length} secondary="Pins in this location" />
+        </ListItem>
         </List>
         <Divider />
         <List component="nav">

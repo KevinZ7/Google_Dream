@@ -112,8 +112,13 @@
 }
 
 #entityarrow {
+ position: absolute;
+  opacity: 1;
+  width: 100px;
   opacity: 0;
+   margin-left: 62%;
 }
+
 
 #entitySpecific .MuiListItem-root-116.MuiListItem-selected-126 #entityarrow {
   position: absolute;

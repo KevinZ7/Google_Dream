@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import Main from './main.jsx';
 import Demo from './demos.jsx';
-import SideBar from './sideBar.jsx';
 import ReactDOM from 'react-dom';
 import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink, Button} from 'reactstrap';
 import GoogleApiWrapper from './map.jsx';
@@ -16,7 +15,6 @@ class App extends Component {
       <div>
         <Main />
         <Demo />
-
       </div>
     );
   }
