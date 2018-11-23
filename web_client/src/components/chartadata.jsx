@@ -53,14 +53,13 @@ class NestedList extends React.Component {
     )
 
     let category = this.props.category
-    const capitalCategory = category.split('_').map((word) => word.charAt(0).toUpperCase() + word.substring(1)).join(' ')
 
     return (
       <div className={classes.root}>
         <List  component="nav" >
           <ListItem id="chartData"  button onClick={this.handleClick}>
             <img id="icon" src={this.props.image}/>
-            <ListItemText  id="title" inset primary={capitalCategory} />
+            <ListItemText  id="title" inset primary={category} />
             {this.state.open ? <ArrowDropDown id="arrow"/> : <ArrowRight id="arrow" />}
           </ListItem>
           <Collapse in={this.state.open} timeout="auto" unmountOnExit>

@@ -52,7 +52,7 @@ export default class DreamModeButton extends React.Component {
           Accept: 'application/json',
           'Content-Type': 'application/x-www-form-urlencoded',
         },
-        body: `name=${this.props.searchTerm}&lng=${this.props.currentLocation.longitude}&lat=${this.props.currentLocation.latitude}&users_id=2501&date=${currentDate}&address=${address}`,
+        body: `name=${this.props.searchTerm2}&name2=${this.props.searchTerm}&lng=${this.props.currentLocation.longitude}&lat=${this.props.currentLocation.latitude}&users_id=2501&date=${currentDate}&address=${address}`,
       });
     })
 

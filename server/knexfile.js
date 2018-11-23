@@ -6,8 +6,8 @@ module.exports = {
     client: 'pg',
     connection: {
       host : "localhost",
-      user : "dreamer",
-      password : "password",
+      user : "",
+      password : "",
       database : "google_dream"
     }
   },

@@ -29,7 +29,8 @@ export default class DefaultMap extends React.Component {
       },
       markers: [],
       withinRadius: true,
-      searchTerm: ''
+      searchTerm: '',
+      searchTerm2: ''
 
     }
     this.locationSearch = this.locationSearch.bind(this)
@@ -106,7 +107,8 @@ export default class DefaultMap extends React.Component {
 
   setSearchTerm(term) {
     this.setState({
-      searchTerm: term
+      searchTerm: encodeURIComponent(term),
+      searchTerm2: term
     })
   }
 
@@ -190,7 +192,7 @@ export default class DefaultMap extends React.Component {
         </View>
       </MapView.Callout>
 
-      <DreamModeButton navigation={this.props.navigation} withinRadius={this.state.withinRadius} setWithinRadius={this.setWithinRadius} currentLocation={this.state.userLocation.latlng} searchTerm={this.state.searchTerm}/>
+      <DreamModeButton navigation={this.props.navigation} withinRadius={this.state.withinRadius} setWithinRadius={this.setWithinRadius} currentLocation={this.state.userLocation.latlng} searchTerm={this.state.searchTerm} searchTerm2={this.state.searchTerm2}/>
 
     </View>
     );
