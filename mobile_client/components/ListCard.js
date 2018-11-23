@@ -1,5 +1,6 @@
 import React from 'react';
 import {View, Button, Text, StyleSheet, Alert, TouchableOpacity, Image} from 'react-native';
+import generateIconImage from '../datahelpers/icon-function.js'
 
 export default class ListCard extends React.Component {
 
@@ -28,7 +29,7 @@ export default class ListCard extends React.Component {
   render() {
 
     const marker = this.props.data
-    const imageLink = require(`../assets/type_icons/${marker.marker_name}_icon.png`)
+    const imageLink = generateIconImage(marker.marker_name)
     const capitalMarkerName = marker.marker_name.split(' ').map((word) => word.charAt(0).toUpperCase() + word.substring(1)).join(' ')
     let capitalTypeName;
 
