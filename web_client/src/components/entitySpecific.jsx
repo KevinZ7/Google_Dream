@@ -26,6 +26,12 @@ function ListItemLink(props) {
 
 function SimpleList(props) {
 
+ let emails = props.cardInfo.emails.map((email) => email.email)
+
+
+ function mailToCLient(email){
+    window.open(`mailto:${email}`)
+  }
 
    function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
@@ -49,11 +55,11 @@ function SimpleList(props) {
         </List>
         <Divider />
         <List component="nav">
-          <ListItem button>
+          <ListItem button >
             <ListItemText id="postal"primary="V5V-2Y4" />
           </ListItem>
           <Divider />
-          <ListItemLink href="#simple-list">
+          <ListItemLink href="#simple-list" onClick={() => mailToCLient(emails)}>
             <ListItemText id="email" primary="Client List" />
           </ListItemLink>
         </List>
