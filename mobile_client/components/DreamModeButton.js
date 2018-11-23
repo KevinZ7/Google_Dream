@@ -42,7 +42,13 @@ export default class DreamModeButton extends React.Component {
   }
 
   dropPin() {
-    let currentDate = new Date().toLocaleDateString();
+    var dateObj = new Date();
+    var month = dateObj.getUTCMonth() + 1; //months from 1-12
+    var day = dateObj.getUTCDate();
+    var year = dateObj.getUTCFullYear();
+
+    var currentDate = year + "/" + month + "/" + day;
+    console.log(currentDate)
     fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${this.props.currentLocation.latitude},${this.props.currentLocation.longitude}&key=${GOOGLE_API}`)
     .then((result) => result.json())
     .then((result) => {

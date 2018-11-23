@@ -134,14 +134,13 @@ app.post('/clusters/markers', (req,res) => {
   .join('markers','users.id','users_id')
   .join('marker_types','markers.id','markers_id')
   .join('types','types.id','types_id')
-  .select('markers.name','users.email')
+  .select('markers.name','users.email','markers.lat','markers.lng')
   .whereIn('markers.id',numberMarkerArray)
   .then((result) => {
-    console.log(result)
+
     res.json(result)
   })
 
-  console.log(numberMarkerArray)
 
 })
 

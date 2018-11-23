@@ -29,7 +29,8 @@ function SimpleList(props) {
 
    function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
-}
+  }
+
   const { classes } = props;
   return (
     <div className={classes.root}>
@@ -51,7 +52,7 @@ function SimpleList(props) {
         <Divider />
         <List component="nav">
           <ListItem button>
-            <ListItemText id="postal"primary="V5V-2Y4" />
+            <ListItemText id="postal"primary={props.cardInfo.postalCode} />
           </ListItem>
           <Divider />
           <ListItemLink href="#simple-list">
