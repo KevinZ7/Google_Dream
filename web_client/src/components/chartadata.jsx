@@ -45,7 +45,6 @@ class NestedList extends React.Component {
 
   render() {
     const { classes } = this.props;
-
     let singleEntityItem;
     const entities = [...new Set(this.state.entitiesData.map(entity => entity.name))]
     const menuEntities = entities.map((entity,i) =>

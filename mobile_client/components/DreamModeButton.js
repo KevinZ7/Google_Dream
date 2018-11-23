@@ -133,9 +133,8 @@ export default class DreamModeButton extends React.Component {
         {/* Might want to break the below button into another component */}
         <TouchableOpacity
           activeOpacity={0.8}
-          onPress={() => Alert.alert('Hi')}
           style={styles.buttonSecond}>
-          <Image source={require('../assets/images/logo.png')} style={styles.image} resizeMode="contain"/>
+          <Image source={require('../assets/images/3d-map-icon.png')} style={styles.image} resizeMode="contain"/>
         </TouchableOpacity>
         <PinDropNotification visible={this.state.modalVisible} toggle={this.setModalVisible.bind(this)} setWithinRadius={this.props.setWithinRadius} stopSpring={this.stopSpring.bind(this)}/>
       </View>
