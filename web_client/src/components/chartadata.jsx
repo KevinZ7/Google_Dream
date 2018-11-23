@@ -49,7 +49,7 @@ class NestedList extends React.Component {
     let singleEntityItem;
     const entities = [...new Set(this.state.entitiesData.map(entity => entity.name))]
     const menuEntities = entities.map((entity,i) =>
-      <MenuSingleEntity entityName={entity} showMarkersOfEntity={this.props.showMarkersOfEntity} index={i}/>
+      <MenuSingleEntity entityName={entity} showMarkersOfEntity={this.props.showMarkersOfEntity} index={i} onClick/>
     )
 
     let category = this.props.category
