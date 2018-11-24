@@ -5,8 +5,7 @@ export default class HomeScreenFooter extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.leftText}>SHOW LIST</Text>
-        <Text style={styles.rightText}>FILTER</Text>
+        <Image source={require('../assets/images/homefooter.png')} style={styles.image} resizeMode="contain"/>
       </View>
     )
   }

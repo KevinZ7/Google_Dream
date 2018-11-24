@@ -26,35 +26,41 @@ function ListItemLink(props) {
 
 function SimpleList(props) {
 
+ let emails = props.cardInfo.emails.map((email) => email.email)
+
+
+ function mailToCLient(email){
+    window.open(`mailto:${email}`)
+  }
 
    function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
-}
+  }
+
   const { classes } = props;
   return (
     <div className={classes.root}>
       <List component="nav">
        <ListItemIcon onClick={props.goBack}>
-              <ArrowBack />
-            </ListItemIcon>
-
-          <ListItem button id="cardName" >
-            <ListItemText id="cardName" primary={capitalizeFirstLetter(props.cardInfo.name) } />
-          </ListItem>
-          <ListItem button>
-            <ListItemIcon id="pin">
-              <PinDrop />
-            </ListItemIcon>
-            <ListItemText id="pinDrop" primary={props.cardInfo.emails.length} secondary="Pins in this location" />
-          </ListItem>
+          <ArrowBack />
+        </ListItemIcon>
+        <ListItem button id="cardName" >
+          <ListItemText id="cardName" primary={capitalizeFirstLetter(props.cardInfo.name) } />
+        </ListItem>
+        <ListItem button>
+          <ListItemIcon id="pin">
+            <PinDrop />
+          </ListItemIcon>
+          <ListItemText id="pinDrop" primary={props.cardInfo.emails.length} secondary="Pins in this location" />
+        </ListItem>
         </List>
         <Divider />
         <List component="nav">
           <ListItem button>
-            <ListItemText id="postal"primary="V5V-2Y4" />
+            <ListItemText id="postal"primary={props.cardInfo.postalCode} />
           </ListItem>
           <Divider />
-          <ListItemLink href="#simple-list">
+          <ListItemLink href="#simple-list" onClick={() => mailToCLient(emails)}>
             <ListItemText id="email" primary="Client List" />
           </ListItemLink>
         </List>

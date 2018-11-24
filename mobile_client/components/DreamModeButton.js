@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, Button, StyleSheet, TouchableOpacity, Alert, Image, Animated, Easing } from 'react-native';
 import PinDropNotification from '../components/PinDropNotification.js';
 import {ip,GOOGLE_API} from '../secret.js'
+console.disableYellowBox = true;
 
 export default class DreamModeButton extends React.Component {
   constructor() {
@@ -41,7 +42,13 @@ export default class DreamModeButton extends React.Component {
   }
 
   dropPin() {
-    let currentDate = new Date().toLocaleDateString();
+    var dateObj = new Date();
+    var month = dateObj.getUTCMonth() + 1; //months from 1-12
+    var day = dateObj.getUTCDate();
+    var year = dateObj.getUTCFullYear();
+
+    var currentDate = year + "/" + month + "/" + day;
+    console.log(currentDate)
     fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${this.props.currentLocation.latitude},${this.props.currentLocation.longitude}&key=${GOOGLE_API}`)
     .then((result) => result.json())
     .then((result) => {
@@ -133,9 +140,8 @@ export default class DreamModeButton extends React.Component {
         {/* Might want to break the below button into another component */}
         <TouchableOpacity
           activeOpacity={0.8}
-          onPress={() => Alert.alert('Hi')}
           style={styles.buttonSecond}>
-          <Image source={require('../assets/images/logo.png')} style={styles.image} resizeMode="contain"/>
+          <Image source={require('../assets/images/3d-map-icon.png')} style={styles.image} resizeMode="contain"/>
         </TouchableOpacity>
         <PinDropNotification visible={this.state.modalVisible} toggle={this.setModalVisible.bind(this)} setWithinRadius={this.props.setWithinRadius} stopSpring={this.stopSpring.bind(this)}/>
       </View>

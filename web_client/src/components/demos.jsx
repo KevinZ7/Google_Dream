@@ -11,6 +11,7 @@ import Chartadata from './chartadata.jsx';
 import GoogleApiWrapper from './map.jsx';
 import data from './data.json';
 import EntitySpecific from './entitySpecific.jsx'
+import {GOOGLE_API} from '../../../mobile_client/secret.js'
 
 class NestedList extends React.Component {
   constructor(props){
@@ -54,16 +55,24 @@ class NestedList extends React.Component {
       return res.json(res)
     })
     .then((result) => {
-      console.log(result)
-      this.setState({
-        cardInfo: {
-          name: result[0].name,
-          emails: result
-        }
+      let lat=result[0].lat
+      let lng=result[0].lng
+      fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=${GOOGLE_API}`)
+      .then((response) => response.json())
+      .then((responseJson) => {
+        console.log(responseJson)
+        let postalCode = `${responseJson.results[0].address_components[2].long_name}, ${responseJson.results[0].address_components[4].long_name}, ${responseJson.results[0].address_components[7].long_name}`
+        this.setState({
+          cardInfo: {
+            name: result[0].name,
+            emails: result,
+            postalCode: postalCode
+          }
+        })
       })
-    })
-    .then(() => {
-      this.showEntity()
+      .then(() => {
+        this.showEntity()
+      })
     })
   }
 

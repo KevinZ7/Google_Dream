@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, TextInput, Image } from 'react-native';
 import { MapView, Location, Permissions } from 'expo';
 import {GOOGLE_API,ip} from '../secret.js';
 import DreamScreenButton from './DreamScreenButton.js'
+import moment from 'moment';
 
 
 
@@ -30,7 +31,6 @@ export default class DreamMap extends React.Component {
   }
 
   animation(targetRegion){
-    console.log(targetRegion)
     this.map.animateToRegion(targetRegion,1000)
   }
 
@@ -75,7 +75,7 @@ export default class DreamMap extends React.Component {
               <View style={styles.addressContainer}>
                 <Text style={styles.address}> {this.state.mapMarker.address} </Text>
               </View>
-              <Text style={styles.date}> {this.state.mapMarker.date} </Text>
+              <Text style={styles.date}> {moment.utc(this.state.mapMarker.date).format('MM/DD/YYYY')} </Text>
               </View>
               <View style={styles.arrowBorder} />
               <View style={styles.arrow} />
@@ -177,7 +177,7 @@ const styles = StyleSheet.create({
     borderColor: "grey"
   },
   address: {
-    margin: 10,
+    margin: 12,
     fontSize: 13,
     color: "grey",
   },
