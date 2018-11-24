@@ -69,7 +69,7 @@ export default class DreamScreen extends React.Component {
       this.setState({
         loading: false
       })
-    }, 2000)
+    }, 10000)
     this.setModalVisible(true)
     this._getLocationAsync()
 

@@ -92,6 +92,9 @@ app.post('/markers', (req, res) => {
     var searchName = name
     let apiRequest = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=49.281318,-123.114574&rankby=distance&keyword=${searchName}&key=${secret.GOOGLE_API}`
     fetch(apiRequest, function(error,meta,body){
+      if(error){
+        console.log(error);
+      }
       var object = JSON.parse(body);
       var type = object.results[0].types[0];
       var indexOfType = typeNames.types.indexOf(type)
@@ -131,14 +134,13 @@ app.post('/clusters/markers', (req,res) => {
   .join('markers','users.id','users_id')
   .join('marker_types','markers.id','markers_id')
   .join('types','types.id','types_id')
-  .select('markers.name','users.email')
+  .select('markers.name','users.email','markers.lat','markers.lng')
   .whereIn('markers.id',numberMarkerArray)
   .then((result) => {
-    console.log(result)
+
     res.json(result)
   })
 
-  console.log(numberMarkerArray)
 
 })
 

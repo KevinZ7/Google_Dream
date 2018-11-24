@@ -37,7 +37,8 @@ var ssNew = SpreadsheetApp.create("Finances", 50, 5);
 
    function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
-}
+  }
+
   const { classes } = props;
   return (
     <div className={classes.root}>
@@ -57,8 +58,8 @@ var ssNew = SpreadsheetApp.create("Finances", 50, 5);
         </List>
         <Divider />
         <List component="nav">
-          <ListItem button >
-            <ListItemText id="postal"primary="V5V-2Y4" />
+          <ListItem button>
+            <ListItemText id="postal"primary={props.cardInfo.postalCode} />
           </ListItem>
           <Divider />
           <ListItemLink href="#simple-list" onClick={() => mailToCLient(emails)}>
