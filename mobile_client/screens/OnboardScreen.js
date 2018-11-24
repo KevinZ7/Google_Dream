@@ -4,6 +4,7 @@ import {
   Text,         // Renders text
   View          // Container component
 } from 'react-native';
+import OnboardButton from '../components/OnboardButton.js';
 
 export default class Screens extends Component {
   static navigationOptions = {
@@ -14,6 +15,7 @@ export default class Screens extends Component {
       <View style={[styles.slide, { backgroundColor: '#C04DEE' }]}>
         <Text style={styles.header}>EAT</Text>
         <Text style={styles.text}>Good nutrition is an important part of leading a healthy lifestyle</Text>
+        <OnboardButton text="Test" />
       </View>
     );
   }
