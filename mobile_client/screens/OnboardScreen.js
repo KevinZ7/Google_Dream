@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import {
   StyleSheet,   // CSS-like styles
   Text,         // Renders text
-  View          // Container component
+  View,          // Container component
+  Image
 } from 'react-native';
 import OnboardButton from '../components/OnboardButton.js';
 import Swiper from '../components/Swiper.js';
@@ -15,9 +16,8 @@ export default class Screens extends Component {
     return (
       <Swiper navigation = {this.props.navigation}>
       {/* First screen */}
-      <View style={[styles.slide, { backgroundColor: '#C04DEE' }]}>
-        <Text style={styles.header}>EAT</Text>
-        <Text style={styles.text}>Good nutrition is an important part of leading a healthy lifestyle</Text>
+      <View style={{flex:1, alignItems:'center'}}>
+        <Image style={{flex:1, width: '100%'}} source={require('../assets/images/test-onboarding-screenshot.png')}/>
       </View>
       {/* Second screen */}
       <View style={[styles.slide, { backgroundColor: '#4AAFEE' }]}>
