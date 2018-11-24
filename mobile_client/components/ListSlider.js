@@ -17,7 +17,7 @@ export default class ListSlider extends React.Component {
         <SlidingUpPanel
           allowDragging={this.state.allowDragging}
           showBackdrop={true}
-          height={400}
+          height={450}
           visible={this.props.visible}
           onRequestClose={() => this.props.toggle(false)}>
           <View style={styles.slideContainer}>
@@ -32,7 +32,7 @@ export default class ListSlider extends React.Component {
                 keyExtractor={(item, index) => index.toString()}
                 renderItem={({item}) => <ListCard key={item.id} data={item} markerToMap={this.props.markerToMap} animation={this.props.animation}/>}
               />
-              <Image source={require('../assets/images/dream_bg.png')} style={styles.image}/>
+              <Image source={require('../assets/images/dream_footer_final.png')} style={styles.image}/>
               <TouchableOpacity
                 activeOpacity={0.8}
                 onPress={() => this.props.navigation.goBack()}
@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
     flex: 1,
     position: 'absolute',
     width: '100%',
-    bottom: 450,
+    bottom: 500,
     zIndex: -1,
   },
   slideContainer: {
@@ -73,8 +73,10 @@ const styles = StyleSheet.create({
     margin: 10,
   },
   image: {
+    bottom: -1,
+    marginLeft: 20,
     maxWidth: '100%',
-    maxHeight: '50%'
+    maxHeight: '40%'
   },
   imageButton: {
     flex: 1,
@@ -88,7 +90,7 @@ const styles = StyleSheet.create({
     height:60,
     backgroundColor:'#fff',
     position: 'absolute',
-    bottom: 10,
+    bottom: -10,
     right: 0,
     borderRadius:100,
     margin: 20,

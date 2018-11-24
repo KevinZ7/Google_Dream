@@ -1,5 +1,5 @@
 function generateIconImage (type) {
-  let iconLink 
+  let iconLink
   switch (type) {
     case 'amusement_park':
       iconLink = require('../assets/type_icons/amusement_park_icon.png')
@@ -138,7 +138,7 @@ function generateIconImage (type) {
       break;    
     case 'zoo':
       iconLink = require('../assets/type_icons/zoo_icon.png')
-      break; 
+      break;
     default:
       iconLink = require('../assets/type_icons/florist_icon.png')
   }
