@@ -240,7 +240,7 @@ export default class OnboardingScreens extends Component {
         {lastScreen
           // Show this button on the last screen
           // TODO: Add a handler that would send a user to your app after onboarding is complete
-          ? <OnboardButton text="Start Now" onPress={() => console.log('Send me to the app')} />
+          ? <OnboardButton text="Start Now" onPress={() => this.props.navigation.navigate('Home')} />
           // Or this one otherwise
           : <OnboardButton text="Continue" onPress={() => this.swipe()} />
         }

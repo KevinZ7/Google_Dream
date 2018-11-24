@@ -13,7 +13,7 @@ export default class Screens extends Component {
   }
   render() {
     return (
-      <Swiper>
+      <Swiper navigation = {this.props.navigation}>
       {/* First screen */}
       <View style={[styles.slide, { backgroundColor: '#C04DEE' }]}>
         <Text style={styles.header}>EAT</Text>
