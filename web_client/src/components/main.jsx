@@ -56,76 +56,19 @@ const styles = theme => ({
 });
 
 class PrimarySearchAppBar extends React.Component {
-  state = {
-    anchorEl: null,
-    mobileMoreAnchorEl: null,
-  };
-
-  handleProfileMenuOpen = event => {
-    this.setState({ anchorEl: event.currentTarget });
-  };
-
-  handleMenuClose = () => {
-    this.setState({ anchorEl: null });
-    this.handleMobileMenuClose();
-  };
-
-  handleMobileMenuOpen = event => {
-    this.setState({ mobileMoreAnchorEl: event.currentTarget });
-  };
-
-  handleMobileMenuClose = () => {
-    this.setState({ mobileMoreAnchorEl: null });
-  };
 
   render() {
-    const { anchorEl, mobileMoreAnchorEl } = this.state;
+
     const { classes } = this.props;
-    const isMenuOpen = Boolean(anchorEl);
-    const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
-
-    const renderMenu = (
-      <Menu>
-        <MenuItem onClick={this.handleMenuClose}>Profile</MenuItem>
-        <MenuItem onClick={this.handleMenuClose}>My account</MenuItem>
-      </Menu>
-    );
-
-    const renderMobileMenu = (
-      <Menu>
-        <MenuItem>
-          <IconButton color="inherit">
-            <MailIcon />
-          </IconButton>
-          <p>Messages</p>
-        </MenuItem>
-        <MenuItem>
-          <IconButton color="inherit">
-
-              <NotificationsIcon />
-
-          </IconButton>
-          <p>Notifications</p>
-        </MenuItem>
-        <MenuItem >
-          <IconButton color="inherit">
-            <AccountCircle />
-          </IconButton>
-          <p>Profile</p>
-        </MenuItem>
-      </Menu>
-    );
 
     return (
       <div className={classes.root}>
         <AppBar id="navBar"position="static">
           <Toolbar>
-
             <img id="googleImage" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/2000px-Google_2015_logo.svg.png" width="100" height="35" />
             <Typography id="dreamWord"className={classes.title} variant="h6" color="inherit" noWrap>
               DREAM
             </Typography>
-
             <div className={classes.grow} />
             <div className={classes.sectionDesktop}>
               <IconButton >
@@ -138,14 +81,8 @@ class PrimarySearchAppBar extends React.Component {
                 <img  src="https://raw.githubusercontent.com/eladnava/material-letter-icons/master/dist/png/M.png" width="45" height="45" />
               </IconButton>
             </div>
-            <div className={classes.sectionMobile}>
-              <IconButton aria-haspopup="true" onClick={this.handleMobileMenuOpen} color="inherit">
-                <MoreIcon />
-              </IconButton>
-            </div>
           </Toolbar>
         </AppBar>
-
       </div>
     );
   }

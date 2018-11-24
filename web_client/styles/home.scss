@@ -22,6 +22,7 @@
   overflow-y: auto;
   padding: 0px;
   width: 240px;
+  overflow-x: hidden;
 }
 
 #title .MuiTypography-subheading-55{
@@ -46,6 +47,7 @@
   width: 200px;
   height: 20px;
   border-radius: 20px;
+   overflow-x: hidden;
 }
 
 .MuiCollapse-entered-134{
@@ -112,8 +114,13 @@
 }
 
 #entityarrow {
+ position: absolute;
+  opacity: 1;
+  width: 100px;
   opacity: 0;
+   margin-left: 62%;
 }
+
 
 #entitySpecific .MuiListItem-root-116.MuiListItem-selected-126 #entityarrow {
   position: absolute;
@@ -130,4 +137,5 @@
   width: 200px;
   height: 20px;
   border-radius: 20px;
+   overflow-x: hidden;
 }
