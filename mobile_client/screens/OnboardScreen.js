@@ -5,6 +5,7 @@ import {
   View          // Container component
 } from 'react-native';
 import OnboardButton from '../components/OnboardButton.js';
+import Swiper from '../components/Swiper.js';
 
 export default class Screens extends Component {
   static navigationOptions = {
@@ -12,11 +13,23 @@ export default class Screens extends Component {
   }
   render() {
     return (
+      <Swiper>
+      {/* First screen */}
       <View style={[styles.slide, { backgroundColor: '#C04DEE' }]}>
         <Text style={styles.header}>EAT</Text>
         <Text style={styles.text}>Good nutrition is an important part of leading a healthy lifestyle</Text>
-        <OnboardButton text="Test" />
       </View>
+      {/* Second screen */}
+      <View style={[styles.slide, { backgroundColor: '#4AAFEE' }]}>
+        <Text style={styles.header}>PRAY</Text>
+        <Text style={styles.text}>Prayer is one of the most important things a Christian can do</Text>
+      </View>
+      {/* Third screen */}
+      <View style={[styles.slide, { backgroundColor: '#FC515B' }]}>
+        <Text style={styles.header}>LOVE</Text>
+        <Text style={styles.text}>Where there is love there is life</Text>
+      </View>
+    </Swiper>
     );
   }
 }
