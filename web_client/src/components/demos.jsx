@@ -138,34 +138,50 @@ class NestedList extends React.Component {
         <div> 
           <div id="chartData" className={classes.root}>
             {menuCategories}
-
           </div>
-            <Card>
+            <Card style={{marginTop: 50}}>
+              <div style={newStyles.title}>
+                Google Business Tools
+              </div>
               <CardContent style={newStyles.bizToolsContainer}>
-                <span style={newStyles.title}>
-                  Google Business Tools
-                </span>
                 <div style={newStyles.bizToolsBox}>
-                  <img src='../../styles/Images/cafe_icon_grey.png' style={newStyles.image}/>
-                  <img src='../../styles/Images/cafe_icon_grey.png' style={newStyles.image}/>
-                  <img src='../../styles/Images/cafe_icon_grey.png' style={newStyles.image}/>
-                  <img src='../../styles/Images/cafe_icon_grey.png' style={newStyles.image}/>
-                  <img src='../../styles/Images/cafe_icon_grey.png' style={newStyles.image}/>
-                  <img src='../../styles/Images/cafe_icon_grey.png' style={newStyles.image}/>
-                  <img src='../../styles/Images/cafe_icon_grey.png' style={newStyles.image}/>
-                  <img src='../../styles/Images/cafe_icon_grey.png' style={newStyles.image}/>
-                  <img src='../../styles/Images/cafe_icon_grey.png' style={newStyles.image}/>
-                  <img src='../../styles/Images/cafe_icon_grey.png' style={newStyles.image}/>
-                  <img src='../../styles/Images/cafe_icon_grey.png' style={newStyles.image}/>
-                  <img src='../../styles/Images/cafe_icon_grey.png' style={newStyles.image}/>
-                  <img src='../../styles/Images/cafe_icon_grey.png' style={newStyles.image}/>
-                  <img src='../../styles/Images/cafe_icon_grey.png' style={newStyles.image}/>
-                  <img src='../../styles/Images/cafe_icon_grey.png' style={newStyles.image}/>
-                  <img src='../../styles/Images/cafe_icon_grey.png' style={newStyles.image}/>
-                  <img src='../../styles/Images/cafe_icon_grey.png' style={newStyles.image}/>
-                  <img src='../../styles/Images/cafe_icon_grey.png' style={newStyles.image}/>
-                  <img src='../../styles/Images/cafe_icon_grey.png' style={newStyles.image}/>
-                  <img src='../../styles/Images/cafe_icon_grey.png' style={newStyles.image}/>
+                  <img src='../../styles/Images/google-biz-icons/google_my_business.png' style={newStyles.image}/>
+                  <img src='../../styles/Images/google-biz-icons/assistant.png' style={newStyles.image}/>
+                  <img src='../../styles/Images/google-biz-icons/analytics.png' style={newStyles.image}/>
+                  <img src='../../styles/Images/google-biz-icons/adwords.png' style={newStyles.image}/>
+                  <img src='../../styles/Images/google-biz-icons/vault.png' style={newStyles.image}/>
+                  <img src='../../styles/Images/google-biz-icons/trends.png' style={newStyles.image}/>
+                  <img src='../../styles/Images/google-biz-icons/ads.png' style={newStyles.image}/>
+                  <img src='../../styles/Images/google-biz-icons/chrome.png' style={newStyles.image}/>
+                  <img src='../../styles/Images/google-biz-icons/drive.png' style={newStyles.image}/>
+                  <img src='../../styles/Images/google-biz-icons/gmail.png' style={newStyles.image}/>
+                  <img src='../../styles/Images/google-biz-icons/calendar.png' style={newStyles.image}/>
+                  <img src='../../styles/Images/google-biz-icons/sites.png' style={newStyles.image}/>
+                  <img src='../../styles/Images/google-biz-icons/keep.png' style={newStyles.image}/>
+                  <img src='../../styles/Images/google-biz-icons/slides.png' style={newStyles.image}/>
+                  <img src='../../styles/Images/google-biz-icons/sheets.png' style={newStyles.image}/>
+                  <img src='../../styles/Images/google-biz-icons/docs.png' style={newStyles.image}/>
+                  <img src='../../styles/Images/google-biz-icons/forms.png' style={newStyles.image}/>
+                  <img src='../../styles/Images/google-biz-icons/blogger.png' style={newStyles.image}/>
+                  <img src='../../styles/Images/google-biz-icons/patents.png' style={newStyles.image}/>
+                  <img src='../../styles/Images/google-biz-icons/meet.png' style={newStyles.image}/>
+                  <img src='../../styles/Images/google-biz-icons/insights.png' style={newStyles.image}/>
+                  <img src='../../styles/Images/google-biz-icons/hangouts.png' style={newStyles.image}/>
+                  <img src='../../styles/Images/google-biz-icons/hangouts_on_air.png' style={newStyles.image}/>
+                  <img src='../../styles/Images/google-biz-icons/google_plus.png' style={newStyles.image}/>
+                  <img src='../../styles/Images/google-biz-icons/gsa.png' style={newStyles.image}/>
+                  <img src='../../styles/Images/google-biz-icons/greentea.png' style={newStyles.image}/>
+                  <img src='../../styles/Images/google-biz-icons/google_sync.png' style={newStyles.image}/>
+                  <img src='../../styles/Images/google-biz-icons/google_optimize.png' style={newStyles.image}/>
+                  <img src='../../styles/Images/google-biz-icons/google_hire.png' style={newStyles.image}/>
+                  <img src='../../styles/Images/google-biz-icons/google_domains.png' style={newStyles.image}/>
+                  <img src='../../styles/Images/google-biz-icons/google_data_studio.png' style={newStyles.image}/>
+                  <img src='../../styles/Images/google-biz-icons/google_best_practices.png' style={newStyles.image}/>
+                  <img src='../../styles/Images/google-biz-icons/firebase.png' style={newStyles.image}/>
+                  <img src='../../styles/Images/google-biz-icons/files_go.png' style={newStyles.image}/>
+                  <img src='../../styles/Images/google-biz-icons/cloud_print.png' style={newStyles.image}/>
+
+
                 </div>
               </CardContent>
             </Card>
@@ -181,8 +197,7 @@ class NestedList extends React.Component {
 const newStyles = {
   bizToolsContainer: {
     height: 200, 
-    overflow: 'auto',
-    marginTop: 20
+    overflow: 'auto'
   },
   bizToolsBox: {
     display: 'flex',
@@ -195,6 +210,8 @@ const newStyles = {
   },
   title: {
     fontWeight: 500,
+    paddingTop: 20,
+    paddingLeft: 25
   },
   image: {
     height: 50,
