@@ -11,8 +11,12 @@ import Chartadata from './chartadata.jsx';
 import GoogleApiWrapper from './map.jsx';
 import data from './data.json';
 import EntitySpecific from './entitySpecific.jsx'
-import {GOOGLE_API} from '../../../mobile_client/secret.js'
+import {GOOGLE_API} from '../../../mobile_client/secret.js';
 import Businesstools from './businesstools.jsx'
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import Typography from '@material-ui/core/Typography';
 
 class NestedList extends React.Component {
   constructor(props){
@@ -112,9 +116,7 @@ class NestedList extends React.Component {
 
   render() {
     const { classes } = this.props;
-
     const categories = [...new Set(this.state.menuData.map(category => category.name))]
-
     const menuCategories = categories.map((category) => {
         let image = `../../styles/Images/${category}_icon_grey.png`
         return <Chartadata key={category} category={category} image={image} showMarkersOfEntity={this.showMarkersOfEntity}/>
@@ -122,10 +124,10 @@ class NestedList extends React.Component {
     )
 
   return (
-    <div>
+    <div> {/* parent */}
       {this.state.entitySpecific?
       <div>
-        <div className="col col-lg-2">
+        <div className="col col-lg-2"> {/* entity menu */}
           <div id="chartData" className={classes.root}>
             <EntitySpecific goBack={this.handleEntityChange} cardInfo={this.state.cardInfo}/>
           </div>
@@ -134,10 +136,56 @@ class NestedList extends React.Component {
       </div>
       :
       <div>
-        <div  className="col col-lg-2">
+        <div className="col col-lg-2">
           <div id="chartData" className={classes.root}>
             {menuCategories}
           </div>
+            <Card style={{marginTop: 50}}>
+              <div id="busniessTools" style={newStyles.title}>
+                Google Business Tools
+              </div>
+              <CardContent style={newStyles.bizToolsContainer}>
+                <div style={newStyles.bizToolsBox}>
+                  <img src='../../styles/Images/google-biz-icons/google_my_business.png' style={newStyles.image}/>
+                  <img src='../../styles/Images/google-biz-icons/assistant.png' style={newStyles.image}/>
+                  <img src='../../styles/Images/google-biz-icons/analytics.png' style={newStyles.image}/>
+                  <img src='../../styles/Images/google-biz-icons/adwords.png' style={newStyles.image}/>
+                  <img src='../../styles/Images/google-biz-icons/vault.png' style={newStyles.image}/>
+                  <img src='../../styles/Images/google-biz-icons/trends.png' style={newStyles.image}/>
+                  <img src='../../styles/Images/google-biz-icons/ads.png' style={newStyles.image}/>
+                  <img src='../../styles/Images/google-biz-icons/chrome.png' style={newStyles.image}/>
+                  <img src='../../styles/Images/google-biz-icons/drive.png' style={newStyles.image}/>
+                  <img src='../../styles/Images/google-biz-icons/gmail.png' style={newStyles.image}/>
+                  <img src='../../styles/Images/google-biz-icons/calendar.png' style={newStyles.image}/>
+                  <img src='../../styles/Images/google-biz-icons/sites.png' style={newStyles.image}/>
+                  <img src='../../styles/Images/google-biz-icons/keep.png' style={newStyles.image}/>
+                  <img src='../../styles/Images/google-biz-icons/slides.png' style={newStyles.image}/>
+                  <img src='../../styles/Images/google-biz-icons/sheets.png' style={newStyles.image}/>
+                  <img src='../../styles/Images/google-biz-icons/docs.png' style={newStyles.image}/>
+                  <img src='../../styles/Images/google-biz-icons/forms.png' style={newStyles.image}/>
+                  <img src='../../styles/Images/google-biz-icons/blogger.png' style={newStyles.image}/>
+                  <img src='../../styles/Images/google-biz-icons/patents.png' style={newStyles.image}/>
+                  <img src='../../styles/Images/google-biz-icons/meet.png' style={newStyles.image}/>
+                  <img src='../../styles/Images/google-biz-icons/insights.png' style={newStyles.image}/>
+                  <img src='../../styles/Images/google-biz-icons/hangouts.png' style={newStyles.image}/>
+                  <img src='../../styles/Images/google-biz-icons/hangouts_on_air.png' style={newStyles.image}/>
+                  <img src='../../styles/Images/google-biz-icons/google_plus.png' style={newStyles.image}/>
+                  <img src='../../styles/Images/google-biz-icons/gsa.png' style={newStyles.image}/>
+                  <img src='../../styles/Images/google-biz-icons/greentea.png' style={newStyles.image}/>
+                  <img src='../../styles/Images/google-biz-icons/google_sync.png' style={newStyles.image}/>
+                  <img src='../../styles/Images/google-biz-icons/google_optimize.png' style={newStyles.image}/>
+                  <img src='../../styles/Images/google-biz-icons/google_hire.png' style={newStyles.image}/>
+                  <img src='../../styles/Images/google-biz-icons/google_domains.png' style={newStyles.image}/>
+                  <img src='../../styles/Images/google-biz-icons/google_data_studio.png' style={newStyles.image}/>
+                  <img src='../../styles/Images/google-biz-icons/google_best_practices.png' style={newStyles.image}/>
+                  <img src='../../styles/Images/google-biz-icons/firebase.png' style={newStyles.image}/>
+                  <img src='../../styles/Images/google-biz-icons/files_go.png' style={newStyles.image}/>
+                  <img src='../../styles/Images/google-biz-icons/cloud_print.png' style={newStyles.image}/>
+
+
+                </div>
+              </CardContent>
+            </Card>
         </div>
         <GoogleApiWrapper  clusterClickHandler={this.clusterClickHandler} mapMarkers={this.state.mapData}/>
      </div>
@@ -147,13 +195,38 @@ class NestedList extends React.Component {
   }
 }
 
+const newStyles = {
+  bizToolsContainer: {
+    height: 200,
+    overflow: 'auto'
+  },
+  bizToolsBox: {
+    display: 'flex',
+    font: 'roboto',
+    flexWrap: 'wrap',
+    marginTop: 20,
+    borderTop: 1,
+    borderTopStyle: 'solid',
+    borderTopColor: '#F1F3F4'
+  },
+  title: {
+    fontWeight: 500,
+    paddingTop: 20,
+    paddingLeft: 25
+  },
+  image: {
+    height: 50,
+    margin: 6
+  }
+}
+
 const styles = theme => ({
   root: {
     width: '100%',
     maxWidth: 360,
     maxHeight: 800,
     backgroundColor: theme.palette.background.paper,
-   marginTop: 20,
+    marginTop: 20,
   },
   nested: {
     paddingLeft: theme.spacing.unit * 4,

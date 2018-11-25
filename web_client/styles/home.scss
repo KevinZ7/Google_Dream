@@ -1,5 +1,5 @@
 #dreamWord{
-   font-family: 'Roboto', sans-serif;
+  font-family: 'Roboto', sans-serif;
   display: inline;
   font-size: 2.375rem;
   color: #5f6368;
@@ -20,19 +20,20 @@
 #chartData{
   overflow-y: auto;
   padding: 0px;
-  width: 240px;
+  width: 25rem;
   overflow-x: hidden;
 }
 
 #title .MuiTypography-subheading-55{
  font-size: 1.5rem;
- width: 100px;
+ width: 100%;
 }
 
-#icon{
+.icon{
   margin-right: 20px;
-  width:3vw;
-  height:auto;
+  width: 3rem;
+  height: auto;
+  margin-left: 2rem;
 }
 
 #bell{
@@ -40,13 +41,9 @@
 }
 
 #entitySpecific .MuiTypography-subheading-55{
-  font-size: 1.5rem;
-  padding-left: 15px;
+  font-size: 1.4rem;
   font-family: 'Roboto';
-  width: 200px;
-  height: 20px;
-  border-radius: 20px;
-   overflow-x: hidden;
+  margin-left: 1rem;
 }
 
 .MuiCollapse-entered-134{
@@ -66,26 +63,10 @@
 
 
 
-
-
-#entitySpecific .MuiListItem-root-116.MuiListItem-selected-126 {
-  font-size: 1.5rem;
-  padding-left: 25px;
-  font-family: 'Roboto';
-  background-color: #D2E3FC;
-  width: 230px;
-  height: 40px;
-  padding-top: 10px;
-
-  border-radius:20px;
-}
-
-
 #cardName .MuiTypography-subheading-55{
   font-size: 2rem;
   color: blue;
 }
-
 
 #pinDrop .MuiTypography-subheading-55 {
   font-size: 1.9rem;
@@ -102,9 +83,8 @@
 }
 
 #postal .MuiTypography-subheading-55{
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   color: #5F6368;
-
 }
 
 #email .MuiTypography-subheading-55{
@@ -113,39 +93,39 @@
 }
 
 #entityarrow {
- position: absolute;
-  opacity: 1;
-  width: 100px;
-  opacity: 0;
-   margin-left: 62%;
-}
-
-
-#entitySpecific .MuiListItem-root-116.MuiListItem-selected-126 #entityarrow {
   position: absolute;
   opacity: 1;
   width: 100px;
+  opacity: 0;
   margin-left: 62%;
 }
 
-#entitySpecific .MuiListItem-root-116.MuiListItem-selected-126 .MuiTypography-subheading-55 {
+
+#entitySpecific .MuiListItem-root-118.MuiListItem-selected-128 #entityarrow {
+  position: absolute;
+  opacity: 1;
+  width: 100px;
+}
+
+#entitySpecific .MuiListItem-root-118.MuiListItem-selected-128, .MuiListItem-root-118.MuiListItem-selected-128:hover {
+  background-color: #D2E3FC;
+  font-size: 1.5rem;
+  font-family: 'Roboto';
+  border-radius: 20px;
+}
+
+
+#entitySpecific .MenuSingleEntity-nested-139{
+  width: 24rem;
+}
+
+#entitySpecific .MuiListItem-root-118.MuiListItem-selected-128 .MuiTypography-subheading-55 {
   color: blue;
   font-size: 1.5rem;
-  padding-left: 15px;
   font-family: 'Roboto';
-  width: 200px;
-  height: 20px;
-  border-radius: 20px;
-   overflow-x: hidden;
+
 }
 
-#bizTools{
-   width: 3.5vw;
-  margin: 5%;
+#busniessTools{
+  margin-left: 2rem;
 }
-.bizToolBorder.ImageAvatars-row-103{
-  margin-right: 3.5vw;
-}
-
-
-

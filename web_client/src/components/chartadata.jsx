@@ -63,7 +63,7 @@ class NestedList extends React.Component {
       <div className={classes.root}>
         <List  component="nav" >
           <ListItem id="chartData"  button onClick={this.handleClick}>
-            <img id="icon" src={this.props.image}/>
+            <img className="icon" src={this.props.image}/>
             <ListItemText  id="title" inset primary={capitalizeFirstLetter(category)} />
             {this.state.open ? <ArrowDropDown id="arrow"/> : <ArrowRight id="arrow" />}
           </ListItem>
