@@ -12,6 +12,7 @@ import GoogleApiWrapper from './map.jsx';
 import data from './data.json';
 import EntitySpecific from './entitySpecific.jsx'
 import {GOOGLE_API} from '../../../mobile_client/secret.js'
+import Businesstools from './businesstools.jsx'
 
 class NestedList extends React.Component {
   constructor(props){
@@ -136,7 +137,6 @@ class NestedList extends React.Component {
         <div  className="col col-lg-2">
           <div id="chartData" className={classes.root}>
             {menuCategories}
-
           </div>
         </div>
         <GoogleApiWrapper  clusterClickHandler={this.clusterClickHandler} mapMarkers={this.state.mapData}/>

@@ -28,7 +28,6 @@ function SimpleList(props) {
 
  let emails = props.cardInfo.emails.map((email) => email.email)
 
-var ssNew = SpreadsheetApp.create("Finances", 50, 5);
 
 
  function mailToCLient(email){
@@ -64,9 +63,6 @@ var ssNew = SpreadsheetApp.create("Finances", 50, 5);
           <Divider />
           <ListItemLink href="#simple-list" onClick={() => mailToCLient(emails)}>
             <ListItemText id="email" primary="Client List" />
-          </ListItemLink>
-          <ListItemLink href="#simple-list" onClick={ssNew}>
-            <ListItemText id="email" primary="" />
           </ListItemLink>
         </List>
     </div>
