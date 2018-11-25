@@ -160,6 +160,72 @@ exports.seed = function(knex) {
     .insert(demoMarkerTypes)
   })
 
+  const createCafeMarkers = demoDreamTypes
+  .then(() => {
+    var demoCafeMarkers = [
+      {
+        date: "2018/11/15",
+        name: "Elysian",
+        lat: 49.281441,
+        lng: -123.135435,
+        address: "503-, 1250 Burnaby St, Vancouver, BC V6E 1P6, Canada",
+        users_id: 1
+      },
+      {
+        date: "2018/11/12",
+        name: "Donuts",
+        lat:  49.293195,
+        lng: -123.136916,
+        address: "1920 Alberni St, Vancouver, BC V6G 1B5, Canada",
+        users_id: 2
+      },
+      {
+        date: "2018/11/16",
+        name: "Tacos",
+        lat: 49.282614,
+        lng: -123.137451,
+        address: "1314 Broughton St, Vancouver, BC V6G 2B7, Canada",
+        users_id: 3
+      },
+      {
+        date: "2018/11/12",
+        name: "Wendy's",
+        lat: 49.274824,
+        lng: -123.093851,
+        address: "Unnamed Road, Vancouver, BC V6A, Canada",
+        users_id: 4
+      }
+    ]
 
-  return demoDreamTypes;
+    return knex('markers')
+    .insert(demoCafeMarkers)
+  })
+
+  const createCafeTypes = createCafeMarkers
+  .then(() => {
+    var demoCafeTypes = [
+      {
+        markers_id: 2872 ,
+        types_id: 8
+      },
+      {
+        markers_id: 2873,
+        types_id:8
+      },
+       {
+        markers_id: 2874,
+        types_id:8
+      },
+       {
+        markers_id: 2875,
+        types_id: 8
+      }
+    ]
+
+    return knex('marker_types')
+    .insert(demoCafeTypes)
+  })
+
+
+  return createCafeTypes;
 };
