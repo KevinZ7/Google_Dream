@@ -121,10 +121,10 @@ class NestedList extends React.Component {
     )
 
   return (
-    <div>
+    <div> {/* parent */}
       {this.state.entitySpecific?
       <div>
-        <div className="col col-lg-2">
+        <div className="col col-lg-3"> {/* entity menu */}
           <div id="chartData" className={classes.root}>
             <EntitySpecific goBack={this.handleEntityChange} cardInfo={this.state.cardInfo}/>
           </div>
@@ -132,8 +132,8 @@ class NestedList extends React.Component {
         <GoogleApiWrapper mapMarkers={this.state.mapData} entity={this.handleEntityChange} clusterClickHandler={this.clusterClickHandler}/>
       </div>
       :
-      <div>
-        <div  className="col col-lg-2">
+      <div id="main-container"> 
+        <div> 
           <div id="chartData" className={classes.root}>
             {menuCategories}
 

@@ -1,6 +1,6 @@
 
 #dreamWord{
-   font-family: 'Roboto', sans-serif;
+  font-family: 'Roboto', sans-serif;
   display: inline;
   font-size: 2.375rem;
   color: #5f6368;
@@ -21,7 +21,7 @@
 #chartData{
   overflow-y: auto;
   padding: 0px;
-  width: 240px;
+  width: 50rem;
   overflow-x: hidden;
 }
 
@@ -30,10 +30,11 @@
  width: 100px;
 }
 
-#icon{
+.icon{
   margin-right: 20px;
-  width:3vw;
-  height:auto;
+  width: 5rem;
+  height: auto;
+  margin-left: 2rem;
 }
 
 #bell{
@@ -65,10 +66,6 @@
   opacity:1;
 }
 
-
-
-
-
 #entitySpecific .MuiListItem-root-116.MuiListItem-selected-126 {
   font-size: 1.5rem;
   padding-left: 25px;
@@ -81,12 +78,10 @@
   border-radius:20px;
 }
 
-
 #cardName .MuiTypography-subheading-55{
   font-size: 2rem;
   color: blue;
 }
-
 
 #pinDrop .MuiTypography-subheading-55 {
   font-size: 1.9rem;
@@ -105,7 +100,6 @@
 #postal .MuiTypography-subheading-55{
   font-size: 1.5rem;
   color: #5F6368;
-
 }
 
 #email .MuiTypography-subheading-55{
@@ -118,7 +112,7 @@
   opacity: 1;
   width: 100px;
   opacity: 0;
-   margin-left: 62%;
+  margin-left: 62%;
 }
 
 
@@ -139,3 +133,13 @@
   border-radius: 20px;
    overflow-x: hidden;
 }
+
+#main-container {
+  display: flex;
+  width: 100vw
+}
+
+.map-container {
+  width: 100vw;
+}
+
