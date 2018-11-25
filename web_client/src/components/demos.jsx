@@ -1,17 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import ListSubheader from '@material-ui/core/ListSubheader';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import Collapse from '@material-ui/core/Collapse';
+// import ListSubheader from '@material-ui/core/ListSubheader';
+// import List from '@material-ui/core/List';
+// import ListItem from '@material-ui/core/ListItem';
+// import ListItemIcon from '@material-ui/core/ListItemIcon';
+// import ListItemText from '@material-ui/core/ListItemText';
+// import Collapse from '@material-ui/core/Collapse';
 import Chartadata from './chartadata.jsx';
 import GoogleApiWrapper from './map.jsx';
-import data from './data.json';
+// import data from './data.json';
 import EntitySpecific from './entitySpecific.jsx'
 import {GOOGLE_API} from '../../../mobile_client/secret.js'
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import Typography from '@material-ui/core/Typography';
 
 class NestedList extends React.Component {
   constructor(props){
@@ -111,9 +115,7 @@ class NestedList extends React.Component {
 
   render() {
     const { classes } = this.props;
-
     const categories = [...new Set(this.state.menuData.map(category => category.name))]
-
     const menuCategories = categories.map((category) => {
         let image = `../../styles/Images/${category}_icon_grey.png`
         return <Chartadata key={category} category={category} image={image} showMarkersOfEntity={this.showMarkersOfEntity}/>
@@ -138,6 +140,35 @@ class NestedList extends React.Component {
             {menuCategories}
 
           </div>
+            <Card>
+              <CardContent style={newStyles.bizToolsContainer}>
+                <span style={newStyles.title}>
+                  Google Business Tools
+                </span>
+                <div style={newStyles.bizToolsBox}>
+                  <img src='../../styles/Images/cafe_icon_grey.png' style={newStyles.image}/>
+                  <img src='../../styles/Images/cafe_icon_grey.png' style={newStyles.image}/>
+                  <img src='../../styles/Images/cafe_icon_grey.png' style={newStyles.image}/>
+                  <img src='../../styles/Images/cafe_icon_grey.png' style={newStyles.image}/>
+                  <img src='../../styles/Images/cafe_icon_grey.png' style={newStyles.image}/>
+                  <img src='../../styles/Images/cafe_icon_grey.png' style={newStyles.image}/>
+                  <img src='../../styles/Images/cafe_icon_grey.png' style={newStyles.image}/>
+                  <img src='../../styles/Images/cafe_icon_grey.png' style={newStyles.image}/>
+                  <img src='../../styles/Images/cafe_icon_grey.png' style={newStyles.image}/>
+                  <img src='../../styles/Images/cafe_icon_grey.png' style={newStyles.image}/>
+                  <img src='../../styles/Images/cafe_icon_grey.png' style={newStyles.image}/>
+                  <img src='../../styles/Images/cafe_icon_grey.png' style={newStyles.image}/>
+                  <img src='../../styles/Images/cafe_icon_grey.png' style={newStyles.image}/>
+                  <img src='../../styles/Images/cafe_icon_grey.png' style={newStyles.image}/>
+                  <img src='../../styles/Images/cafe_icon_grey.png' style={newStyles.image}/>
+                  <img src='../../styles/Images/cafe_icon_grey.png' style={newStyles.image}/>
+                  <img src='../../styles/Images/cafe_icon_grey.png' style={newStyles.image}/>
+                  <img src='../../styles/Images/cafe_icon_grey.png' style={newStyles.image}/>
+                  <img src='../../styles/Images/cafe_icon_grey.png' style={newStyles.image}/>
+                  <img src='../../styles/Images/cafe_icon_grey.png' style={newStyles.image}/>
+                </div>
+              </CardContent>
+            </Card>
         </div>
         <GoogleApiWrapper  clusterClickHandler={this.clusterClickHandler} mapMarkers={this.state.mapData}/>
      </div>
@@ -147,13 +178,37 @@ class NestedList extends React.Component {
   }
 }
 
+const newStyles = {
+  bizToolsContainer: {
+    height: 200, 
+    overflow: 'auto',
+    marginTop: 20
+  },
+  bizToolsBox: {
+    display: 'flex',
+    font: 'roboto',
+    flexWrap: 'wrap',
+    marginTop: 20,
+    borderTop: 1,
+    borderTopStyle: 'solid',
+    borderTopColor: '#F1F3F4'
+  },
+  title: {
+    fontWeight: 500,
+  },
+  image: {
+    height: 50,
+    margin: 6
+  }
+}
+
 const styles = theme => ({
   root: {
     width: '100%',
     maxWidth: 360,
     maxHeight: 800,
     backgroundColor: theme.palette.background.paper,
-   marginTop: 20,
+    marginTop: 20,
   },
   nested: {
     paddingLeft: theme.spacing.unit * 4,
