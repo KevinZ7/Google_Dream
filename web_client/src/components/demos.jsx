@@ -11,7 +11,9 @@ import Chartadata from './chartadata.jsx';
 import GoogleApiWrapper from './map.jsx';
 import data from './data.json';
 import EntitySpecific from './entitySpecific.jsx'
-import {GOOGLE_API} from '../../../mobile_client/secret.js'
+import {GOOGLE_API} from '../../../mobile_client/secret.js';
+
+import GoogleBusiness from './googlebiz.jsx'
 
 class NestedList extends React.Component {
   constructor(props){
@@ -114,9 +116,7 @@ class NestedList extends React.Component {
 
   render() {
     const { classes } = this.props;
-
     const categories = [...new Set(this.state.menuData.map(category => category.name))]
-
     const menuCategories = categories.map((category) => {
         let image = `../../styles/Images/${category}_icon_grey.png`
         return <Chartadata key={category} category={category} image={image} showMarkersOfEntity={this.showMarkersOfEntity}/>
@@ -124,23 +124,24 @@ class NestedList extends React.Component {
     )
 
   return (
-    <div>
+    <div> {/* parent */}
       {this.state.entitySpecific?
       <div>
-        <div className="col col-lg-2">
+        <div className="col col-lg-3"> {/* entity menu */}
           <div id="chartData" className={classes.root}>
             <EntitySpecific goBack={this.handleEntityChange} cardInfo={this.state.cardInfo}/>
           </div>
+          <GoogleBusiness />
         </div>
         <GoogleApiWrapper mapMarkers={this.state.mapData} entity={this.handleEntityChange} clusterClickHandler={this.clusterClickHandler}/>
       </div>
       :
       <div>
-        <div  className="col col-lg-2">
+        <div  id="sideBar" className="col col-lg-3">
           <div id="chartData" className={classes.root}>
             {menuCategories}
-
           </div>
+          <GoogleBusiness />
         </div>
         <GoogleApiWrapper  clusterClickHandler={this.clusterClickHandler} mapMarkers={this.state.mapData}/>
      </div>
@@ -150,13 +151,15 @@ class NestedList extends React.Component {
   }
 }
 
+
+
 const styles = theme => ({
   root: {
     width: '100%',
     maxWidth: 360,
     maxHeight: 800,
     backgroundColor: theme.palette.background.paper,
-   marginTop: 20,
+    marginTop: 20,
   },
   nested: {
     paddingLeft: theme.spacing.unit * 4,

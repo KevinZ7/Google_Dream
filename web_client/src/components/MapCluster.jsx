@@ -29,7 +29,7 @@ const MapWithAMarkerClusterer = compose(
   withGoogleMap
 )(props =>
   <GoogleMap
-    defaultZoom={3}
+    defaultZoom={12}
     defaultCenter={{ lat: 49.2827, lng: -123.11934 }}
   >
     <MarkerClusterer

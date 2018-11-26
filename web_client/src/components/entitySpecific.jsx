@@ -29,6 +29,7 @@ function SimpleList(props) {
  let emails = props.cardInfo.emails.map((email) => email.email)
 
 
+
  function mailToCLient(email){
     window.open(`mailto:${email}`)
   }
