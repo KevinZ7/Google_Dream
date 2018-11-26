@@ -235,15 +235,15 @@ export default class OnboardingScreens extends Component {
    */
   renderButton = () => {
     const lastScreen = this.state.index === this.state.total - 1;
+    let button;
+
+    if(lastScreen){
+      button  =<OnboardButton text="Explore Now" onPress={() => this.props.navigation.navigate('Home')} /> 
+    }
+
     return (
       <View pointerEvents="box-none" style={[styles.buttonWrapper, styles.fullScreen]}>
-        {lastScreen
-          // Show this button on the last screen
-          // TODO: Add a handler that would send a user to your app after onboarding is complete
-          ? <OnboardButton text="Start Now" onPress={() => this.props.navigation.navigate('Home')} />
-          // Or this one otherwise
-          : <OnboardButton text="Continue" onPress={() => this.swipe()} />
-        }
+        {button}
       </View>
     );
   }
@@ -283,7 +283,7 @@ const styles = StyleSheet.create({
   // Pagination indicators
   pagination: {
     position: 'absolute',
-    bottom: 110,
+    bottom: 30,
     left: 0,
     right: 0,
     flex: 1,
@@ -316,7 +316,7 @@ const styles = StyleSheet.create({
     left: 0,
     flex: 1,
     paddingHorizontal: 10,
-    paddingVertical: 40,
+    paddingVertical: 220,
     justifyContent: 'flex-end',
     alignItems: 'center'
   },
