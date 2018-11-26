@@ -87,11 +87,14 @@ class NestedList extends React.Component {
   };
 
   showMarkersOfEntity(entity) {
-    this.setState({
-      mapData: []
-    })
     fetch(`http://0.0.0.0:8080/entities/${entity}`)
     .then(res => res.json(res))
+    .then(data => {
+      this.setState({
+        mapData: []
+      })
+      return data;
+    })
     .then(data => {
       this.setState({
         mapData: data

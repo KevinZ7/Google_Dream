@@ -51,7 +51,7 @@ function SimpleList(props) {
           <ListItemIcon id="pin">
             <PinDrop />
           </ListItemIcon>
-          <ListItemText id="pinDrop" primary={props.cardInfo.emails.length} secondary="Pins in this location" />
+          <ListItemText id="pinDrop" primary={props.cardInfo.emails.length} secondary={`people interested in bringing a ${props.cardInfo.name} to their community`} />
         </ListItem>
         </List>
         <Divider />

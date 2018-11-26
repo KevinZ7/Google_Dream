@@ -10,6 +10,18 @@ const settings = require('./settings.json')
 const knexConfig = require('./knexfile.js').development
 const knex = require('knex')(knexConfig);
 
+const{
+  getTypes,
+  getEntitiesOfType,
+  getMarkersOfEntity
+} = require('./dataHelpers/webClientHelpers.js')(knex);
+
+const{
+  getUserMarkers,
+  createMarker,
+  getClusterMarkers
+} = require('./dataHelpers/mobileClientHelpers.js')(knex);
+
 
 const allowCrossDomain = function(req, res, next) {
     res.header('Access-Control-Allow-Origin', '*');
@@ -23,56 +35,30 @@ const allowCrossDomain = function(req, res, next) {
 app.use(allowCrossDomain);
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get('/', (req, res) => {
-    knex
-    .select("*")
-    .from("markers")
-    .where('name', 'bubble tea')
-    .then((results) => {
-
-      res.json(results)
-  });
-})
 
 app.get('/categories', (req, res) => {
-  knex.
-  select('markers.name', 'types_id', 'types.name')
-  .from('markers')
-  .leftJoin('marker_types', 'markers.id', 'marker_types.markers_id')
-  .leftJoin('types', 'types.id', 'marker_types.types_id')
+  getTypes()
   .then((results) => {
     res.json(results)
   })
 })
 
 app.get('/categories/:entity', (req, res) => {
-  knex.
-  select('markers.*', 'types_id')
-  .from('markers')
-  .leftJoin('marker_types', 'markers.id', 'marker_types.markers_id')
-  .leftJoin('types', 'types.id', 'marker_types.types_id')
-  .where({'types.name': req.params.entity})
+  getEntitiesOfType(req.params.entity)
   .then((results) => {
     res.json(results)
   })
 })
 
 app.get('/entities/:entity', (req, res) => {
-  knex
-  .select('*')
-  .from('markers')
-  .where('markers.name', req.params.entity)
+  getMarkersOfEntity(req.params.entity)
   .then((results) => {
     res.json(results)
   })
 })
 
 app.get('/markers/:user_id', (req, res) => {
-  knex('markers')
-  .select('markers.id', 'markers.name AS marker_name', 'lat', 'lng', 'types.name AS type_name', 'color', 'date', 'address')
-  .leftJoin('marker_types', 'markers.id', 'marker_types.markers_id')
-  .leftJoin('types', 'types.id', 'marker_types.types_id')
-  .where({'users_id': req.params.user_id})
+  getUserMarkers(req.params.user_id)
   .then((results) => {
     res.json(results)
   })
@@ -80,47 +66,11 @@ app.get('/markers/:user_id', (req, res) => {
 
 app.post('/markers', (req, res) => {
   const { name,name2, lat, lng, users_id, date, address } = req.body
-  knex('markers')
-  .insert({name: name2, lat: lat, lng: lng, users_id: users_id, date: date, address: address})
-  .returning('*')
-  .then((result) => {
-    return JSON.stringify(result)
+  createMarker(name,name2,lat,lng,users_id,date,address,secret,fetch,typeNames)
+  .then(() => {
+    res.sendStatus(201)
   })
-  .then((result) => {
 
-    var result = JSON.parse(result)
-    var searchName = name
-    let apiRequest = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=49.281318,-123.114574&rankby=distance&keyword=${searchName}&key=${secret.GOOGLE_API}`
-    fetch(apiRequest, function(error,meta,body){
-      if(error){
-        console.log(error);
-      }
-      var object = JSON.parse(body);
-      var type = object.results[0].types[0];
-      var indexOfType = typeNames.types.indexOf(type)
-      if(indexOfType >= 0){
-        knex('marker_types')
-        .insert({
-          markers_id: result[0].id,
-          types_id: indexOfType + 1
-        })
-        .then(()=>{
-          res.status(201)
-        })
-      }
-      else{
-        knex('marker_types')
-        .insert({
-          markers_id: result[0].id,
-          types_id: 47
-        })
-        .then(()=>{
-          res.status(201)
-        })
-      }
-
-    })
-  })
 })
 
 app.post('/clusters/markers', (req,res) => {
@@ -130,14 +80,8 @@ app.post('/clusters/markers', (req,res) => {
     return (Number(marker))
   })
 
-   knex('users')
-  .join('markers','users.id','users_id')
-  .join('marker_types','markers.id','markers_id')
-  .join('types','types.id','types_id')
-  .select('markers.name','users.email','markers.lat','markers.lng')
-  .whereIn('markers.id',numberMarkerArray)
+  getClusterMarkers(numberMarkerArray)
   .then((result) => {
-
     res.json(result)
   })
 
