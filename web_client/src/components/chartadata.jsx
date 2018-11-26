@@ -83,7 +83,7 @@ const styles = theme => ({
     width: '100%',
     maxWidth: 360,
     backgroundColor: theme.palette.background.paper,
-    paddingRight: 30
+    paddingRight: 30,
   },
   nested: {
     paddingLeft: theme.spacing.unit * 4,

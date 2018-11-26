@@ -156,6 +156,7 @@ class NestedList extends React.Component {
 const styles = theme => ({
   root: {
     width: '100%',
+    height: 450,
     maxWidth: 360,
     maxHeight: 800,
     backgroundColor: theme.palette.background.paper,
