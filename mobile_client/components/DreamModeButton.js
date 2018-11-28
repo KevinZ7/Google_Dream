@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, Button, StyleSheet, TouchableOpacity, Alert, Image, Animated, Easing } from 'react-native';
 import PinDropNotification from '../components/PinDropNotification.js';
+import EmailModal from '../components/EmailModal.js'
 import {ip,GOOGLE_API} from '../secret.js'
 console.disableYellowBox = true;
 
@@ -9,13 +10,25 @@ export default class DreamModeButton extends React.Component {
     super()
     this.state = {
       modalVisible: false,
-      stopAnimation: false
+      stopAnimation: false,
+      emailModalVisible: false,
+      confirmed: false
     }
     this.springValue = new Animated.Value(0.3)
   }
 
+  setConfirmed(value) {
+    this.setState({
+      confirmed: value
+    })
+  }
+
   setModalVisible(visible) {
     this.setState({modalVisible: visible});
+  }
+
+  setEmailModalVisible(visible) {
+    this.setState({emailModalVisible: visible})
   }
 
   // Animation stop and start below
@@ -143,7 +156,10 @@ export default class DreamModeButton extends React.Component {
           style={styles.buttonSecond}>
           <Image source={require('../assets/images/3d-map-icon.png')} style={styles.image} resizeMode="contain"/>
         </TouchableOpacity>
-        <PinDropNotification visible={this.state.modalVisible} toggle={this.setModalVisible.bind(this)} setWithinRadius={this.props.setWithinRadius} stopSpring={this.stopSpring.bind(this)}/>
+        <PinDropNotification visible={this.state.modalVisible} toggle={this.setModalVisible.bind(this)}
+        setWithinRadius={this.props.setWithinRadius} stopSpring={this.stopSpring.bind(this)}
+        toggleEmail={this.setEmailModalVisible.bind(this)} confirmed={this.state.confirmed} setConfirmed={this.setConfirmed.bind(this)}/>
+        <EmailModal visible={this.state.emailModalVisible} toggle={this.setEmailModalVisible.bind(this)} setConfirmed={this.setConfirmed.bind(this)}/>
       </View>
     )
   }
